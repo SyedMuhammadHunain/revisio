@@ -4,4 +4,7 @@
   padding: 0;
 }
 
-
+body {
+  font-family: sans-serif;
+  letter-spacing: 0.6px;
+}
