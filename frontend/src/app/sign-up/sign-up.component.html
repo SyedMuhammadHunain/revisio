@@ -1,0 +1,45 @@
+<form [formGroup]="signupForm" (ngSubmit)="onSubmitSignupForm()">
+  <fieldset>
+    <legend>Sign Up</legend>
+
+    <label for="username">Username</label>
+    <input
+      type="text"
+      id="username"
+      placeholder="Enter username..."
+      name="username"
+      formControlName="userName"
+    />
+
+    <label for="email">Email</label>
+    <input
+      type="text"
+      id="email"
+      placeholder="Enter email..."
+      name="email"
+      formControlName="email"
+    />
+
+    <div class="password-container" formGroupName="passwords">
+      <label for="password">Password</label>
+      <input
+        type="text"
+        id="password"
+        placeholder="Enter password..."
+        name="password"
+        formControlName="password"
+      />
+
+      <label for="confirm-password">Confirm Password</label>
+      <input
+        type="text"
+        id="confirm-password"
+        placeholder="Confirm password..."
+        name="confirm-password"
+        formControlName="confirmPassword"
+      />
+    </div>
+  </fieldset>
+
+  <button class="signup-button" type="submit">Signup</button>
+</form>

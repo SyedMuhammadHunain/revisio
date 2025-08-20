@@ -1,0 +1,16 @@
+#starting-page {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 0.6fr 1fr;
+  justify-content: center;
+  align-items: center;
+}
+
+.side-header {
+  height: 100vh;
+  font-size: 40px;
+  display: flex;
+  align-items: center;
+  border-left: 2px solid black;
+  padding-left: 3rem;
+}
