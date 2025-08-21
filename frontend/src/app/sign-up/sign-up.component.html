@@ -10,6 +10,16 @@
       name="username"
       formControlName="userName"
     />
+    @if(usernameInvalid) {
+    <div class="error-message">
+      <p *ngIf="signupForm.controls.userName.hasError('minlength')">
+        Username must be at least 4 characters long.
+      </p>
+      <p *ngIf="signupForm.controls.userName.hasError('required')">
+        Username is required.
+      </p>
+    </div>
+    }
 
     <label for="email">Email</label>
     <input
@@ -19,6 +29,16 @@
       name="email"
       formControlName="email"
     />
+    @if(emailInvalid) {
+    <div class="error-message">
+      <p *ngIf="signupForm.controls.email.hasError('email')">
+        Please enter a valid Email Address.
+      </p>
+      <p *ngIf="signupForm.controls.email.hasError('required')">
+        Email Address is required.
+      </p>
+    </div>
+    }
 
     <div class="password-container" formGroupName="passwords">
       <label for="password">Password</label>
@@ -29,6 +49,33 @@
         name="password"
         formControlName="password"
       />
+      @if(passwordInvalid) {
+      <div class="error-message">
+        <p
+          *ngIf="
+            signupForm.controls.passwords.controls.password.hasError(
+              'minlength'
+            )
+          "
+        >
+          Password must be at least 4 character long.
+        </p>
+        <p
+          *ngIf="
+            signupForm.controls.passwords.controls.password.hasError('pattern')
+          "
+        >
+          Password must contain at least a number and a special character.
+        </p>
+        <p
+          *ngIf="
+            signupForm.controls.passwords.controls.password.hasError('required')
+          "
+        >
+          Password is required.
+        </p>
+      </div>
+      }
 
       <label for="confirm-password">Confirm Password</label>
       <input
@@ -38,6 +85,12 @@
         name="confirm-password"
         formControlName="confirmPassword"
       />
+      <p
+        *ngIf="signupForm.controls.passwords.hasError('passwordsDoesNotMatch')"
+        class="error-message"
+      >
+        Password does not match.
+      </p>
     </div>
   </fieldset>
 
