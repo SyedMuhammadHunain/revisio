@@ -129,12 +129,10 @@
     </div>
   </fieldset>
 
-  <div
-    class="h-captcha"
-    data-sitekey="186a3e30-f2d2-4766-aeae-1e9edf545104"
-    data-callback="onCaptchaSuccess"
-  ></div>
-  <br />
+  <ng-hcaptcha formControlName="hcaptcha" class="hcaptcha"></ng-hcaptcha>
+  @if(hcaptchaInvalid) {
+  <p class="error-message">Please complete the hCaptcha</p>
+  }
 
   <button class="signup-button" type="submit">Signup</button>
 </form>

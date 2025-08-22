@@ -1,5 +1,6 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, NgModule, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgHcaptchaModule } from 'ng-hcaptcha';
 import {
   FormGroupName,
   FormControl,
@@ -13,12 +14,12 @@ import { EmailValidatorService } from '../services/email-validator.service';
 
 @Component({
   selector: 'app-sign-up',
-  imports: [ReactiveFormsModule, CommonModule],
+  standalone: true,
+  imports: [ReactiveFormsModule, CommonModule, NgHcaptchaModule],
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.css',
 })
-export class SignUpComponent implements OnInit {
-  captchaToken = '';
+export class SignUpComponent {
   private emailValidatorService = inject(EmailValidatorService);
 
   signupForm = new FormGroup({
@@ -54,6 +55,9 @@ export class SignUpComponent implements OnInit {
         validators: [comparePassword('password', 'confirmPassword')],
       }
     ),
+    hcaptcha: new FormControl('', {
+      validators: [Validators.required],
+    }),
   });
 
   onSubmitSignupForm() {
@@ -93,11 +97,11 @@ export class SignUpComponent implements OnInit {
     );
   }
 
-  // Receives hCaptcha Token
-  // onCaptchaSolve Global function
-  ngOnInit() {
-    (window as any).onCaptchaSuccess = (token: string) => {
-      this.captchaToken = token;
-    };
+  get hcaptchaInvalid() {
+    return (
+      this.signupForm.controls.hcaptcha.touched &&
+      this.signupForm.controls.hcaptcha.invalid &&
+      this.signupForm.controls.hcaptcha.dirty
+    );
   }
 }

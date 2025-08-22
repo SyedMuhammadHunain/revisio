@@ -40,7 +40,6 @@ input {
 .signup-button {
   padding: 10px;
   font-size: 25px;
-  margin-top: 1rem;
   margin-bottom: 1rem;
 }
 
@@ -56,4 +55,8 @@ input.ng-dirty.ng-touched.ng-invalid {
   color: red;
   font-size: 20px;
   letter-spacing: 1px;
+}
+
+.hcaptcha {
+  margin: 1rem 0;
 }
