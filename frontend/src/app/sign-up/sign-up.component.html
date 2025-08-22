@@ -31,6 +31,9 @@
     />
     @if(emailInvalid) {
     <div class="error-message">
+      <p *ngIf="signupForm.controls.email.hasError('emailTaken')">
+        Email already exists. Please enter a different email.
+      </p>
       <p *ngIf="signupForm.controls.email.hasError('email')">
         Please enter a valid Email Address.
       </p>
@@ -43,7 +46,7 @@
     <div class="password-container" formGroupName="passwords">
       <label for="password">Password</label>
       <input
-        type="text"
+        type="password"
         id="password"
         placeholder="Enter password..."
         name="password"
@@ -79,20 +82,59 @@
 
       <label for="confirm-password">Confirm Password</label>
       <input
-        type="text"
+        type="password"
         id="confirm-password"
         placeholder="Confirm password..."
         name="confirm-password"
         formControlName="confirmPassword"
       />
+      @if(confirmPasswordInvalid) {
+      <p
+        *ngIf="
+          signupForm.controls.passwords.controls.confirmPassword.hasError(
+            'minlength'
+          )
+        "
+        class="error-message"
+      >
+        Password must be at least 4 character long.
+      </p>
+      <p
+        *ngIf="
+          signupForm.controls.passwords.controls.confirmPassword.hasError(
+            'pattern'
+          )
+        "
+        class="error-message"
+      >
+        Password must contain at least a number and a special character.
+      </p>
+      <p
+        *ngIf="
+          signupForm.controls.passwords.controls.confirmPassword.hasError(
+            'required'
+          )
+        "
+        class="error-message"
+      >
+        Please confirm your password.
+      </p>
       <p
         *ngIf="signupForm.controls.passwords.hasError('passwordsDoesNotMatch')"
         class="error-message"
       >
         Password does not match.
       </p>
+      }
     </div>
   </fieldset>
+
+  <div
+    class="h-captcha"
+    data-sitekey="186a3e30-f2d2-4766-aeae-1e9edf545104"
+    data-callback="onCaptchaSuccess"
+  ></div>
+  <br />
 
   <button class="signup-button" type="submit">Signup</button>
 </form>

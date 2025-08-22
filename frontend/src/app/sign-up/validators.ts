@@ -12,9 +12,3 @@ export function comparePassword(password: string, confirmPassword: string) {
     return { passwordsDoesNotMatch: true };
   };
 }
-
-// export function checkEmail(email: string) {
-//   return (control: AbstractControl) => {
-//     const email = control.get('email')?.value;
-//   };
-// }
