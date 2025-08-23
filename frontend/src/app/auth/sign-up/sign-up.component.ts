@@ -58,9 +58,9 @@ export class SignUpComponent {
         validators: [comparePassword('password', 'confirmPassword')],
       }
     ),
-    hcaptcha: new FormControl('', {
-      validators: [Validators.required],
-    }),
+    // hcaptcha: new FormControl('', {
+    //   validators: [Validators.required],
+    // }),
   });
 
   // Form Validations
@@ -96,18 +96,16 @@ export class SignUpComponent {
     );
   }
 
-  get hcaptchaInvalid() {
-    return (
-      this.signupForm.controls.hcaptcha.touched &&
-      this.signupForm.controls.hcaptcha.invalid &&
-      this.signupForm.controls.hcaptcha.dirty
-    );
-  }
+  // get hcaptchaInvalid() {
+  //   return (
+  //     this.signupForm.controls.hcaptcha.touched &&
+  //     this.signupForm.controls.hcaptcha.invalid &&
+  //     this.signupForm.controls.hcaptcha.dirty
+  //   );
+  // }
 
   onSubmitSignupForm() {
     if (this.signupForm.invalid) {
-      this.showErrorBox = true;
-      setTimeout(() => (this.showErrorBox = false), 3000);
       return;
     }
 

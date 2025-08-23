@@ -1,16 +1,14 @@
 :host {
+  display: flex;
+  justify-content: center;
   border-radius: 10px;
   padding: 1.5rem;
-  width: 80%;
-  max-width: 400px;
-  margin: 0 auto;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  background: #fff;
 }
 
 form {
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
 }
 
@@ -22,44 +20,62 @@ fieldset,
 }
 
 legend {
-  font-size: 25px;
-  font-weight: bold;
+  font-size: 2.1rem;
+  padding: 20px 0;
+  margin: 10px 0;
+  color: #ffffff;
+  font-weight: 750;
 }
 
 label {
+  font-size: 0.9rem;
   margin-top: 1rem;
   padding-bottom: 3px;
-  font-size: 15px;
+  color: #ffffff;
 }
 
 input {
-  border-radius: 5px;
-  padding: 0.4rem;
-  font-size: 15px;
-  border: 0.5px solid;
+  border: 0.5px solid #fcfcfc29;
+  border-radius: 3px;
+  padding: 0.42rem;
+  margin: 0.18rem 0;
+  font-size: 0.82rem;
+  background-color: transparent;
+  color: #ffffff;
+}
+
+input::placeholder {
+  color: #fcfcfc29;
 }
 
 .signup-button {
+  width: 100%;
+  font-size: 0.9rem;
   padding: 10px;
-  font-size: 15px;
-  background-color: #45d1f8;
+  margin: 20px 0;
+  background-color: transparent;
+  border: 0.5px solid #fcfcfc29;
+  color: #ffffff;
+  border-radius: 3px;
 }
 
 .signup-button:hover {
   cursor: pointer;
-  background-color: #00bdff;
+  background-color: #202020;
 }
 
 input.ng-dirty.ng-touched.ng-invalid {
-  border: 1px solid red;
+  border: 0.5px solid #e0564a;
 }
 
 .error-message {
-  color: red;
+  padding: 4px 0;
+  color: #e0564a;
   font-size: 12px;
   letter-spacing: 1px;
 }
 
+/* 
 .popup-error {
   position: fixed;
   bottom: 20px;
@@ -74,21 +90,20 @@ input.ng-dirty.ng-touched.ng-invalid {
   z-index: 9999;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   animation: slideInOut 3s ease-in-out;
-}
+} */
 
 .popup-success {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #e9ffdd;
-  color: #65b300;
-  border: 1px solid #51b300;
+  bottom: -5rem;
+  right: -30rem;
+  background-color: #d1f7c4;
+  color: #2f8f46; 
+  border: 1px solid #2f8f46;
   padding: 12px 20px;
   border-radius: 8px;
   font-size: 14px;
   font-weight: 600;
   z-index: 9999;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   animation: slideInOut 3s ease-in-out;
 }
 

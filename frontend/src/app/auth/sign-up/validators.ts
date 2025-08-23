@@ -2,13 +2,19 @@ import { AbstractControl } from '@angular/forms';
 
 export function comparePassword(password: string, confirmPassword: string) {
   return (control: AbstractControl) => {
-    const password = control.get('password')?.value;
-    const confirmPassword = control.get('confirmPassword')?.value;
+    const passCtrl = control.get(password);
+    const confirmCtrl = control.get(confirmPassword);
 
-    if (password === confirmPassword) {
+    if (!passCtrl || !confirmCtrl) {
       return null;
     }
 
-    return { passwordsDoesNotMatch: true };
+    if (passCtrl.value !== confirmCtrl.value) {
+      confirmCtrl.setErrors({ passwordsDoesNotMatch: true });
+      return { passwordsDoesNotMatch: true };
+    }
+
+    confirmCtrl.setErrors(null);
+    return null;
   };
 }
