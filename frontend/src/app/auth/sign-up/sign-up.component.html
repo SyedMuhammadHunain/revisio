@@ -129,10 +129,21 @@
     </div>
   </fieldset>
 
-  <ng-hcaptcha formControlName="hcaptcha" class="hcaptcha"></ng-hcaptcha>
+  <ng-hcaptcha formControlName="hcaptcha"></ng-hcaptcha>
   @if(hcaptchaInvalid) {
   <p class="error-message">Please complete the hCaptcha</p>
+  <p *ngIf="signupForm.controls.hcaptcha.hasError('required')">
+    Please complete the hCaptcha.
+  </p>
   }
 
   <button class="signup-button" type="submit">Signup</button>
 </form>
+
+<div *ngIf="showErrorBox" [ngClass]="'popup-error'">
+  Please fill in all the required fields.
+</div>
+
+<div *ngIf="showSuccessBox" [ngClass]="'popup-success'">
+  Signed up successfully!
+</div>

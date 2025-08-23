@@ -10,7 +10,7 @@ import {
 } from '@angular/forms';
 
 import { comparePassword } from './validators';
-import { EmailValidatorService } from '../services/email-validator.service';
+import { EmailValidatorService } from '../../services/email-validator.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -20,6 +20,9 @@ import { EmailValidatorService } from '../services/email-validator.service';
   styleUrl: './sign-up.component.css',
 })
 export class SignUpComponent {
+  showErrorBox = false;
+  showSuccessBox = false;
+
   private emailValidatorService = inject(EmailValidatorService);
 
   signupForm = new FormGroup({
@@ -60,10 +63,6 @@ export class SignUpComponent {
     }),
   });
 
-  onSubmitSignupForm() {
-    console.log(this.signupForm);
-  }
-
   // Form Validations
   get emailInvalid() {
     return (
@@ -103,5 +102,17 @@ export class SignUpComponent {
       this.signupForm.controls.hcaptcha.invalid &&
       this.signupForm.controls.hcaptcha.dirty
     );
+  }
+
+  onSubmitSignupForm() {
+    if (this.signupForm.invalid) {
+      this.showErrorBox = true;
+      setTimeout(() => (this.showErrorBox = false), 3000);
+      return;
+    }
+
+    this.showSuccessBox = true;
+    setTimeout(() => (this.showSuccessBox = false), 3000);
+    console.log('VALID FORM');
   }
 }

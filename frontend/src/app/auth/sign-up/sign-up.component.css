@@ -1,0 +1,109 @@
+:host {
+  border-radius: 10px;
+  padding: 1.5rem;
+  width: 80%;
+  max-width: 400px;
+  margin: 0 auto;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background: #fff;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+fieldset,
+.password-container {
+  display: flex;
+  flex-direction: column;
+  border: none;
+}
+
+legend {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+label {
+  margin-top: 1rem;
+  padding-bottom: 3px;
+  font-size: 15px;
+}
+
+input {
+  border-radius: 5px;
+  padding: 0.4rem;
+  font-size: 15px;
+  border: 0.5px solid;
+}
+
+.signup-button {
+  padding: 10px;
+  font-size: 15px;
+  background-color: #45d1f8;
+}
+
+.signup-button:hover {
+  cursor: pointer;
+  background-color: #00bdff;
+}
+
+input.ng-dirty.ng-touched.ng-invalid {
+  border: 1px solid red;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.popup-error {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #ffdddd;
+  color: #b30000;
+  border: 1px solid #b30000;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  z-index: 9999;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  animation: slideInOut 3s ease-in-out;
+}
+
+.popup-success {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #e9ffdd;
+  color: #65b300;
+  border: 1px solid #51b300;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  z-index: 9999;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  animation: slideInOut 3s ease-in-out;
+}
+
+@keyframes slideInOut {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  10%,
+  90% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
