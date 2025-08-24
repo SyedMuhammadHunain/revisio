@@ -1,24 +1,33 @@
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 import { Signup } from '../models/signup.model';
-import { catchError, throwError } from 'rxjs';
+import { MessageService } from './message.service';
+
+import { catchError, map, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private httpClient = inject(HttpClient);
+  private messageService = inject(MessageService);
 
   signup(signupData: Signup) {
     return this.httpClient
-      .post('http://localhost:3000/auth/signup', signupData)
+      .post<{ message: string }>(
+        'http://localhost:3000/auth/signup',
+        signupData
+      )
       .pipe(
-        catchError((error) => {
-          return throwError(
-            () => new Error('Failed to Sign up. Please try again.')
-          );
+        map((response) => {
+          this.messageService.setMessage(response.message, 'success');
+          return response;
+        }),
+        catchError((error: HttpErrorResponse) => {
+          this.messageService.setMessage(error.error.message, 'error');
+          return throwError(() => error);
         })
       );
   }

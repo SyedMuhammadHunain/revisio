@@ -69,7 +69,7 @@ export class EmailService {
     await this.mailerService.sendMail({
       to: email,
       subject: 'Your OTP Code',
-      html: htmlTemplate, // Use HTML template instead of text
+      html: htmlTemplate,
     });
   }
 }

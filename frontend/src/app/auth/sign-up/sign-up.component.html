@@ -8,14 +8,14 @@
       id="username"
       placeholder="Your username"
       name="username"
-      formControlName="userName"
+      formControlName="username"
     />
     @if(usernameInvalid) {
     <div class="error-message">
-      <p *ngIf="signupForm.controls.userName.hasError('minlength')">
+      <p *ngIf="signupForm.controls.username.hasError('minlength')">
         Username must be at least 4 characters long.
       </p>
-      <p *ngIf="signupForm.controls.userName.hasError('required')">
+      <p *ngIf="signupForm.controls.username.hasError('required')">
         Username is required.
       </p>
     </div>
@@ -139,8 +139,3 @@
 
   <button class="signup-button" type="submit">Sign Up</button>
 </form>
-
-<div *ngIf="showSuccessBox" class="popup-success">
-  <span>Signed up successfully!</span>
-</div>
- 

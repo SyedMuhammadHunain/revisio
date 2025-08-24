@@ -1,0 +1,45 @@
+.popup-message {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  color: #ffffff; 
+  border: 1px solid transparent;
+  padding: 12px 20px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 600;
+  z-index: 9999;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  animation: slideInOut 3s ease-in-out;
+}
+
+.is-success {
+  background-color: #4caf50;
+  border-color: #388e3c; 
+}
+
+.is-error {
+  background-color: #f44336; 
+  border-color: #d32f2f;
+}
+
+.is-normal {
+  background-color: #2196f3; 
+  border-color: #1976d2;
+}
+
+@keyframes slideInOut {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  10%,
+  90% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}

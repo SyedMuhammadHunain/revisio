@@ -1,0 +1,11 @@
+<div
+  class="popup-message"
+  [ngClass]="{
+    'is-success': message$().type === 'success',
+    'is-error': message$().type === 'error',
+    'is-normal': message$().type === 'normal'
+  }"
+  *ngIf="message$().msg"
+>
+  <span>{{ message$().msg }}</span>
+</div>

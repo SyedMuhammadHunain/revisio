@@ -11,6 +11,10 @@ import {
 
 import { comparePassword } from './validators';
 import { EmailValidatorService } from '../../services/email-validator.service';
+import { AuthService } from '../../services/auth.service';
+import { MessageService } from '../../services/message.service';
+
+import { Signup } from '../../models/signup.model';
 
 @Component({
   selector: 'app-sign-up',
@@ -20,13 +24,12 @@ import { EmailValidatorService } from '../../services/email-validator.service';
   styleUrl: './sign-up.component.css',
 })
 export class SignUpComponent {
-  showErrorBox = false;
-  showSuccessBox = false;
-
   private emailValidatorService = inject(EmailValidatorService);
+  private authService = inject(AuthService);
+  private messageService = inject(MessageService);
 
   signupForm = new FormGroup({
-    userName: new FormControl('', {
+    username: new FormControl('', {
       validators: [Validators.required, Validators.minLength(4)],
     }),
     email: new FormControl('', {
@@ -74,9 +77,9 @@ export class SignUpComponent {
 
   get usernameInvalid() {
     return (
-      this.signupForm.controls.userName.touched &&
-      this.signupForm.controls.userName.invalid &&
-      this.signupForm.controls.userName.dirty
+      this.signupForm.controls.username.touched &&
+      this.signupForm.controls.username.invalid &&
+      this.signupForm.controls.username.dirty
     );
   }
 
@@ -105,12 +108,24 @@ export class SignUpComponent {
   // }
 
   onSubmitSignupForm() {
-    if (this.signupForm.invalid) {
-      return;
+    if (this.signupForm.valid) {
+      const signupData: Signup = {
+        username: this.signupForm.controls.username.value as string,
+        email: this.signupForm.controls.email.value as string,
+        password: this.signupForm.controls.passwords.controls.password
+          .value as string,
+      };
+
+      const subscription = this.authService.signup(signupData).subscribe({
+        next: (response) => console.log('Signup successful:', response),
+        error: (error) => console.error('Signup failed:', error),
+        complete: () => this.signupForm.reset(),
+      });
     }
 
-    this.showSuccessBox = true;
-    setTimeout(() => (this.showSuccessBox = false), 3000);
-    console.log('VALID FORM');
+    this.messageService.setMessage(
+      'Please fill in all the required fields.',
+      'error'
+    );
   }
 }

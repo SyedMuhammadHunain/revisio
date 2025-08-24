@@ -65,7 +65,10 @@ export class AuthService {
       throw new InternalServerErrorException('Failed to send email: ', error);
     }
 
-    return { message: 'Signup successful, verification code sent to email' };
+    return {
+      message:
+        "You've successfully signed up! Please check your email for the verification code.",
+    };
   }
 
   async verifyCode(verifyDto: VerifyDto) {
