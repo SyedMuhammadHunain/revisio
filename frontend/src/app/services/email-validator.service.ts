@@ -12,10 +12,12 @@ export class EmailValidatorService {
   // Async Validator
   checkUniqueEmail(control: AbstractControl) {
     return this.httpClient
-      .post<boolean>('http://localhost:3000/email', { email: control.value })
+      .post<{ exists: boolean }>('http://localhost:3000/email/check', {
+        email: control.value,
+      })
       .pipe(
-        map((response: boolean) => {
-          return response ? { emailTaken: true } : null;
+        map((response) => {
+          return response.exists ? { emailTaken: true } : null;
         }),
         catchError((error) => {
           console.error(error);
