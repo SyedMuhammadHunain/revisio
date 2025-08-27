@@ -1,76 +1,12 @@
-:host {
-  display: flex;
-  justify-content: center;
-  border-radius: 10px;
-  padding: 1.5rem;
-}
+@import '../../shared/form.css';
 
-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-fieldset,
 .password-container {
   display: flex;
   flex-direction: column;
   border: none;
 }
 
-legend {
-  font-size: 2.1rem;
-  padding: 20px 0;
-  margin: 10px 0;
-  color: #ffffff;
-  font-weight: 750;
-}
-
-label {
-  font-size: 0.9rem;
-  margin-top: 1rem;
-  padding-bottom: 3px;
-  color: #ffffff;
-}
-
-input {
-  border: 0.5px solid #fcfcfc29;
-  border-radius: 3px;
-  padding: 0.42rem;
-  margin: 0.18rem 0;
-  font-size: 0.82rem;
-  background-color: transparent;
-  color: #ffffff;
-}
-
-input::placeholder {
-  color: #fcfcfc29;
-}
-
-.signup-button {
-  width: 100%;
-  font-size: 0.9rem;
-  padding: 10px;
-  margin: 20px 0;
-  background-color: transparent;
-  border: 0.5px solid #fcfcfc29;
-  color: #ffffff;
-  border-radius: 3px;
-}
-
 .signup-button:hover {
   cursor: pointer;
   background-color: #202020;
-}
-
-input.ng-dirty.ng-touched.ng-invalid {
-  border: 0.5px solid #e0564a;
-}
-
-.error-message {
-  padding: 4px 0;
-  color: #e0564a;
-  font-size: 12px;
-  letter-spacing: 1px;
 }
