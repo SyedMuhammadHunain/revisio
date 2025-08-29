@@ -9,6 +9,7 @@ import { AppController } from './app.controller';
 import { CodeGenerateService } from './email/code-generate.service';
 import { AppService } from './app.service';
 import { PasswordHashService } from './auth/password-hash.service';
+import { JwtModule } from '@nestjs/jwt';
 
 @Module({
   imports: [

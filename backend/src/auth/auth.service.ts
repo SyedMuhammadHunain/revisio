@@ -15,8 +15,11 @@ import { InjectModel } from '@nestjs/mongoose';
 import { User, UserDocument } from 'src/schemas/user.schema';
 import { Auth, AuthDocument } from 'src/schemas/auth.schema';
 
-import { SignupDto } from 'src/dtos/signup.dto';
+import { SigninDto, SignupDto } from 'src/dtos/auth.dto';
 import { VerifyDto } from 'src/dtos/verify.dto';
+
+import { JwtService } from '@nestjs/jwt';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class AuthService {
@@ -28,6 +31,7 @@ export class AuthService {
     private readonly passwordHashService: PasswordHashService,
     private readonly codeGenerateService: CodeGenerateService,
     private readonly emailService: EmailService,
+    private readonly jwtService: JwtService,
   ) {}
 
   async signup(signupDto: SignupDto) {
@@ -68,6 +72,42 @@ export class AuthService {
     return {
       message:
         "You've successfully signed up! Please check your email for the verification code.",
+    };
+  }
+
+  async signIn(signinDto: SigninDto) {
+    const { email, password, code } = signinDto;
+
+    const user = await this.userModel.findOne({ email });
+    if (!user) throw new UnauthorizedException('User not found');
+
+    const isPasswordValid = await bcrypt.compareSync(password, user.password);
+    if (!isPasswordValid)
+      throw new UnauthorizedException('Password does not match.');
+
+    const authRecord = await this.authModel.findOne({ email, code });
+    if (!authRecord) {
+      throw new BadRequestException('Invalid or expired verification code');
+    }
+
+    if (authRecord.expiresAt < new Date()) {
+      throw new BadRequestException(
+        'Verification code expired. Please request a new one.',
+      );
+    }
+
+    if (!user.isVerified) {
+      await this.userModel.updateOne({ email }, { isVerified: true });
+    }
+
+    const payload = { sub: user._id, email: user.email };
+    const accessToken = await this.jwtService.signAsync(payload);
+
+    await this.authModel.deleteOne({ _id: authRecord._id });
+
+    return {
+      message: 'Login successful',
+      accessToken,
     };
   }
 
