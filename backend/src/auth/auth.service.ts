@@ -16,6 +16,7 @@ import { User, UserDocument } from 'src/schemas/user.schema';
 import { Auth, AuthDocument } from 'src/schemas/auth.schema';
 
 import { SigninDto, SignupDto } from 'src/dtos/auth.dto';
+import { ResetPasswordDto } from 'src/dtos/reset-password.dto';
 import { VerifyDto } from 'src/dtos/verify.dto';
 
 import { JwtService } from '@nestjs/jwt';
@@ -81,7 +82,7 @@ export class AuthService {
     const user = await this.userModel.findOne({ email });
     if (!user) throw new UnauthorizedException('User not found');
 
-    const isPasswordValid = await bcrypt.compareSync(password, user.password);
+    const isPasswordValid = bcrypt.compareSync(password, user.password);
     if (!isPasswordValid)
       throw new UnauthorizedException('Password does not match.');
 
@@ -109,6 +110,55 @@ export class AuthService {
       message: 'Login successful',
       accessToken,
     };
+  }
+
+  async resendOtp(email: string) {
+    const user = await this.userModel.findOne({ email });
+    if (!user) throw new BadRequestException('User not found');
+
+    const code = this.codeGenerateService.generateOTP();
+    const expiresAt = this.codeGenerateService.calculateCodeExpiry();
+
+    await this.authModel.deleteMany({ email });
+    await new this.authModel({ email, code, expiresAt }).save();
+
+    await this.emailService.sendCodeToEmail(email, code);
+
+    return { message: 'A new OTP has been sent to your email' };
+  }
+
+  async forgotPassword(email: string) {
+    const user = await this.userModel.findOne({ email });
+    if (!user) throw new BadRequestException('Email not registered');
+
+    const code = this.codeGenerateService.generateOTP();
+    const expiresAt = this.codeGenerateService.calculateCodeExpiry();
+
+    await this.authModel.deleteMany({ email });
+    await new this.authModel({ email, code, expiresAt }).save();
+
+    await this.emailService.sendCodeToEmail(email, code);
+
+    return { message: 'Reset code sent to your email' };
+  }
+
+  async resetPassword(resetPasswordDto: ResetPasswordDto) {
+    const { email, code, newPassword } = resetPasswordDto;
+
+    const authRecord = await this.authModel.findOne({ email, code });
+    if (!authRecord) throw new BadRequestException('Invalid or expired code');
+
+    if (authRecord.expiresAt < new Date()) {
+      throw new BadRequestException('Code expired, request a new one');
+    }
+
+    const hashedPassword =
+      await this.passwordHashService.hashPassword(newPassword);
+    await this.userModel.updateOne({ email }, { password: hashedPassword });
+
+    await this.authModel.deleteMany({ email });
+
+    return { message: 'Password reset successfully' };
   }
 
   async verifyCode(verifyDto: VerifyDto) {

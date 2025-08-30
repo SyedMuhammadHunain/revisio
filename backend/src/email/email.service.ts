@@ -20,6 +20,7 @@ export class EmailService {
   }
 
   async sendCodeToEmail(email: string, code: string) {
+    console.log(code);
     const htmlTemplate = `
     <!DOCTYPE html>
   <html>

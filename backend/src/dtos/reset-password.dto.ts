@@ -1,30 +1,16 @@
 import { IsEmail, IsNotEmpty, MinLength, Matches } from 'class-validator';
 
-export class SignupDto {
-  @IsNotEmpty({ message: 'Username is required.' })
-  @MinLength(4, { message: 'Username must be at least 4 characters long.' })
-  username: string;
-
+export class ResetPasswordDto {
   @IsNotEmpty({ message: 'Email is required.' })
   @IsEmail({}, { message: 'Please enter a valid email address.' })
   email: string;
 
-  @IsNotEmpty({ message: 'Password is required.' })
+  @IsNotEmpty({ message: 'New password is required.' })
   @MinLength(4, { message: 'Password must be at least 4 characters long.' })
   @Matches(/^(?=.*\d)(?=.*[@$!%*?&]).+$/, {
     message: 'Password must include a number and a special character.',
   })
-  password: string;
-}
-
-export class SigninDto {
-  @IsNotEmpty({ message: 'Email is required.' })
-  @IsEmail({}, { message: 'Please enter a valid email address.' })
-  email: string;
-
-  @IsNotEmpty({ message: 'Password is required.' })
-  @MinLength(4, { message: 'Password must be at least 4 characters long.' })
-  password: string;
+  newPassword: string;
 
   @IsNotEmpty({ message: 'Code is required.' })
   @MinLength(6, { message: 'Code must be exactly 6 characters.' })
