@@ -13,9 +13,17 @@ export class MessageService {
 
   setMessage(msg: string, type: 'normal' | 'success' | 'error') {
     this.message.set({ msg, type });
+
+    this.clearMessageAfterTime();
   }
 
   clearMessage() {
     this.message.set({ msg: '', type: 'normal' });
+  }
+
+  clearMessageAfterTime() {
+    return setTimeout(() => {
+      this.clearMessage();
+    }, 3000);
   }
 }

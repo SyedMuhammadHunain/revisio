@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 
 import {
   FormGroup,
@@ -8,13 +8,22 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 
+import { RouterLink } from '@angular/router';
+
+import { AuthService } from '../../services/auth.service';
+import { SigninData } from '../../models/auth.model';
+import { MessageService } from '../../services/message.service';
+
 @Component({
   selector: 'app-sign-in',
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.css',
 })
 export class SignInComponent {
+  private authService = inject(AuthService);
+  private messageService = inject(MessageService);
+
   signinForm = new FormGroup({
     email: new FormControl('', {
       validators: [Validators.required, Validators.email],
@@ -55,8 +64,23 @@ export class SignInComponent {
     );
   }
 
-  onSubmitSigninForm(): void {
-    console.log('Sign In Form submitted!');
+  onSubmitSigninForm() {
+    if (this.signinForm.valid) {
+      const signinData: SigninData = this.signinForm.value as SigninData;
+
+      const subscription = this.authService.signIn(signinData).subscribe({
+        next: (response) => console.log(response),
+        error: (error) => console.error('Signin failed: ', error),
+        complete: () => console.log('Completed Sign in Flow.'),
+      });
+
+    } else {
+      this.messageService.setMessage(
+        'Please fill in all the required fields.',
+        'error'
+      );
+      return;
+    }
   }
 
   onForgotPassword(): void {

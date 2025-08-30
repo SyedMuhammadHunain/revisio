@@ -8,10 +8,7 @@ export class PasswordHashService {
     try {
       return await bcrypt.hash(password, 10);
     } catch (error) {
-      throw new InternalServerErrorException(
-        'Failed to hash password: ',
-        error,
-      );
+      throw new InternalServerErrorException('Failed to hash password', error);
     }
   }
 }

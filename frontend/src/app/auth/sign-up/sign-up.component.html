@@ -43,7 +43,7 @@
     </div>
     }
 
-    <div class="password-container" formGroupName="passwords">
+    <div class="password-container">
       <label for="password">Password</label>
       <input
         type="password"
@@ -56,7 +56,7 @@
       <div class="error-message">
         <p
           *ngIf="
-            signupForm.controls.passwords.controls.password.hasError(
+            signupForm.controls.password.hasError(
               'minlength'
             )
           "
@@ -65,14 +65,14 @@
         </p>
         <p
           *ngIf="
-            signupForm.controls.passwords.controls.password.hasError('pattern')
+            signupForm.controls.password.hasError('pattern')
           "
         >
           Please include a number and a special character.
         </p>
         <p
           *ngIf="
-            signupForm.controls.passwords.controls.password.hasError('required')
+            signupForm.controls.password.hasError('required')
           "
         >
           Password is required.
@@ -91,7 +91,7 @@
       @if(confirmPasswordInvalid) {
       <p
         *ngIf="
-          signupForm.controls.passwords.controls.confirmPassword.hasError(
+          signupForm.controls.confirmPassword.hasError(
             'minlength'
           )
         "
@@ -101,7 +101,7 @@
       </p>
       <p
         *ngIf="
-          signupForm.controls.passwords.controls.confirmPassword.hasError(
+          signupForm.controls.confirmPassword.hasError(
             'pattern'
           )
         "
@@ -111,7 +111,7 @@
       </p>
       <p
         *ngIf="
-          signupForm.controls.passwords.controls.confirmPassword.hasError(
+          signupForm.controls.confirmPassword.hasError(
             'required'
           )
         "
@@ -120,7 +120,7 @@
         Please confirm your password.
       </p>
       <p
-        *ngIf="signupForm.controls.passwords.hasError('passwordsDoesNotMatch')"
+        *ngIf="signupForm.hasError('passwordsDoesNotMatch')"
         class="error-message"
       >
         Password does not match.
@@ -140,6 +140,6 @@
   <button class="signup-button" type="submit">Sign Up</button>
 
   <p style="color: #fcfcfc47">
-    Already have an cccount? <a>Sign in</a>
+    Already have an cccount? <a routerLink="signin">Sign in</a>
   </p>
 </form>

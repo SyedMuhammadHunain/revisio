@@ -1,6 +1,7 @@
 import { Component, inject, NgModule, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgHcaptchaModule } from 'ng-hcaptcha';
+
 import {
   FormGroupName,
   FormControl,
@@ -9,24 +10,27 @@ import {
   Validators,
 } from '@angular/forms';
 
+import { Router, RouterLink } from '@angular/router';
+
 import { comparePassword } from './validators';
 import { EmailValidatorService } from '../../services/email-validator.service';
 import { AuthService } from '../../services/auth.service';
 import { MessageService } from '../../services/message.service';
 
-import { Signup } from '../../models/signup.model';
+import { SignupData } from '../../models/auth.model';
 
 @Component({
   selector: 'app-sign-up',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, NgHcaptchaModule],
+  imports: [ReactiveFormsModule, CommonModule, NgHcaptchaModule, RouterLink],
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.css',
 })
 export class SignUpComponent {
   private emailValidatorService = inject(EmailValidatorService);
-  private authService = inject(AuthService);
   private messageService = inject(MessageService);
+  private authService = inject(AuthService);
+  private router = inject(Router);
 
   signupForm = new FormGroup({
     username: new FormControl('', {
@@ -40,31 +44,26 @@ export class SignUpComponent {
         ),
       ],
     }),
-    passwords: new FormGroup(
-      {
-        password: new FormControl('', {
-          validators: [
-            Validators.required,
-            Validators.minLength(4),
-            Validators.pattern('^(?=.*\\d)(?=.*[@$!%*?&]).+$'),
-          ],
-        }),
-        confirmPassword: new FormControl('', {
-          validators: [
-            Validators.required,
-            Validators.minLength(3),
-            Validators.pattern('^(?=.*\\d)(?=.*[@$!%*?&]).+$'),
-          ],
-        }),
-      },
-      {
-        validators: [comparePassword('password', 'confirmPassword')],
-      }
-    ),
+    password: new FormControl('', {
+      validators: [
+        Validators.required,
+        Validators.minLength(4),
+        Validators.pattern('^(?=.*\\d)(?=.*[@$!%*?&]).+$'),
+      ],
+    }),
+    confirmPassword: new FormControl('', {
+      validators: [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.pattern('^(?=.*\\d)(?=.*[@$!%*?&]).+$'),
+      ],
+    }),
+  },
+    { validators: [comparePassword] }
     // hcaptcha: new FormControl('', {
     //   validators: [Validators.required],
     // }),
-  });
+  );
 
   // Form Validations
   get emailInvalid() {
@@ -85,17 +84,17 @@ export class SignUpComponent {
 
   get passwordInvalid() {
     return (
-      this.signupForm.controls.passwords.controls.password.touched &&
-      this.signupForm.controls.passwords.controls.password.invalid &&
-      this.signupForm.controls.passwords.controls.password.dirty
+      this.signupForm.controls.password.touched &&
+      this.signupForm.controls.password.invalid &&
+      this.signupForm.controls.password.dirty
     );
   }
 
   get confirmPasswordInvalid() {
     return (
-      this.signupForm.controls.passwords.controls.confirmPassword.touched &&
-      this.signupForm.controls.passwords.controls.confirmPassword.invalid &&
-      this.signupForm.controls.passwords.controls.confirmPassword.dirty
+      this.signupForm.controls.confirmPassword.touched &&
+      this.signupForm.controls.confirmPassword.invalid &&
+      this.signupForm.controls.confirmPassword.dirty
     );
   }
 
@@ -109,23 +108,22 @@ export class SignUpComponent {
 
   onSubmitSignupForm() {
     if (this.signupForm.valid) {
-      const signupData: Signup = {
-        username: this.signupForm.controls.username.value as string,
-        email: this.signupForm.controls.email.value as string,
-        password: this.signupForm.controls.passwords.controls.password
-          .value as string,
-      };
+      const signupData: SignupData = this.signupForm.value as SignupData;
 
       const subscription = this.authService.signup(signupData).subscribe({
         next: (response) => console.log('Signup successful:', response),
-        error: (error) => console.error('Signup failed:', error),
-        complete: () => this.signupForm.reset(),
+        error: (error) => console.error('Signup failed: ', error),
+        complete: () => {
+          this.router.navigate(['signin']);
+          this.signupForm.reset();
+        },
       });
+    } else {
+      this.messageService.setMessage(
+        'Please fill in all the required fields.',
+        'error'
+      );
+      return;
     }
-
-    this.messageService.setMessage(
-      'Please fill in all the required fields.',
-      'error'
-    );
   }
 }

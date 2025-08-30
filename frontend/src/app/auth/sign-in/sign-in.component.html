@@ -1,4 +1,4 @@
-<form [formGroup]="signinForm">
+<form [formGroup]="signinForm" (ngSubmit)="onSubmitSigninForm()">
   <fieldset>
     <legend>Sign In to your Account</legend>
 
@@ -74,5 +74,5 @@
 
   <button class="signin-button" type="submit">Sign In</button>
 
-  <p style="color: #fcfcfc47">Don't have an account? <a>Sign up</a></p>
+  <p style="color: #fcfcfc47">Don't have an account? <a routerLink="/">Sign up</a></p>
 </form>
