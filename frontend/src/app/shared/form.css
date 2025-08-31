@@ -55,3 +55,19 @@ button:hover {
 input.ng-dirty.ng-touched.ng-invalid {
   border: 0.5px solid #e0564a;
 }
+
+.info-message {
+  background-color: transparent;
+  border: 0.5px solid #fcfcfc29;
+  border-radius: 3px;
+  padding: 0.8rem;
+  margin: 1rem 0;
+}
+
+.info-message p {
+  color: #fcfcfc;
+  font-size: 0.8rem;
+  margin: 0;
+  text-align: center;
+  line-height: 1.4;
+}

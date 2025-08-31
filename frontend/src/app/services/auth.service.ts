@@ -32,20 +32,76 @@ export class AuthService {
       );
   }
 
- signIn(signinData: SigninData) {
-  return this.httpClient
-    .post<{ accessToken: string; message: string }>(
-      'http://localhost:3000/auth/signin',
-      signinData
-    )
-    .pipe(
-      map((response) => {
-        return response;
-      }),
-      catchError((error: HttpErrorResponse) => {
-        this.messageService.setMessage(error.error.message, 'error');
-        return throwError(() => error);
+  signIn(signinData: SigninData) {
+    return this.httpClient
+      .post<{ accessToken: string; message: string }>(
+        'http://localhost:3000/auth/signin',
+        signinData
+      )
+      .pipe(
+        map((response) => {
+          return response;
+        }),
+        catchError((error: HttpErrorResponse) => {
+          this.messageService.setMessage(error.error.message, 'error');
+          return throwError(() => error);
+        })
+      );
+  }
+
+  resendOtp(email: string) {
+    return this.httpClient
+      .post<{ message: string }>('http://localhost:3000/auth/resend-otp', {
+        email,
       })
-    );
-}
+      .pipe(
+        map((response) => {
+          this.messageService.setMessage(response.message, 'success');
+          return response;
+        }),
+        catchError((error: HttpErrorResponse) => {
+          this.messageService.setMessage(error.error.message, 'error');
+          return throwError(() => error);
+        })
+      );
+  }
+
+  forgotPassword(email: string) {
+    return this.httpClient
+      .post<{ message: string }>('http://localhost:3000/auth/forgot-password', {
+        email,
+      })
+      .pipe(
+        map((response) => {
+          this.messageService.setMessage(response.message, 'success');
+          return response;
+        }),
+        catchError((error: HttpErrorResponse) => {
+          this.messageService.setMessage(error.error.message, 'error');
+          return throwError(() => error);
+        })
+      );
+  }
+
+  resetPassword(resetData: {
+    email: string;
+    code: string;
+    newPassword: string;
+  }) {
+    return this.httpClient
+      .post<{ message: string }>(
+        'http://localhost:3000/auth/reset-password',
+        resetData
+      )
+      .pipe(
+        map((response) => {
+          this.messageService.setMessage(response.message, 'success');
+          return response;
+        }),
+        catchError((error: HttpErrorResponse) => {
+          this.messageService.setMessage(error.error.message, 'error');
+          return throwError(() => error);
+        })
+      );
+  }
 }

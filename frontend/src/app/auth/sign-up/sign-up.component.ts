@@ -114,7 +114,7 @@ export class SignUpComponent {
         next: (response) => console.log('Signup successful:', response),
         error: (error) => console.error('Signup failed: ', error),
         complete: () => {
-          this.router.navigate(['signin']);
+          this.router.navigate(['sign-in']);
           this.signupForm.reset();
         },
       });

@@ -1,0 +1,34 @@
+<form [formGroup]="resendOtpForm" (ngSubmit)="onSubmitResendOtpForm()">
+  <fieldset>
+    <legend style="text-align: center;">Resend Verification Code</legend>
+
+    <label for="email">Email</label>
+    <input
+      type="text"
+      id="email"
+      placeholder="Enter your email address"
+      name="email"
+      formControlName="email"
+    />
+    @if(emailInvalid) {
+    <div class="error-message">
+      <p *ngIf="resendOtpForm.controls.email.hasError('email')">
+        Please enter a valid email address
+      </p>
+      <p *ngIf="resendOtpForm.controls.email.hasError('required')">
+        Email Address is required.
+      </p>
+    </div>
+    }
+
+    <div class="info-message">
+      <p>Enter the email address associated with your account to receive a new verification code.</p>
+    </div>
+  </fieldset>
+
+  <button class="resend-button" type="submit">Resend Code</button>
+
+  <p style="color: #fcfcfc47">
+    Remember your code? <a routerLink="/sign-in">Back to Sign In</a>
+  </p>
+</form>

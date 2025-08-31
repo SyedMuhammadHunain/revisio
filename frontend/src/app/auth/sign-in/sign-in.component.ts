@@ -8,7 +8,7 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink, RouterOutlet } from '@angular/router';
 
 import { AuthService } from '../../services/auth.service';
 import { SigninData } from '../../models/auth.model';
@@ -16,12 +16,13 @@ import { MessageService } from '../../services/message.service';
 
 @Component({
   selector: 'app-sign-in',
-  imports: [CommonModule, ReactiveFormsModule, RouterLink],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink, RouterOutlet],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.css',
 })
 export class SignInComponent {
   private authService = inject(AuthService);
+  private activatedRoute = inject(ActivatedRoute);
   private messageService = inject(MessageService);
 
   signinForm = new FormGroup({
@@ -83,21 +84,7 @@ export class SignInComponent {
     }
   }
 
-  onForgotPassword(): void {
-    console.log(
-      'Forgot password link clicked. This would navigate to a password reset page.'
-    );
-  }
-
-  onDidntGetCode(): void {
-    console.log(
-      "Didn't get code link clicked. This would trigger a resend code action."
-    );
-  }
-
-  onSignUp(): void {
-    console.log(
-      'Sign up link clicked. This would navigate to the sign-up page.'
-    );
+  get isChildRouteActive() {
+    return this.activatedRoute.children.length > 0;
   }
 }
