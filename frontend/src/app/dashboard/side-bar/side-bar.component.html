@@ -1,0 +1,37 @@
+<div class="sidebar" [class.collapsed]="isCollapsed">
+  <div class="sidebar-top">
+    <i class="fa-regular fa-equals toggle-icon" (click)="toggleSidebar()"></i>
+  </div>
+
+  <nav class="sidebar-nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a class="nav-link">
+          <i class="fa fa-home"></i>
+          <span class="nav-text">Overview</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">
+          <i class="fa fa-edit"></i>
+          <span class="nav-text">Assessment</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">
+          <i class="fa fa-line-chart"></i>
+          <span class="nav-text">Test Result</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="profile-section">
+    <img class="profile-img" src="favicon.ico" alt="Profile" />
+    <span class="profile-name">Hunain</span>
+  </div>
+</div>
+
+<div class="dashboard-content">
+  <router-outlet></router-outlet>
+</div>

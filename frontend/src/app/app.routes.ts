@@ -5,6 +5,7 @@ import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { ResendOtpComponent } from './auth/sign-in/resend-otp/resend-otp.component';
 import { ForgotPasswordComponent } from './auth/sign-in/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './auth/sign-in/forgot-password/reset-password/reset-password.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 export const routes: Routes = [
   {
@@ -32,4 +33,9 @@ export const routes: Routes = [
       },
     ],
   },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    title: 'Dashboard',
+  }
 ];

@@ -1,0 +1,108 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 180px;
+  height: 100vh;
+  background-color: #15151596;
+  padding-top: 20px;
+  border-right: 1px solid #1f1f1f;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  transition: all 0.5s ease;
+}
+
+.sidebar-top {
+  font-size: 30px;
+  text-align: center;
+  margin: 0 5px;
+}
+
+.sidebar-top:hover {
+  cursor: pointer;
+  background-color: #2929297b;
+  border-radius: 10px;
+}
+
+.sidebar-nav {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-list {
+  list-style: none;
+  padding: 0 0;
+  margin: 0;
+}
+
+.nav-link {
+  font-size: 15px;
+  display: flex;
+  gap: 8px;
+  padding: 10px 23px;
+}
+
+.nav-link:hover {
+  background-color: #2929297b;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+.profile-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  padding: 15px;
+  cursor: pointer;
+  margin-top: auto;
+}
+
+.profile-img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.profile-name {
+  font-size: 16px;
+  color: #fff;
+}
+
+/* ChatGPT */
+.nav-text,
+.profile-name {
+  opacity: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: opacity 0.5s ease, max-width 0.5s ease;
+  max-width: 200px;
+}
+
+.sidebar.collapsed {
+  width: 60px;
+}
+
+.sidebar.collapsed .nav-text,
+.sidebar.collapsed .profile-name {
+  opacity: 0;
+  max-width: 0;
+}
+
+.sidebar.collapsed .nav-link {
+  justify-content: center;
+}
+
+.sidebar.collapsed .profile-section {
+  justify-content: center;
+}
+
+.sidebar.collapsed .sidebar-nav,
+.sidebar.collapsed .profile-section {
+  pointer-events: none;
+  opacity: 0.6;
+}

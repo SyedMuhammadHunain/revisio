@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
 
 import {
   FormGroup,
@@ -21,6 +21,7 @@ import { MessageService } from '../../services/message.service';
   styleUrl: './sign-in.component.css',
 })
 export class SignInComponent {
+
   private authService = inject(AuthService);
   private activatedRoute = inject(ActivatedRoute);
   private messageService = inject(MessageService);
@@ -72,9 +73,10 @@ export class SignInComponent {
       const subscription = this.authService.signIn(signinData).subscribe({
         next: (response) => console.log(response),
         error: (error) => console.error('Signin failed: ', error),
-        complete: () => console.log('Completed Sign in Flow.'),
+        complete: () => {
+          console.log('Completed Sign in Flow.');
+        },
       });
-
     } else {
       this.messageService.setMessage(
         'Please fill in all the required fields.',
