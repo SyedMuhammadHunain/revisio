@@ -7,6 +7,7 @@ import { ForgotPasswordComponent } from './auth/sign-in/forgot-password/forgot-p
 import { ResetPasswordComponent } from './auth/sign-in/forgot-password/reset-password/reset-password.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AssessmentComponent } from './dashboard/assessment/assessment.component';
+import { TestResultComponent } from './dashboard/test-result/test-result.component';
 
 export const routes: Routes = [
   {
@@ -42,6 +43,10 @@ export const routes: Routes = [
       {
         path: 'assessment',
         component: AssessmentComponent,
+      },
+      {
+        path: 'test-result',
+        component: TestResultComponent,
       },
     ],
   },

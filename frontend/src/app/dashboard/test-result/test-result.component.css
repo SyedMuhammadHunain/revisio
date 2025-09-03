@@ -1,0 +1,45 @@
+.test-result-container {
+  padding: 1rem;
+}
+
+.result-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.result-table th,
+.result-table td {
+  padding: 0.75rem;
+  text-align: center;
+  border-bottom: 0.5px solid #3f3f3f9f;
+}
+
+.result-table th {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-bottom: none;
+  font-weight: 600;
+}
+
+.pass {
+  color: #3dd642;
+  font-weight: 600;
+}
+
+.fail {
+  color: #e0564a;
+  font-weight: 600;
+}
+
+.view-btn {
+  padding: 0.4rem 0.8rem;
+  border: none;
+  background-color: #3f3f3f9f;
+  color: white;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.view-btn:hover {
+  background-color: #3838389b;
+}

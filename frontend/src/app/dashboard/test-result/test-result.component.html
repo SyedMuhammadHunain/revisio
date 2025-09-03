@@ -1,0 +1,25 @@
+<div class="test-result-container">
+  <table class="result-table">
+    <thead>
+      <tr>
+        <th>Test Name</th>
+        <th>Test Score</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let result of testResults">
+        <td>{{ result.testName }}</td>
+        <td>{{ result.score }}%</td>
+        <td [class.pass]="result.status === 'Pass'" [class.fail]="result.status === 'Fail'">
+          {{ result.status }}
+        </td>
+        <td>
+          <button class="view-btn">View Analytics</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
