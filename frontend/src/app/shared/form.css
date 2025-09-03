@@ -53,6 +53,10 @@ button {
   border-radius: 3px;
 }
 
+select {
+  padding: 6px;
+}
+
 button:hover {
   cursor: pointer;
   background-color: #202020;

@@ -54,27 +54,13 @@
       />
       @if(passwordInvalid) {
       <div class="error-message">
-        <p
-          *ngIf="
-            signupForm.controls.password.hasError(
-              'minlength'
-            )
-          "
-        >
+        <p *ngIf="signupForm.controls.password.hasError('minlength')">
           Password must be at least 4 character long.
         </p>
-        <p
-          *ngIf="
-            signupForm.controls.password.hasError('pattern')
-          "
-        >
+        <p *ngIf="signupForm.controls.password.hasError('pattern')">
           Please include a number and a special character.
         </p>
-        <p
-          *ngIf="
-            signupForm.controls.password.hasError('required')
-          "
-        >
+        <p *ngIf="signupForm.controls.password.hasError('required')">
           Password is required.
         </p>
       </div>
@@ -90,31 +76,19 @@
       />
       @if(confirmPasswordInvalid) {
       <p
-        *ngIf="
-          signupForm.controls.confirmPassword.hasError(
-            'minlength'
-          )
-        "
+        *ngIf="signupForm.controls.confirmPassword.hasError('minlength')"
         class="error-message"
       >
         Password must be at least 4 character long.
       </p>
       <p
-        *ngIf="
-          signupForm.controls.confirmPassword.hasError(
-            'pattern'
-          )
-        "
+        *ngIf="signupForm.controls.confirmPassword.hasError('pattern')"
         class="error-message"
       >
         Please include a number and a special character.
       </p>
       <p
-        *ngIf="
-          signupForm.controls.confirmPassword.hasError(
-            'required'
-          )
-        "
+        *ngIf="signupForm.controls.confirmPassword.hasError('required')"
         class="error-message"
       >
         Please confirm your password.

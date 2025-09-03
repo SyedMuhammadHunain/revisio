@@ -1,0 +1,83 @@
+<form [formGroup]="assessmentForm" (ngSubmit)="onSubmitAssessmentForm()">
+  <fieldset>
+    <legend>Configure Your Test</legend>
+
+    <label for="testName">Test Name</label>
+    <input
+      type="text"
+      id="testName"
+      placeholder="Enter testname"
+      name="testname"
+      formControlName="testName"
+    />
+    @if(testnameInvalid) {
+    <p class="error-message">Test Name is required</p>
+    }
+
+    <label for="email">Email</label>
+    <input
+      type="email"
+      id="email"
+      placeholder="Enter your email"
+      formControlName="email"
+    />
+    <p
+      *ngIf="emailInvalid && assessmentForm.controls.email.hasError('required')"
+      class="error-message"
+    >
+      Email is required
+    </p>
+    <p
+      *ngIf="emailInvalid && assessmentForm.controls.email.hasError('email')"
+      class="error-message"
+    >
+      Enter a valid Email
+    </p>
+
+    <!-- Number of Questions -->
+    <label for="numOfQuestions">Number of Questions</label>
+    <input
+      type="number"
+      id="numOfQuestions"
+      placeholder="Enter number of questions"
+      formControlName="numOfQuestions"
+    />
+    <p
+      *ngIf="
+        numberQuestionsInvalid &&
+        assessmentForm.controls.numOfQuestions.hasError('required')
+      "
+      class="error-message"
+    >
+      Number of Questions is required
+    </p>
+    <p
+      *ngIf="
+        numberQuestionsInvalid &&
+        assessmentForm.controls.numOfQuestions.hasError('minQuestions')
+      "
+      class="error-message"
+    >
+      Number of Questions must be equal to or greater than 5
+    </p>
+
+    <label>Select Categories</label>
+    <div formArrayName="categories">
+      <div *ngFor="let category of categories; let i = index">
+        <input type="checkbox" [formControlName]="i" id="{{ category }}" />
+        <label for="{{ category }}">{{ category }}</label>
+      </div>
+    </div>
+    <p
+      class="error-message"
+      *ngIf="
+        categoriesFormArray.hasError('atLeastOneRequired') &&
+        categoriesFormArray.touched
+      "
+    >
+      Select at least one category
+    </p>
+
+    <button type="submit">Save & Continue</button>
+  </fieldset>
+</form>

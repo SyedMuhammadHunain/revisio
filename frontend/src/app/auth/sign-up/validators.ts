@@ -1,23 +1,4 @@
-import { AbstractControl } from '@angular/forms';
-
-// export function comparePassword(password: string, confirmPassword: string) {
-//   return (control: AbstractControl) => {
-//     const passCtrl = control.get(password);
-//     const confirmCtrl = control.get(confirmPassword);
-
-//     if (!passCtrl || !confirmCtrl) {
-//       return null;
-//     }
-
-//     if (passCtrl.value !== confirmCtrl.value) {
-//       confirmCtrl.setErrors({ passwordsDoesNotMatch: true });
-//       return { passwordsDoesNotMatch: true };
-//     }
-
-//     confirmCtrl.setErrors(null);
-//     return null;
-//   };
-// }
+import { AbstractControl, FormArray } from '@angular/forms';
 
 export function comparePassword(group: AbstractControl) {
   const password = group.get('password')?.value;
@@ -25,4 +6,18 @@ export function comparePassword(group: AbstractControl) {
   return password && confirmPassword && password !== confirmPassword
     ? { passwordsDoesNotMatch: true }
     : null;
+}
+
+export function minQuestionsValidator(control: AbstractControl) {
+  const value = control.value;
+  if (value >= 5) {
+    return null;
+  }
+  return { minQuestions: true };
+}
+
+export function atLeastOneSelected(control: AbstractControl) {
+  const formArray = control as FormArray;
+  const hasSelection = formArray.controls.some((ctrl) => ctrl.value === true);
+  return hasSelection ? null : { atLeastOneRequired: true };
 }

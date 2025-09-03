@@ -6,6 +6,7 @@ import { ResendOtpComponent } from './auth/sign-in/resend-otp/resend-otp.compone
 import { ForgotPasswordComponent } from './auth/sign-in/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './auth/sign-in/forgot-password/reset-password/reset-password.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AssessmentComponent } from './dashboard/assessment/assessment.component';
 
 export const routes: Routes = [
   {
@@ -37,5 +38,11 @@ export const routes: Routes = [
     path: 'dashboard',
     component: DashboardComponent,
     title: 'Dashboard',
-  }
+    children: [
+      {
+        path: 'assessment',
+        component: AssessmentComponent,
+      },
+    ],
+  },
 ];
