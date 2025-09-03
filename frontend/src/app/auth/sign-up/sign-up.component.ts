@@ -1,4 +1,11 @@
-import { Component, inject, NgModule, OnInit } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  inject,
+  NgModule,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgHcaptchaModule } from 'ng-hcaptcha';
 
@@ -32,33 +39,36 @@ export class SignUpComponent {
   private authService = inject(AuthService);
   private router = inject(Router);
 
-  signupForm = new FormGroup({
-    username: new FormControl('', {
-      validators: [Validators.required, Validators.minLength(4)],
-    }),
-    email: new FormControl('', {
-      validators: [Validators.required, Validators.email],
-      asyncValidators: [
-        this.emailValidatorService.checkUniqueEmail.bind(
-          this.emailValidatorService
-        ),
-      ],
-    }),
-    password: new FormControl('', {
-      validators: [
-        Validators.required,
-        Validators.minLength(4),
-        Validators.pattern('^(?=.*\\d)(?=.*[@$!%*?&]).+$'),
-      ],
-    }),
-    confirmPassword: new FormControl('', {
-      validators: [
-        Validators.required,
-        Validators.minLength(3),
-        Validators.pattern('^(?=.*\\d)(?=.*[@$!%*?&]).+$'),
-      ],
-    }),
-  },
+  @Output() loading = new EventEmitter<boolean>();
+
+  signupForm = new FormGroup(
+    {
+      username: new FormControl('', {
+        validators: [Validators.required, Validators.minLength(4)],
+      }),
+      email: new FormControl('', {
+        validators: [Validators.required, Validators.email],
+        asyncValidators: [
+          this.emailValidatorService.checkUniqueEmail.bind(
+            this.emailValidatorService
+          ),
+        ],
+      }),
+      password: new FormControl('', {
+        validators: [
+          Validators.required,
+          Validators.minLength(4),
+          Validators.pattern('^(?=.*\\d)(?=.*[@$!%*?&]).+$'),
+        ],
+      }),
+      confirmPassword: new FormControl('', {
+        validators: [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.pattern('^(?=.*\\d)(?=.*[@$!%*?&]).+$'),
+        ],
+      }),
+    },
     { validators: [comparePassword] }
     // hcaptcha: new FormControl('', {
     //   validators: [Validators.required],
@@ -108,14 +118,19 @@ export class SignUpComponent {
 
   onSubmitSignupForm() {
     if (this.signupForm.valid) {
+      this.loading.emit(true);
+
       const signupData: SignupData = this.signupForm.value as SignupData;
 
       const subscription = this.authService.signup(signupData).subscribe({
         next: (response) => console.log('Signup successful:', response),
         error: (error) => console.error('Signup failed: ', error),
         complete: () => {
+
+          this.loading.emit(false); 
           this.router.navigate(['sign-in']);
           this.signupForm.reset();
+          
         },
       });
     } else {

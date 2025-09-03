@@ -14,6 +14,8 @@ import { AuthService } from '../../services/auth.service';
 import { SigninData } from '../../models/auth.model';
 import { MessageService } from '../../services/message.service';
 
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-sign-in',
   imports: [CommonModule, ReactiveFormsModule, RouterLink, RouterOutlet],
@@ -21,10 +23,15 @@ import { MessageService } from '../../services/message.service';
   styleUrl: './sign-in.component.css',
 })
 export class SignInComponent {
-
   private authService = inject(AuthService);
   private activatedRoute = inject(ActivatedRoute);
   private messageService = inject(MessageService);
+
+  @Output() loading = new EventEmitter<boolean>();
+
+  @Output() header = new EventEmitter();
+
+  private router = inject(Router);
 
   signinForm = new FormGroup({
     email: new FormControl('', {
@@ -74,7 +81,9 @@ export class SignInComponent {
         next: (response) => console.log(response),
         error: (error) => console.error('Signin failed: ', error),
         complete: () => {
+          this.header.emit();
           console.log('Completed Sign in Flow.');
+          this.router.navigate(['dashboard']);
         },
       });
     } else {

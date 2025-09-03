@@ -3,7 +3,9 @@ import { inject, Injectable, signal } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 import { SigninData, SignupData } from '../models/auth.model';
+
 import { MessageService } from './message.service';
+import { LocalStorageService } from './local-storage.service';
 
 import { catchError, map, throwError } from 'rxjs';
 
@@ -12,6 +14,7 @@ import { catchError, map, throwError } from 'rxjs';
 })
 export class AuthService {
   private httpClient = inject(HttpClient);
+  private localStorageService = inject(LocalStorageService);
   private messageService = inject(MessageService);
 
   signup(signupData: SignupData) {
@@ -40,6 +43,8 @@ export class AuthService {
       )
       .pipe(
         map((response) => {
+          const accessToken = response.accessToken;
+          this.localStorageService.saveAccessToken(accessToken);
           return response;
         }),
         catchError((error: HttpErrorResponse) => {

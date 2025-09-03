@@ -9,7 +9,7 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './side-bar.component.css',
 })
 export class SideBarComponent {
-  isCollapsed = false;
+  isCollapsed = true;
 
   toggleSidebar() {
     this.isCollapsed = !this.isCollapsed;

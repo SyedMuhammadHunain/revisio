@@ -1,0 +1,15 @@
+.header-text {
+  position: fixed;
+  bottom: -2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "Oswald";
+  letter-spacing: 0;
+  font-size: 35.2rem;
+  z-index: 0;
+  pointer-events: none;
+  line-height: 1;
+  white-space: nowrap;
+  color: rgba(255, 255, 255, 0.05);
+  text-align: center;
+}

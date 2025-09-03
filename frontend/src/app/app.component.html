@@ -1,11 +1,9 @@
-<header class="header-text">
-  <app-header />
-</header>
+<app-loader [isLoadingIconVisible]="loading"></app-loader>
+<app-header [isHeaderVisible]="header" />
+<app-message />
 
 <main>
-  <app-message></app-message>
-
   <section class="register-section">
-      <router-outlet></router-outlet>
+    <router-outlet (activate)="onChildActivate($event)"/>
   </section>
 </main>
