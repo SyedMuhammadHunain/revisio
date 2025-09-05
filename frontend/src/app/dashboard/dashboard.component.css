@@ -1,4 +1,27 @@
 .dashboard-container {
   display: flex;
   min-height: 100vh;
+  transition: all 0.3s ease;
+}
+
+app-side-bar {
+  flex-shrink: 0;
+  transition: width 0.3s ease;
+}
+
+.dashboard-container:not(.collapsed) app-side-bar {
+  width: 180px;
+}
+
+.dashboard-container.collapsed app-side-bar {
+  width: 60px;
+}
+
+.dashboard-content {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+  transition: all 0.3s ease;
 }

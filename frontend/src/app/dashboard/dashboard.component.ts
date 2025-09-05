@@ -10,4 +10,10 @@ import { SideBarComponent } from './side-bar/side-bar.component';
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',
 })
-export class DashboardComponent {}
+export class DashboardComponent {
+  isCollapsed = true;
+
+  toggleSidebar(state: boolean) {
+    this.isCollapsed = state;
+  }
+}

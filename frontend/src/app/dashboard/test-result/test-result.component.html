@@ -13,7 +13,10 @@
       <tr *ngFor="let result of testResults">
         <td>{{ result.testName }}</td>
         <td>{{ result.score }}%</td>
-        <td [class.pass]="result.status === 'Pass'" [class.fail]="result.status === 'Fail'">
+        <td
+          [class.pass]="result.status === 'Pass'"
+          [class.fail]="result.status === 'Fail'"
+        >
           {{ result.status }}
         </td>
         <td>

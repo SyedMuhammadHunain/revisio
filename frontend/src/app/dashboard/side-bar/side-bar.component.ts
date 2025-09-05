@@ -11,7 +11,10 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 export class SideBarComponent {
   isCollapsed = true;
 
+  @Output() toggle = new EventEmitter<boolean>();
+
   toggleSidebar() {
     this.isCollapsed = !this.isCollapsed;
+    this.toggle.emit(this.isCollapsed);
   }
 }

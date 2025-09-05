@@ -1,6 +1,6 @@
-<div class="dashboard-container">
-  <aside class="sidebar-section">
-    <app-side-bar />
-  </aside>
+<div class="dashboard-container" [class.collapsed]="isCollapsed">
+  <app-side-bar (toggle)="toggleSidebar($event)" />
+  <main class="dashboard-content">
     <router-outlet />
+  </main>
 </div>
