@@ -7,7 +7,6 @@ import {
   Output,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NgHcaptchaModule } from 'ng-hcaptcha';
 
 import {
   FormGroupName,
@@ -29,7 +28,7 @@ import { SignupData } from '../../models/auth.model';
 @Component({
   selector: 'app-sign-up',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, NgHcaptchaModule, RouterLink],
+  imports: [ReactiveFormsModule, CommonModule, RouterLink],
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.css',
 })
