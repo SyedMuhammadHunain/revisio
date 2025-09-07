@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 
 import { Component } from '@angular/core';
+import { ChartComponent } from './chart/chart.component';
 
 interface TestResult {
   testName: string;
@@ -10,7 +11,7 @@ interface TestResult {
 
 @Component({
   selector: 'app-test-result',
-  imports: [CommonModule],
+  imports: [CommonModule, ChartComponent],
   templateUrl: './test-result.component.html',
   styleUrl: './test-result.component.css',
 })

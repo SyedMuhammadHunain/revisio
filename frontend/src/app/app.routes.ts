@@ -8,6 +8,10 @@ import { ResetPasswordComponent } from './auth/sign-in/forgot-password/reset-pas
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AssessmentComponent } from './dashboard/assessment/assessment.component';
 import { TestResultComponent } from './dashboard/test-result/test-result.component';
+import { NotFoundComponent } from './shared/not-found/not-found.component';
+import { authGuard } from './auth/auth.guard';
+import { UnAuthorizedComponent } from './shared/un-authorized/un-authorized.component';
+import { OverviewComponent } from './dashboard/overview/overview.component';
 
 export const routes: Routes = [
   {
@@ -39,6 +43,7 @@ export const routes: Routes = [
     path: 'dashboard',
     component: DashboardComponent,
     title: 'Dashboard',
+    // canActivate: [authGuard],
     children: [
       {
         path: 'assessment',
@@ -48,6 +53,18 @@ export const routes: Routes = [
         path: 'test-result',
         component: TestResultComponent,
       },
+      {
+        path: 'overview',
+        component: OverviewComponent,
+      },
     ],
+  },
+  {
+    path: 'un-authorize',
+    component: UnAuthorizedComponent,
+  },
+  {
+    path: '**',
+    component: NotFoundComponent,
   },
 ];

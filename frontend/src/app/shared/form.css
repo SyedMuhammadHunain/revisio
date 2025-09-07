@@ -59,7 +59,7 @@ select {
 
 button:hover {
   cursor: pointer;
-  background-color: #202020;
+  background-color: #868585;
 }
 
 input.ng-dirty.ng-touched.ng-invalid {

@@ -1,0 +1,30 @@
+.overview-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 1.9rem;
+}
+
+.overview-boxes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.charts-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.charts-grid h3 {
+  color: black;
+  font-size: 17px;
+  padding-bottom: 5px;
+}
+
+.chart-box {
+  background: #ececec;
+  padding: 0.5rem;
+  border-radius: 5px;
+}

@@ -9,5 +9,7 @@ export class LocalStorageService {
     localStorage.setItem('access-token', accessToken);
   }
 
-  getAccessToken() {}
+  getAccessToken() {
+  return localStorage.getItem('access-token');
+}
 }

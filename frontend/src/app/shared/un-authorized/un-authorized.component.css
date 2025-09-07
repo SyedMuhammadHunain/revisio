@@ -1,0 +1,32 @@
+.un-authorize {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.un-authorize h1 {
+  font-size: 125px;
+}
+.un-authorize h3 {
+  font-size: 24px;
+}
+
+.un-authorize button {
+  padding: 10px 20px;
+  font-size: 12px;
+  background-color: transparent;
+  border: 1px solid rgb(106, 106, 106);
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.un-authorize button:hover {
+  background-color: #202020;
+}
