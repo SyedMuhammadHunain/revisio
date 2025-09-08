@@ -29,8 +29,8 @@ export class OverviewComponent {
   ];
 
   barChartData = [
-    { name: 'Test 1', value: 60 },
-    { name: 'Test 2', value: 50 },
-    { name: 'Test 3', value: 90 },
+    { name: 'OOP', value: 60 },
+    { name: 'DSA', value: 50 },
+    { name: 'PF', value: 90 },
   ];
 }

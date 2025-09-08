@@ -20,11 +20,13 @@
           {{ result.status }}
         </td>
         <td>
-          <button class="view-btn" >View Analytics</button>
+          <button class="view-btn" (click)="onClickAnalytics()">
+            View Analytics
+          </button>
         </td>
       </tr>
     </tbody>
   </table>
 </div>
 
-<app-chart />
+<app-chart [isChartVisible]="isChartVisible" (closeChart)="onCloseChart()" />

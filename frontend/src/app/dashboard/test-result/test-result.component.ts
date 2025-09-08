@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { ChartComponent } from './chart/chart.component';
 
 interface TestResult {
@@ -16,9 +16,19 @@ interface TestResult {
   styleUrl: './test-result.component.css',
 })
 export class TestResultComponent {
+  isChartVisible = false;
+  
   testResults: TestResult[] = [
     { testName: 'OOP Basics', score: 85, status: 'Pass' },
     { testName: 'DSA Arrays', score: 45, status: 'Fail' },
     { testName: 'PF Functions', score: 72, status: 'Pass' },
   ];
+
+  onClickAnalytics() {
+    this.isChartVisible = true;
+  }
+
+  onCloseChart() {
+    this.isChartVisible = false;
+  }
 }

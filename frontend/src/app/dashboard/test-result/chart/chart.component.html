@@ -1,11 +1,26 @@
-<div class="chart-container">
-  <ngx-charts-pie-grid
-    [view]="[650, 430]"
-    [results]="chartData"
-    [scheme]="colorScheme"
-    [tooltipDisabled]="false"
-    [label]="'Performance'"
-    [minWidth]="150"
-  >
-  </ngx-charts-pie-grid>
+@if(isChartVisible()) {
+<div class="popup-overlay">
+  <div class="popup-container">
+    <div class="popup-header">
+      <button class="close-button" (click)="onClosePopup()">
+        <span>×</span>
+      </button>
+    </div>
+
+    <div class="popup-content">
+      <ngx-charts-pie-chart
+        [view]="[700, 480]"
+        [results]="rawData"
+        [tooltipDisabled]="false"
+        [doughnut]="true"
+        [labels]="true"
+        [legend]="true"
+        [legend]="true"
+        [legendTitle]="'Categories'"
+        [arcWidth]="0.2"
+      >
+      </ngx-charts-pie-chart>
+    </div>
+  </div>
 </div>
+}

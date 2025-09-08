@@ -83,7 +83,7 @@ export class SignInComponent {
         complete: () => {
           this.header.emit();
           console.log('Completed Sign in Flow.');
-          this.router.navigate(['dashboard']);
+          this.router.navigate(['dashboard/overview']);
         },
       });
     } else {
