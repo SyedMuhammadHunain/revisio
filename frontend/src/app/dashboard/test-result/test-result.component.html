@@ -1,32 +1,109 @@
 <div class="test-result-container">
-  <table class="result-table">
-    <thead>
-      <tr>
-        <th>Test Name</th>
-        <th>Test Score</th>
-        <th>Status</th>
-        <th>Action</th>
-      </tr>
-    </thead>
+  <div *ngIf="isLoading" class="loading-message">
+    <p>Loading your test results...</p>
+  </div>
 
-    <tbody>
-      <tr *ngFor="let result of testResults">
-        <td>{{ result.testName }}</td>
-        <td>{{ result.score }}%</td>
-        <td
-          [class.pass]="result.status === 'Pass'"
-          [class.fail]="result.status === 'Fail'"
-        >
-          {{ result.status }}
-        </td>
-        <td>
-          <button class="view-btn" (click)="onClickAnalytics()">
-            View Analytics
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div *ngIf="!isLoading && testResults.length === 0" class="no-results">
+    <h3>No Test Results Yet</h3>
+    <p>You haven't taken any tests yet. Start by taking your first test!</p>
+    <button class="start-test-btn" routerLink="/dashboard/assessment">
+      Take Your First Test
+    </button>
+  </div>
+
+  <div *ngIf="!isLoading && testResults.length > 0">
+    <div class="results-header">
+      <h2>Your Test Results</h2>
+      <p>Track your progress and performance across all tests</p>
+    </div>
+
+    <table class="result-table">
+      <thead>
+        <tr>
+          <th>Test Name</th>
+          <th>Date Taken</th>
+          <th>Duration</th>
+          <th>Score</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let result of testResults; let i = index">
+          <td>
+            <div class="test-name-cell">
+              <span class="test-name">{{ result.testName }}</span>
+              <div class="test-categories">
+                <span
+                  *ngFor="let category of getUniqueCategories(result)"
+                  class="category-tag"
+                >
+                  {{ category }}
+                </span>
+              </div>
+            </div>
+          </td>
+          <td>{{ formatDate(result.endTime) }}</td>
+          <td>{{ formatDuration(result.duration) }}</td>
+          <td>
+            <div class="score-cell">
+              <span class="score-percentage">{{ result.percentage }}%</span>
+              <span class="score-fraction"
+                >{{ result.correctAnswers }}/{{ result.totalQuestions }}</span
+              >
+            </div>
+          </td>
+          <td>
+            <span
+              class="status-badge"
+              [class.pass]="result.status === 'Pass'"
+              [class.fail]="result.status === 'Fail'"
+            >
+              {{ result.status }}
+            </span>
+            <span
+              *ngIf="result.cheatingDetected"
+              class="warning-indicator"
+              title="Academic integrity violations detected"
+            >
+              ⚠️
+            </span>
+          </td>
+          <td>
+            <button
+              class="view-btn"
+              (click)="onClickAnalytics(result)"
+              title="View detailed analytics"
+            >
+              View Analytics
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="results-summary">
+      <div class="summary-stats">
+        <div class="stat-card">
+          <div class="stat-value">{{ getPassedTests() }}</div>
+          <div class="stat-label">Tests Passed</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">{{ getAverageScore() }}%</div>
+          <div class="stat-label">Average Score</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">{{ getPassRate() }}%</div>
+          <div class="stat-label">Pass Rate</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<app-chart [isChartVisible]="isChartVisible" (closeChart)="onCloseChart()" />
+<app-chart
+  [isChartVisible]="isChartVisible"
+  [testResult]="selectedTestResult"
+  (closeChart)="onCloseChart()"
+/>

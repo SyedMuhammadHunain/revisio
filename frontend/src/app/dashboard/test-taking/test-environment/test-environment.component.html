@@ -1,0 +1,170 @@
+<div class="test-container" [class.blur-warning]="showWarning">
+  <!-- Warning Modal -->
+  <div *ngIf="showWarning" class="warning-modal">
+    <div class="warning-content">
+      <h2>⚠️ CHEATING DETECTED</h2>
+      <p *ngIf="warningCount === 1">
+        <strong>First Warning:</strong> You switched away from the test window.
+        This behavior is not allowed during the test.
+      </p>
+      <p *ngIf="warningCount === 2">
+        <strong>Final Warning:</strong> This is your second violation. Your test
+        will now be submitted automatically and marked as failed.
+      </p>
+      <div class="warning-actions">
+        <button *ngIf="warningCount === 1" (click)="dismissWarning()">
+          I Understand - Continue Test
+        </button>
+        <button *ngIf="warningCount === 2" (click)="forceSubmitTest()">
+          Submit Test (Failed)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Test Header -->
+  <div class="test-header">
+    <div class="test-info">
+      <h2>{{ testConfig?.testName }}</h2>
+      <span class="category-tag">{{ currentQuestion?.category }}</span>
+    </div>
+
+    <div class="timer-section">
+      <div class="timer" [class.warning]="timeRemaining < 300">
+        ⏱️ {{ formatTime(timeRemaining) }}
+      </div>
+    </div>
+  </div>
+
+  <!-- Question Navigation -->
+  <div class="question-nav">
+    <div class="nav-buttons">
+      <button
+        *ngFor="let question of questions; let i = index"
+        class="nav-btn"
+        [class.current]="currentQuestionIndex === i"
+        [class.attempted]="isQuestionAttempted(i)"
+        (click)="goToQuestion(i)"
+      >
+        {{ i + 1 }}
+      </button>
+    </div>
+
+    <div class="nav-info">
+      <span class="attempted-count">
+        {{ getAttemptedCount() }}/{{ questions.length }} Attempted
+      </span>
+    </div>
+  </div>
+
+  <!-- Question Content -->
+  <div class="question-section" *ngIf="currentQuestion">
+    <div class="question-header">
+      <div class="question-meta">
+        <span class="question-number"
+          >Question {{ currentQuestionIndex + 1 }} of
+          {{ questions.length }}</span
+        >
+        <span class="question-points"
+          >{{ currentQuestion.points }} Point(s)</span
+        >
+        <span
+          class="difficulty-badge"
+          [class]="currentQuestion.difficulty.toLowerCase()"
+        >
+          {{ currentQuestion.difficulty }}
+        </span>
+      </div>
+    </div>
+
+    <form [formGroup]="answerForm">
+      <div class="question-content">
+        <h3 class="question-text">{{ currentQuestion.questionText }}</h3>
+
+        <div class="options-container">
+          <div
+            *ngFor="let option of currentQuestion.options; let i = index"
+            class="option-item"
+            [class.selected]="selectedAnswer === i"
+            (click)="selectAnswer(i)"
+          >
+            <input
+              type="radio"
+              [id]="'option-' + i"
+              [value]="i"
+              formControlName="selectedAnswer"
+              (change)="selectAnswer(i)"
+            />
+            <label [for]="'option-' + i" class="option-label">
+              <span class="option-letter">{{ getOptionLetter(i) }}</span>
+              <span class="option-text">{{ option }}</span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!-- Test Controls -->
+  <div class="test-controls">
+    <button
+      class="nav-control-btn"
+      [disabled]="currentQuestionIndex === 0"
+      (click)="previousQuestion()"
+    >
+      ← Previous
+    </button>
+
+    <div class="center-controls">
+      <button
+        class="clear-btn"
+        (click)="clearAnswer()"
+        [disabled]="selectedAnswer === null"
+      >
+        Clear Answer
+      </button>
+    </div>
+
+    <button
+      *ngIf="currentQuestionIndex < questions.length - 1"
+      class="nav-control-btn"
+      (click)="nextQuestion()"
+    >
+      Next →
+    </button>
+
+    <button
+      *ngIf="currentQuestionIndex === questions.length - 1"
+      class="submit-btn"
+      (click)="showSubmitConfirmation()"
+    >
+      Submit Test
+    </button>
+  </div>
+
+  <!-- Submit Confirmation Modal -->
+  <div *ngIf="showSubmitModal" class="submit-modal">
+    <div class="submit-content">
+      <h3>Submit Test?</h3>
+      <p>Are you sure you want to submit your test?</p>
+      <div class="submit-summary">
+        <p>
+          <strong>Attempted:</strong> {{ getAttemptedCount() }} out of
+          {{ questions.length }} questions
+        </p>
+        <p>
+          <strong>Unattempted:</strong>
+          {{ questions.length - getAttemptedCount() }} questions
+        </p>
+      </div>
+      <div class="submit-actions">
+        <button class="cancel-btn" (click)="hideSubmitConfirmation()">
+          Cancel
+        </button>
+        <button class="confirm-submit-btn" (click)="submitTest()">
+          Yes, Submit Test
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

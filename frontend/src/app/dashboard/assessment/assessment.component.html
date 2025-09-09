@@ -6,12 +6,12 @@
     <input
       type="text"
       id="testName"
-      placeholder="Enter testname"
+      placeholder="Enter test name"
       name="testname"
       formControlName="testName"
     />
     @if(testnameInvalid) {
-    <p class="error-message">Test Name is required</p>
+    <p class="error-message">Test Name is required (minimum 3 characters)</p>
     }
 
     <label for="email">Email</label>
@@ -39,7 +39,7 @@
     <input
       type="number"
       id="numOfQuestions"
-      placeholder="Enter number of questions"
+      placeholder="Enter number of questions (minimum 5)"
       formControlName="numOfQuestions"
     />
     <p
@@ -62,10 +62,16 @@
     </p>
 
     <label>Select Categories</label>
-    <div formArrayName="categories">
-      <div *ngFor="let category of categories; let i = index">
+    <div formArrayName="categories" class="categories-container">
+      <div
+        *ngFor="let category of categories; let i = index"
+        class="category-option"
+      >
         <input type="checkbox" [formControlName]="i" id="{{ category }}" />
         <label for="{{ category }}">{{ category }}</label>
+        <span class="category-description">{{
+          getCategoryDescription(category)
+        }}</span>
       </div>
     </div>
     <p
@@ -78,6 +84,25 @@
       Select at least one category
     </p>
 
-    <button type="submit">Save & Continue</button>
+    <div class="test-info">
+      <div class="info-item">
+        <span class="info-label">Test Duration:</span>
+        <span class="info-value">60 minutes</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Passing Score:</span>
+        <span class="info-value">60%</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Question Types:</span>
+        <span class="info-value">Multiple Choice</span>
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="isSubmitting">
+      {{
+        isSubmitting ? "Creating Test..." : "Save & Continue to Instructions"
+      }}
+    </button>
   </fieldset>
 </form>

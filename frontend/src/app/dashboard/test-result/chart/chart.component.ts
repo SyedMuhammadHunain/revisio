@@ -1,7 +1,7 @@
-import { Component, input, output } from '@angular/core';
+import { Component, input, output, computed } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
-
+import { TestResult } from '../../../models/test.model';
 import { Color, NgxChartsModule, ScaleType } from '@swimlane/ngx-charts';
 
 @Component({
@@ -12,15 +12,42 @@ import { Color, NgxChartsModule, ScaleType } from '@swimlane/ngx-charts';
 })
 export class ChartComponent {
   isChartVisible = input<boolean>(false);
+  testResult = input<TestResult | null>(null);
   closeChart = output();
 
-  rawData = [
-    { name: 'DSA', value: 60 },
-    { name: 'OOP', value: 70 },
-    { name: 'PF', value: 30 },
-  ];
+  // Computed properties for chart data
+  pieChartData = computed(() => {
+    const result = this.testResult();
+    if (!result) return [];
+
+    return result.categoryScores.map((category) => ({
+      name: category.category,
+      value: category.obtainedPoints,
+    }));
+  });
+
+  barChartData = computed(() => {
+    const result = this.testResult();
+    if (!result) return [];
+
+    return result.categoryScores.map((category) => ({
+      name: category.category,
+      value: Math.round(category.percentage * 100) / 100,
+    }));
+  });
 
   onClosePopup() {
     this.closeChart.emit();
+  }
+
+  formatDuration(seconds: number): string {
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const secs = seconds % 60;
+
+    if (hours > 0) {
+      return `${hours}h ${minutes}m ${secs}s`;
+    }
+    return `${minutes}m ${secs}s`;
   }
 }

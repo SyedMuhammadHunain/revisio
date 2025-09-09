@@ -2,24 +2,134 @@
 <div class="popup-overlay">
   <div class="popup-container">
     <div class="popup-header">
+      <h3>{{ testResult()?.testName || "Test Results" }} - Analytics</h3>
       <button class="close-button" (click)="onClosePopup()">
         <span>×</span>
       </button>
     </div>
 
     <div class="popup-content">
-      <ngx-charts-pie-chart
-        [view]="[700, 480]"
-        [results]="rawData"
-        [tooltipDisabled]="false"
-        [doughnut]="true"
-        [labels]="true"
-        [legend]="true"
-        [legend]="true"
-        [legendTitle]="'Categories'"
-        [arcWidth]="0.2"
-      >
-      </ngx-charts-pie-chart>
+      <div class="analytics-grid">
+        <!-- Pie Chart for Category Performance -->
+        <div class="chart-section">
+          <h4>Performance by Category</h4>
+          <ngx-charts-pie-chart
+            [view]="[400, 300]"
+            [results]="pieChartData()"
+            [tooltipDisabled]="false"
+            [doughnut]="true"
+            [labels]="true"
+            [legend]="true"
+            [legendTitle]="'Categories'"
+            [arcWidth]="0.25"
+          >
+          </ngx-charts-pie-chart>
+        </div>
+
+        <!-- Bar Chart for Category Breakdown -->
+        <div class="chart-section">
+          <h4>Category Scores</h4>
+          <ngx-charts-bar-vertical
+            [view]="[400, 300]"
+            [results]="barChartData()"
+            [gradient]="false"
+            [xAxis]="true"
+            [yAxis]="true"
+            [legend]="false"
+            [showXAxisLabel]="true"
+            [showYAxisLabel]="true"
+            xAxisLabel="Categories"
+            yAxisLabel="Score %"
+            [yScaleMax]="100"
+          >
+          </ngx-charts-bar-vertical>
+        </div>
+      </div>
+
+      <!-- Detailed Statistics -->
+      <div class="stats-section">
+        <h4>Detailed Statistics</h4>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-label">Overall Score</div>
+            <div class="stat-value primary">
+              {{ testResult()?.percentage }}%
+            </div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Correct Answers</div>
+            <div class="stat-value success">
+              {{ testResult()?.correctAnswers }}/{{
+                testResult()?.totalQuestions
+              }}
+            </div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Points Earned</div>
+            <div class="stat-value">
+              {{ testResult()?.obtainedPoints }}/{{ testResult()?.totalPoints }}
+            </div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Time Taken</div>
+            <div class="stat-value">
+              {{ formatDuration(testResult()?.duration || 0) }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category Details Table -->
+      <div class="category-details-section">
+        <h4>Category Breakdown</h4>
+        <div class="category-table">
+          <div class="table-header">
+            <div class="col">Category</div>
+            <div class="col">Score</div>
+            <div class="col">Correct</div>
+            <div class="col">Points</div>
+          </div>
+          <div
+            *ngFor="let category of testResult()?.categoryScores || []"
+            class="table-row"
+          >
+            <div class="col category-name">{{ category.category }}</div>
+            <div class="col">
+              <span
+                class="score-badge"
+                [class.good]="category.percentage >= 70"
+                [class.average]="
+                  category.percentage >= 50 && category.percentage < 70
+                "
+                [class.poor]="category.percentage < 50"
+              >
+                {{ category.percentage.toFixed(1) }}%
+              </span>
+            </div>
+            <div class="col">
+              {{ category.correctAnswers }}/{{ category.totalQuestions }}
+            </div>
+            <div class="col">
+              {{ category.obtainedPoints }}/{{ category.totalPoints }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Academic Integrity Notice if applicable -->
+      <div *ngIf="testResult()?.cheatingDetected" class="integrity-notice">
+        <div class="warning-box">
+          <h5>⚠️ Academic Integrity Notice</h5>
+          <p>
+            This test had {{ testResult()?.warningsGiven }} academic integrity
+            violation(s) detected.
+          </p>
+          <p>
+            Violations include switching tabs, losing window focus, or other
+            suspicious activities.
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </div>

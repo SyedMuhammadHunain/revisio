@@ -1,50 +1,93 @@
 <div class="overview-container">
-  <div class="overview-boxes">
-    <ngx-charts-number-card
-      [view]="[1100, 170]"
-      [results]="numberCardData"
-      [animations]="true"
-      cardColor="#ececec"
-      textColor="black"
-      bandColor="#7b7b7b"
-    >
-    </ngx-charts-number-card>
+  <!-- Loading State -->
+  <div *ngIf="isLoading" class="loading-state">
+    <div class="loading-spinner"></div>
+    <p>Loading your dashboard...</p>
   </div>
 
-  <div class="charts-grid">
-    <div class="chart-box">
-      <h3>Performance Trend</h3>
-      <ngx-charts-line-chart
-        [view]="[550, 300]"
-        [results]="lineChartData"
-        [gradient]="false"
-        [xAxis]="true"
-        [yAxis]="true"
-        [legend]="false"
-        [showXAxisLabel]="true"
-        [showYAxisLabel]="true"
-        xAxisLabel="Tests"
-        yAxisLabel="Scores"
-        [autoScale]="true"
+  <!-- Error State -->
+  <div *ngIf="hasError && !isLoading" class="error-state">
+    <div class="error-icon">⚠️</div>
+    <h3>Unable to Load Dashboard</h3>
+    <p>{{ errorMessage }}</p>
+    <button class="retry-btn" (click)="retryLoadData()">Try Again</button>
+  </div>
+
+  <!-- Success State -->
+  <div *ngIf="!isLoading && !hasError">
+    <div class="overview-boxes">
+      <ngx-charts-number-card
+        [view]="[1100, 170]"
+        [results]="numberCardData"
+        [animations]="true"
+        cardColor="#ececec"
+        textColor="black"
+        bandColor="#7b7b7b"
       >
-      </ngx-charts-line-chart>
+      </ngx-charts-number-card>
     </div>
 
-    <div class="chart-box">
-      <h3>Category Averages</h3>
-      <ngx-charts-bar-vertical
-        [view]="[550, 300]"
-        [results]="barChartData"
-        [gradient]="false"
-        [xAxis]="true"
-        [yAxis]="true"
-        [legend]="false"
-        [showXAxisLabel]="true"
-        [showYAxisLabel]="true"
-        xAxisLabel="Categories"
-        yAxisLabel="Avg Score"
-      >
-      </ngx-charts-bar-vertical>
+    <div class="charts-grid">
+      <div class="chart-box">
+        <h3>Performance Trend</h3>
+        <div *ngIf="hasRecentScores; else noRecentScores">
+          <ngx-charts-line-chart
+            [view]="[550, 300]"
+            [results]="lineChartData"
+            [gradient]="false"
+            [xAxis]="true"
+            [yAxis]="true"
+            [legend]="false"
+            [showXAxisLabel]="true"
+            [showYAxisLabel]="true"
+            xAxisLabel="Tests"
+            yAxisLabel="Scores"
+            [autoScale]="true"
+          >
+          </ngx-charts-line-chart>
+        </div>
+        <ng-template #noRecentScores>
+          <div class="no-data">
+            <p>Take some tests to see your performance trend!</p>
+          </div>
+        </ng-template>
+      </div>
+
+      <div class="chart-box">
+        <h3>Category Averages</h3>
+        <div *ngIf="hasCategoryData; else noCategoryData">
+          <ngx-charts-bar-vertical
+            [view]="[550, 300]"
+            [results]="barChartData"
+            [gradient]="false"
+            [xAxis]="true"
+            [yAxis]="true"
+            [legend]="false"
+            [showXAxisLabel]="true"
+            [showYAxisLabel]="true"
+            xAxisLabel="Categories"
+            yAxisLabel="Avg Score"
+          >
+          </ngx-charts-bar-vertical>
+        </div>
+        <ng-template #noCategoryData>
+          <div class="no-data">
+            <p>Complete tests in different categories to see averages!</p>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+
+    <!-- Welcome Message for New Users -->
+    <div *ngIf="isNewUser" class="welcome-message">
+      <h3>Welcome to REVISIO! 🎓</h3>
+      <p>
+        Ready to test your programming knowledge? Start with your first
+        assessment!
+      </p>
+      <button class="start-test-btn" routerLink="/dashboard/assessment">
+        Create Your First Test
+      </button>
     </div>
   </div>
 </div>

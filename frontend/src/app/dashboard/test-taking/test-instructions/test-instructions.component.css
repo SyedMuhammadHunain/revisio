@@ -1,0 +1,137 @@
+.instructions-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: #1e1e1e;
+  border-radius: 8px;
+  color: white;
+}
+
+.instructions-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #333;
+  padding-bottom: 1.5rem;
+}
+
+.instructions-header h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.test-info h2 {
+  color: #4caf50;
+  margin-bottom: 0.5rem;
+}
+
+.test-info p {
+  color: #ccc;
+  margin: 0.25rem 0;
+}
+
+.instructions-content {
+  margin-bottom: 2rem;
+}
+
+.instruction-section {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: #262626;
+  border-radius: 6px;
+  border-left: 3px solid #4caf50;
+}
+
+.instruction-section.warning {
+  border-left-color: #ff5722;
+  background: #2a1f1f;
+}
+
+.instruction-section h3 {
+  color: #fff;
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
+}
+
+.instruction-section ul {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.instruction-section li {
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+  color: #ddd;
+}
+
+.nav-indicator {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+.nav-indicator.attempted {
+  background: #4caf50;
+}
+.nav-indicator.unattempted {
+  background: #666;
+}
+.nav-indicator.current {
+  background: #2196f3;
+}
+
+.agreement-section {
+  margin: 2rem 0;
+  padding: 1rem;
+  background: #2a2a2a;
+  border-radius: 6px;
+  border: 1px solid #444;
+}
+
+.agreement-checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.agreement-checkbox input {
+  margin-right: 0.75rem;
+  transform: scale(1.2);
+}
+
+.instructions-footer {
+  text-align: center;
+}
+
+.start-test-btn {
+  background: #4caf50;
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-bottom: 0.75rem;
+}
+
+.start-test-btn:hover:not(:disabled) {
+  background: #45a049;
+}
+
+.start-test-btn:disabled {
+  background: #666;
+  cursor: not-allowed;
+}
+
+.disclaimer {
+  color: #999;
+  font-size: 0.9rem;
+  margin: 0;
+  font-style: italic;
+}

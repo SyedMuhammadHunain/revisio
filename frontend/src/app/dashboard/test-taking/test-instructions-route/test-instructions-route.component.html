@@ -1,0 +1,18 @@
+<div class="instructions-route-container">
+  <div *ngIf="isLoading" class="loading">
+    <h2>Loading Test Configuration...</h2>
+    <p>Please wait while we prepare your test.</p>
+  </div>
+
+  <div *ngIf="error" class="error">
+    <h2>Error Loading Test</h2>
+    <p>{{ error }}</p>
+    <button (click)="goBackToDashboard()">Return to Dashboard</button>
+  </div>
+
+  <app-test-instructions
+    *ngIf="testConfig && !isLoading"
+    [testConfig]="testConfig"
+    (startTest)="onStartTest()"
+  />
+</div>

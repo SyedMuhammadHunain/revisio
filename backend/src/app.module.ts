@@ -1,25 +1,26 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { EmailModule } from './email/email.module';
-import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
 import { MailerModule } from '@nestjs-modules/mailer';
+import { ConfigModule } from '@nestjs/config';
 
 import { AppController } from './app.controller';
-import { CodeGenerateService } from './email/code-generate.service';
 import { AppService } from './app.service';
-import { PasswordHashService } from './auth/password-hash.service';
-import { JwtModule } from '@nestjs/jwt';
+import { QuestionsModule } from './questions/questions.module';
+import { TestConfigModule } from './test-config/test-config.module';
+import { TestResultsModule } from './test-results/test-results.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ envFilePath: '.env', isGlobal: true }),
 
     MongooseModule.forRoot('mongodb://localhost:27017/concept-revise'),
-
     EmailModule,
     AuthModule,
-
+    QuestionsModule,
+    TestConfigModule,
+    TestResultsModule,
     MailerModule.forRoot({
       transport: {
         host: process.env.EMAIL_HOST,
@@ -31,6 +32,7 @@ import { JwtModule } from '@nestjs/jwt';
     }),
   ],
   controllers: [AppController],
-  providers: [AppService, PasswordHashService, CodeGenerateService],
+  providers: [AppService],
+  exports: [],
 })
 export class AppModule {}

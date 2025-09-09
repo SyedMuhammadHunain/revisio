@@ -1,0 +1,137 @@
+<div class="completion-container">
+  <div class="completion-header">
+    <div
+      class="status-icon"
+      [class.pass]="testResult.status === 'Pass'"
+      [class.fail]="testResult.status === 'Fail'"
+    >
+      <span *ngIf="testResult.status === 'Pass'">✅</span>
+      <span *ngIf="testResult.status === 'Fail'">❌</span>
+    </div>
+    <h1
+      class="status-title"
+      [class.pass]="testResult.status === 'Pass'"
+      [class.fail]="testResult.status === 'Fail'"
+    >
+      {{
+        testResult.status === "Pass" ? "Congratulations!" : "Test Not Passed"
+      }}
+    </h1>
+    <p class="test-name">{{ testResult.testName }}</p>
+  </div>
+
+  <div class="results-summary">
+    <div class="main-score">
+      <div
+        class="score-circle"
+        [class.pass]="testResult.status === 'Pass'"
+        [class.fail]="testResult.status === 'Fail'"
+      >
+        <span class="score-number">{{ testResult.percentage }}%</span>
+        <span class="score-label">Overall Score</span>
+      </div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-value">{{ testResult.correctAnswers }}</div>
+        <div class="stat-label">Correct Answers</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">
+          {{ testResult.totalQuestions - testResult.correctAnswers }}
+        </div>
+        <div class="stat-label">Incorrect Answers</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">{{ testResult.obtainedPoints }}</div>
+        <div class="stat-label">Points Earned</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">{{ formatDuration(testResult.duration) }}</div>
+        <div class="stat-label">Time Taken</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="category-breakdown">
+    <h3>Performance by Category</h3>
+    <div class="category-list">
+      <div
+        *ngFor="let category of testResult.categoryScores"
+        class="category-item"
+      >
+        <div class="category-header">
+          <span class="category-name">{{ category.category }}</span>
+          <span
+            class="category-score"
+            [class.good]="category.percentage >= 60"
+            [class.poor]="category.percentage < 60"
+          >
+            {{ category.percentage.toFixed(1) }}%
+          </span>
+        </div>
+        <div class="category-progress">
+          <div class="progress-bar">
+            <div
+              class="progress-fill"
+              [style.width.%]="category.percentage"
+              [class.good]="category.percentage >= 60"
+              [class.poor]="category.percentage < 60"
+            ></div>
+          </div>
+        </div>
+        <div class="category-details">
+          <span
+            >{{ category.correctAnswers }}/{{
+              category.totalQuestions
+            }}
+            correct</span
+          >
+          <span
+            >{{ category.obtainedPoints }}/{{
+              category.totalPoints
+            }}
+            points</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="testResult.cheatingDetected" class="warning-section">
+    <div class="warning-box">
+      <h4>⚠️ Academic Integrity Notice</h4>
+      <p>
+        Potential violations were detected during this test ({{
+          testResult.warningsGiven
+        }}
+        warning(s) given).
+      </p>
+      <p>This may affect your final score and has been recorded for review.</p>
+    </div>
+  </div>
+
+  <div class="completion-actions">
+    <button class="action-btn secondary" (click)="viewDetailedResults()">
+      View Detailed Results
+    </button>
+    <button class="action-btn primary" (click)="returnToDashboard()">
+      Return to Dashboard
+    </button>
+    <button class="action-btn secondary" (click)="takeAnotherTest()">
+      Take Another Test
+    </button>
+  </div>
+
+  <div class="test-info">
+    <div class="info-row">
+      <span class="info-label">Test Submitted:</span>
+      <span class="info-value">{{ formatDate(testResult.endTime) }}</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">Test Duration:</span>
+      <span class="info-value">{{ formatDuration(testResult.duration) }}</span>
+    </div>
+  </div>
+</div>
