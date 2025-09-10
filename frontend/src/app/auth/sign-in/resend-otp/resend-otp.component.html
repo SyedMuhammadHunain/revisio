@@ -1,6 +1,6 @@
 <form [formGroup]="resendOtpForm" (ngSubmit)="onSubmitResendOtpForm()">
   <fieldset>
-    <legend style="text-align: center;">Resend Verification Code</legend>
+    <legend style="text-align: center">Resend Verification Code</legend>
 
     <label for="email">Email</label>
     <input
@@ -22,13 +22,16 @@
     }
 
     <div class="info-message">
-      <p>Enter the email address associated with your account to receive a new verification code.</p>
+      <p>
+        Enter the email address associated with your account to receive a new
+        verification code.
+      </p>
     </div>
   </fieldset>
 
   <button class="resend-button" type="submit">Resend Code</button>
 
-  <p style="color: #fcfcfc47">
+  <p>
     Remember your code? <a routerLink="/sign-in">Back to Sign In</a>
   </p>
 </form>

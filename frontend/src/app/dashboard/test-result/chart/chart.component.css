@@ -45,7 +45,7 @@
 }
 
 .popup-header h3 {
-  color: #4caf50;
+  color: var(--primary-500);
   margin: 0;
   font-size: 1.3rem;
 }
@@ -87,7 +87,7 @@
 }
 
 .chart-section h4 {
-  color: #4caf50;
+  color: var(--primary-500);
   margin: 0 0 1rem 0;
   font-size: 1.1rem;
 }
@@ -97,7 +97,7 @@
 }
 
 .stats-section h4 {
-  color: #4caf50;
+  color: var(--primary-500);
   margin-bottom: 1rem;
   text-align: center;
 }
@@ -129,15 +129,15 @@
 }
 
 .stat-value.primary {
-  color: #4caf50;
+  color: var(--primary-500);
 }
 
 .stat-value.success {
-  color: #2196f3;
+  color: var(--success);
 }
 
 .category-details-section h4 {
-  color: #4caf50;
+  color: var(--primary-500);
   margin-bottom: 1rem;
   text-align: center;
 }
@@ -160,9 +160,9 @@
 
 .table-header {
   background: rgba(76, 175, 80, 0.1);
-  border-bottom: 1px solid #4caf50;
+  border-bottom: 1px solid var(--primary-500);
   font-weight: bold;
-  color: #4caf50;
+  color: var(--primary-500);
 }
 
 .table-row {
@@ -240,7 +240,7 @@
 }
 
 ::ng-deep .ngx-charts .legend-title {
-  color: #4caf50 !important;
+  color:  var(--primary-500) !important;
 }
 
 ::ng-deep .ngx-charts .axis text {
@@ -248,7 +248,7 @@
 }
 
 ::ng-deep .ngx-charts .axis-label {
-  fill: #4caf50 !important;
+  fill: var(--primary-500) !important;
 }
 
 @media (max-width: 768px) {

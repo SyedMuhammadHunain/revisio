@@ -15,19 +15,27 @@ import { SigninData } from '../../models/auth.model';
 import { MessageService } from '../../services/message.service';
 
 import { Router } from '@angular/router';
+import { ResendOtpComponent } from './resend-otp/resend-otp.component';
+import { LoaderComponent } from '../../shared/loader/loader.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 @Component({
   selector: 'app-sign-in',
-  imports: [CommonModule, ReactiveFormsModule, RouterLink, RouterOutlet],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    RouterLink,
+    RouterOutlet,
+    LoaderComponent,
+  ],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.css',
 })
 export class SignInComponent {
+  loading = false;
   private authService = inject(AuthService);
   private activatedRoute = inject(ActivatedRoute);
   private messageService = inject(MessageService);
-
-  @Output() loading = new EventEmitter<boolean>();
 
   @Output() header = new EventEmitter();
 
@@ -73,6 +81,17 @@ export class SignInComponent {
     );
   }
 
+  onChildActivate(component: any) {
+    if (
+      component instanceof ResendOtpComponent ||
+      component instanceof ForgotPasswordComponent
+    ) {
+      component.loading.subscribe((loadingState: boolean) => {
+        this.loading = loadingState;
+      });
+    }
+  }
+
   onSubmitSigninForm() {
     if (this.signinForm.valid) {
       const signinData: SigninData = this.signinForm.value as SigninData;
@@ -81,7 +100,6 @@ export class SignInComponent {
         next: (response) => console.log(response),
         error: (error) => console.error('Signin failed: ', error),
         complete: () => {
-          this.header.emit();
           console.log('Completed Sign in Flow.');
           this.router.navigate(['dashboard/overview']);
         },

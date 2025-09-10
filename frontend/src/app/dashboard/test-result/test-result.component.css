@@ -14,12 +14,12 @@
 }
 
 .no-results h3 {
-  color: #4caf50;
+  color: var(--primary-500);
   margin-bottom: 1rem;
 }
 
 .start-test-btn {
-  background: #4caf50;
+  background: var(--primary-500);
   color: white;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -32,7 +32,7 @@
 }
 
 .start-test-btn:hover {
-  background: #45a049;
+  background: var(--primary-600);
 }
 
 .results-header {
@@ -41,12 +41,12 @@
 }
 
 .results-header h2 {
-  color: #4caf50;
+  color: var(--primary-500);
   margin-bottom: 0.5rem;
 }
 
 .results-header p {
-  color: #ccc;
+  color: var(--text-secondary);
   margin: 0;
 }
 
@@ -69,9 +69,9 @@
 
 .result-table th {
   background-color: rgba(76, 175, 80, 0.1);
-  border-bottom: 2px solid #4caf50;
+  border-bottom: 2px solid var(--primary-500);
   font-weight: 600;
-  color: #4caf50;
+  color: var(--primary-500);
 }
 
 .test-name-cell {
@@ -82,7 +82,7 @@
 
 .test-name {
   font-weight: bold;
-  color: white;
+  color: #ccc;
 }
 
 .test-categories {
@@ -124,15 +124,15 @@
 }
 
 .status-badge.pass {
-  color: #4caf50;
+  color: var(--primary-500);
   background: rgba(76, 175, 80, 0.2);
-  border: 1px solid #4caf50;
+  border: 1px solid var(--primary-500);
 }
 
 .status-badge.fail {
-  color: #f44336;
+  color: var(--error);
   background: rgba(244, 67, 54, 0.2);
-  border: 1px solid #f44336;
+  border: 1px solid var(--error);
 }
 
 .warning-indicator {
@@ -143,7 +143,7 @@
 .view-btn {
   padding: 0.5rem 1rem;
   border: none;
-  background-color: #4caf50;
+  background-color: var(--primary-500);
   color: white;
   border-radius: 4px;
   cursor: pointer;
@@ -152,37 +152,5 @@
 }
 
 .view-btn:hover {
-  background-color: #45a049;
-}
-
-.results-summary {
-  background: #2a2a2a;
-  padding: 2rem;
-  border-radius: 8px;
-  border-top: 3px solid #4caf50;
-}
-
-.summary-stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1.5rem;
-}
-
-.stat-card {
-  text-align: center;
-  background: #333;
-  padding: 1.5rem;
-  border-radius: 8px;
-}
-
-.stat-value {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #4caf50;
-  margin-bottom: 0.5rem;
-}
-
-.stat-label {
-  color: #ccc;
-  font-size: 0.9rem;
+  background-color: var(--primary-600);
 }

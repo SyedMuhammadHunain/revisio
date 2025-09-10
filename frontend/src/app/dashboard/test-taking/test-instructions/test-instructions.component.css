@@ -21,7 +21,7 @@
 }
 
 .test-info h2 {
-  color: #4caf50;
+  color: var(--primary-500);
   margin-bottom: 0.5rem;
 }
 
@@ -39,7 +39,7 @@
   padding: 1rem;
   background: #262626;
   border-radius: 6px;
-  border-left: 3px solid #4caf50;
+  border-left: 3px solid var(--primary-500);
 }
 
 .instruction-section.warning {
@@ -74,7 +74,7 @@
 }
 
 .nav-indicator.attempted {
-  background: #4caf50;
+  background: var(--primary-500);
 }
 .nav-indicator.unattempted {
   background: #666;
@@ -99,9 +99,26 @@
   line-height: 1.4;
 }
 
+.agreement-checkbox {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin: var(--space-5) 0;
+  cursor: pointer;
+  user-select: none;
+}
+
 .agreement-checkbox input {
-  margin-right: 0.75rem;
+  accent-color: var(--primary-500);
   transform: scale(1.2);
+  margin: 0;
+}
+
+.agreement-checkbox label {
+  cursor: pointer;
+  font-size: var(--text-sm);
+  color: var(--text-primary);
+  line-height: var(--leading-relaxed);
 }
 
 .instructions-footer {
@@ -109,7 +126,7 @@
 }
 
 .start-test-btn {
-  background: #4caf50;
+  background: var(--primary-500);
   color: white;
   border: none;
   padding: 0.75rem 2rem;
@@ -121,7 +138,7 @@
 }
 
 .start-test-btn:hover:not(:disabled) {
-  background: #45a049;
+   background: var(--primary-600);
 }
 
 .start-test-btn:disabled {

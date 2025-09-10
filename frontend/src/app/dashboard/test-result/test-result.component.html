@@ -6,9 +6,6 @@
   <div *ngIf="!isLoading && testResults.length === 0" class="no-results">
     <h3>No Test Results Yet</h3>
     <p>You haven't taken any tests yet. Start by taking your first test!</p>
-    <button class="start-test-btn" routerLink="/dashboard/assessment">
-      Take Your First Test
-    </button>
   </div>
 
   <div *ngIf="!isLoading && testResults.length > 0">
@@ -82,23 +79,6 @@
         </tr>
       </tbody>
     </table>
-
-    <div class="results-summary">
-      <div class="summary-stats">
-        <div class="stat-card">
-          <div class="stat-value">{{ getPassedTests() }}</div>
-          <div class="stat-label">Tests Passed</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-value">{{ getAverageScore() }}%</div>
-          <div class="stat-label">Average Score</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-value">{{ getPassRate() }}%</div>
-          <div class="stat-label">Pass Rate</div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 

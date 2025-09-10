@@ -5,12 +5,14 @@ import {
 } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, Types } from 'mongoose';
+
 import { TestResult, TestResultDocument } from '../schemas/test-result.schema';
 import {
   TestConfig,
   TestConfigDocument,
 } from '../schemas/test-configuration.schema';
 import { Question, QuestionDocument } from '../schemas/question.schema';
+
 import { SubmitTestDto } from '../dtos/test-configuration.dto';
 
 interface CategoryScore {
@@ -134,7 +136,7 @@ export class TestResultsService {
     const correctAnswers = processedAnswers.filter(
       (answer) => answer.isCorrect,
     ).length;
-    // backend/src/test-results/test-results.service.ts
+    
     const totalPoints = processedAnswers.reduce(
       (sum, answer) =>
         sum +

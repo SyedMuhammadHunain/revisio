@@ -20,9 +20,8 @@ interface CategoryScore {
   percentage: number;
 }
 
-@Schema({ timestamps: true })
+@Schema({ timestamps: false })
 export class TestResult {
-  // MongoDB will automatically add _id as ObjectId
   _id?: Types.ObjectId;
 
   @Prop({ required: true, ref: 'User', type: Types.ObjectId })

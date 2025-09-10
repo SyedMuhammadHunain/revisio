@@ -3,9 +3,8 @@ import { Document, Types } from 'mongoose';
 
 export type QuestionDocument = Question & Document;
 
-@Schema({ timestamps: true })
+@Schema({ timestamps: false })
 export class Question {
-  // MongoDB will automatically add _id as ObjectId
   _id?: Types.ObjectId;
 
   @Prop({ required: true })
@@ -15,7 +14,7 @@ export class Question {
   options: string[];
 
   @Prop({ required: true })
-  correctAnswer: number; // Index of correct option
+  correctAnswer: number;
 
   @Prop({ required: true, enum: ['DSA', 'OOP', 'PF'] })
   category: string;

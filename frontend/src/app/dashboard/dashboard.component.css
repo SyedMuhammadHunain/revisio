@@ -1,20 +1,21 @@
 .dashboard-container {
   display: flex;
   min-height: 100vh;
-  transition: all 0.3s ease;
+  background-color: var(--bg-primary);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 app-side-bar {
   flex-shrink: 0;
-  transition: width 0.3s ease;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .dashboard-container:not(.collapsed) app-side-bar {
-  width: 180px;
+  width: 240px;
 }
 
 .dashboard-container.collapsed app-side-bar {
-  width: 60px;
+  width: 64px;
 }
 
 .dashboard-content {
@@ -22,6 +23,25 @@ app-side-bar {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: 20px;
-  transition: all 0.3s ease;
+  padding: var(--space-8);
+  margin-left: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: var(--bg-primary);
+  min-height: calc(100vh - 80px); /* Account for header */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dashboard-container:not(.collapsed) app-side-bar {
+    width: 200px;
+  }
+
+  .dashboard-container.collapsed app-side-bar {
+    width: 56px;
+  }
+
+  .dashboard-content {
+    padding: var(--space-4);
+    min-height: calc(100vh - 60px);
+  }
 }

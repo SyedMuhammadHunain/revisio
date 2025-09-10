@@ -17,7 +17,6 @@ import { Auth, AuthDocument } from 'src/schemas/auth.schema';
 
 import { SigninDto, SignupDto } from 'src/dtos/auth.dto';
 import { ResetPasswordDto } from 'src/dtos/reset-password.dto';
-import { VerifyDto } from 'src/dtos/verify.dto';
 
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
@@ -159,31 +158,5 @@ export class AuthService {
     await this.authModel.deleteMany({ email });
 
     return { message: 'Password reset successfully' };
-  }
-
-  async verifyCode(verifyDto: VerifyDto) {
-    const { email, code } = verifyDto;
-
-    const authDoc = await this.authModel.findOne({
-      email,
-      code,
-    });
-
-    if (!authDoc) {
-      throw new UnauthorizedException(
-        'Failed to verify code. Please check your credentials',
-      );
-    }
-
-    if (authDoc.expiresAt < new Date()) {
-      throw new UnauthorizedException(
-        'Code has been expired. Please request a new one',
-      );
-    }
-
-    await this.userModel.updateOne({ email }, { isVerified: true });
-    await this.authModel.deleteMany({ email });
-
-    return { message: 'Email verified successfully' };
   }
 }

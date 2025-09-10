@@ -262,7 +262,7 @@ export class TestEnvironmentComponent implements OnInit, OnDestroy {
 
     this.testService.submitTest(submitData).subscribe({
       next: (response) => {
-        this.router.navigate(['/dashboard/test-completion'], {
+        this.router.navigate(['/test-completion'], {
           state: { testResult: response.testResult },
         });
       },

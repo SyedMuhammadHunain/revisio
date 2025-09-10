@@ -1,1 +1,8 @@
 @import '../../shared/form.css';
+
+.otp-label, .password-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+}

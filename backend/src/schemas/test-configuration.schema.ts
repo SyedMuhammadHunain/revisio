@@ -3,9 +3,8 @@ import { Document, Types } from 'mongoose';
 
 export type TestConfigDocument = TestConfig & Document;
 
-@Schema({ timestamps: true })
+@Schema({ timestamps: false })
 export class TestConfig {
-  // MongoDB will automatically add _id as ObjectId
   _id?: Types.ObjectId;
 
   @Prop({ required: true, ref: 'User', type: Types.ObjectId })
@@ -23,10 +22,10 @@ export class TestConfig {
   @Prop({ required: true, type: [String] })
   categories: string[];
 
-  @Prop({ required: true, default: 3600 }) // 1 hour in seconds
+  @Prop({ required: true, default: 600 }) // 10 minutes in seconds
   duration: number;
 
-  @Prop({ required: true, default: 60 }) // 60% passing score
+  @Prop({ required: true, default: 50 }) // 50% passing score
   passingScore: number;
 
   @Prop({

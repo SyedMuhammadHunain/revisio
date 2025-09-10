@@ -114,15 +114,6 @@ export class AssessmentComponent {
     >;
   }
 
-  getCategoryDescription(category: string): string {
-    const descriptions = {
-      DSA: 'Data Structures & Algorithms - Arrays, Trees, Sorting, Searching, Time Complexity',
-      OOP: 'Object-Oriented Programming - Classes, Inheritance, Polymorphism, Encapsulation',
-      PF: 'Programming Fundamentals - Functions, Loops, Conditionals, Recursion',
-    };
-    return descriptions[category as keyof typeof descriptions] || '';
-  }
-
   onSubmitAssessmentForm() {
     if (this.assessmentForm.invalid) {
       this.messageService.setMessage(

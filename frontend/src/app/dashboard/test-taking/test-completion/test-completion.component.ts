@@ -10,18 +10,23 @@ import { Router } from '@angular/router';
   styleUrl: './test-completion.component.css',
 })
 export class TestCompletionComponent implements OnInit {
-  testResult!: TestResult;
+  testResult: TestResult | null = null;
 
-  constructor(private router: Router) {}
-
-  ngOnInit(): void {
-    // Get test result from navigation state
+  constructor(private router: Router) {
+    // Move the navigation state retrieval to the constructor
     const navigation = this.router.getCurrentNavigation();
     if (navigation?.extras.state?.['testResult']) {
       this.testResult = navigation.extras.state['testResult'];
-    } else {
-      // Fallback: redirect to dashboard if no test result
+    }
+  }
+
+  ngOnInit(): void {
+    // Check if we have test result data
+    if (!this.testResult) {
+      // If no test result, redirect to dashboard
+      console.warn('No test result found, redirecting to dashboard');
       this.router.navigate(['/dashboard/overview']);
+      return;
     }
   }
 
@@ -52,3 +57,5 @@ export class TestCompletionComponent implements OnInit {
     this.router.navigate(['/dashboard/assessment']);
   }
 }
+
+// Template update needed - wrap content in *ngIf="testResult"

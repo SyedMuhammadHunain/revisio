@@ -7,10 +7,6 @@
   position: relative;
 }
 
-.blur-warning {
-  filter: blur(5px);
-}
-
 .warning-modal,
 .submit-modal {
   position: fixed;
@@ -36,11 +32,11 @@
 }
 
 .submit-content {
-  border-color: #4caf50;
+  border-color: var(--primary-500);
 }
 
 .warning-content h2 {
-  color: #ff5722;
+  color: var(--warning-500);
   margin-bottom: 1rem;
 }
 
@@ -62,7 +58,7 @@
 }
 
 .warning-actions button {
-  background: #ff5722;
+  background: var(--warning-500);
   color: white;
 }
 
@@ -72,7 +68,7 @@
 }
 
 .confirm-submit-btn {
-  background: #4caf50;
+  background: var(--primary-500);
   color: white;
 }
 
@@ -87,7 +83,7 @@
 
 .test-info h2 {
   margin: 0;
-  color: #4caf50;
+  color: var(--primary-500);
 }
 
 .category-tag {
@@ -102,11 +98,11 @@
 .timer {
   font-size: 1.2rem;
   font-weight: bold;
-  color: #4caf50;
+  color: var(--primary-500);
 }
 
 .timer.warning {
-  color: #ff5722;
+  color: var(--warning-500);
   animation: pulse 1s infinite;
 }
 
@@ -148,13 +144,13 @@
 }
 
 .nav-btn.current {
-  border-color: #2196f3;
-  background: #2196f3;
+  border-color: var(--primary-500);
+  background: var(--primary-500);
 }
 
 .nav-btn.attempted {
-  border-color: #4caf50;
-  background: #4caf50;
+  border-color: var(--primary-500);
+  background: var(--primary-500);
 }
 
 .nav-btn:hover {
@@ -192,7 +188,7 @@
 
 .question-points {
   background: #333;
-  color: #4caf50;
+  color: var(--primary-500);
   padding: 0.25rem 0.75rem;
   border-radius: 4px;
   font-size: 0.9rem;
@@ -206,15 +202,15 @@
 }
 
 .difficulty-badge.easy {
-  background: #4caf50;
+  background: var(--primary-500);
   color: white;
 }
 .difficulty-badge.medium {
-  background: #ff9800;
+  background: var(--warning-500);
   color: white;
 }
 .difficulty-badge.hard {
-  background: #f44336;
+  background: var(--danger-500);
   color: white;
 }
 
@@ -222,7 +218,7 @@
   background: #2a2a2a;
   padding: 2rem;
   border-radius: 8px;
-  border-left: 4px solid #4caf50;
+  border-left: 4px solid var(--primary-500);
 }
 
 .question-text {
@@ -255,7 +251,7 @@
 
 .option-item.selected {
   background: rgba(76, 175, 80, 0.2);
-  border-color: #4caf50;
+  border-color: var(--primary-500);
 }
 
 .option-item input[type="radio"] {
@@ -284,7 +280,7 @@
 }
 
 .option-item.selected .option-letter {
-  background: #4caf50;
+  background: var(--primary-500);
 }
 
 .option-text {
@@ -320,7 +316,7 @@
 }
 
 .nav-control-btn {
-  background: #4caf50;
+  background: var(--primary-500);
   color: white;
 }
 
@@ -335,7 +331,7 @@
 }
 
 .submit-btn {
-  background: #2196f3;
+  background: var(--primary-500);
   color: white;
 }
 

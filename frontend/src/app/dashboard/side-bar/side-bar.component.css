@@ -2,89 +2,142 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 180px;
+  width: 240px;
   height: 100vh;
-  background-color: #15151596;
-  padding-top: 20px;
-  border-right: 1px solid #1f1f1f;
+  background-color: var(--surface);
+  border-right: 1px solid var(--neutral-200);
   z-index: 1000;
   display: flex;
-  justify-content: center;
   flex-direction: column;
-  transition: all 0.5s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-lg);
 }
 
 .sidebar-top {
-  font-size: 30px;
-  text-align: center;
-  margin: 0 5px;
+  padding: var(--space-4);
+  border-bottom: 1px solid var(--neutral-200);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.sidebar-top:hover {
+.toggle-icon {
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
   cursor: pointer;
-  background-color: #2929297b;
-  border-radius: 10px;
+  padding: var(--space-2);
+  border-radius: var(--radius-md);
+  transition: all 0.2s ease;
+}
+
+.toggle-icon:hover {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
 }
 
 .sidebar-nav {
   flex-grow: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: var(--space-4) 0;
 }
 
 .nav-list {
   list-style: none;
-  padding: 0 0;
+  padding: 0;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.nav-item {
+  margin: 0 var(--space-3);
 }
 
 .nav-link {
-  font-size: 15px;
   display: flex;
-  gap: 8px;
-  padding: 10px 23px;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-radius: var(--radius-lg);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.nav-link i {
+  font-size: var(--text-base);
+  width: 20px;
+  text-align: center;
 }
 
 .nav-link:hover {
-  background-color: #2929297b;
-  border-radius: 10px;
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
   text-decoration: none;
+  transform: translateX(2px);
+}
+
+.nav-link.router-link-active {
+  background-color: var(--primary-500);
+  color: var(--text-inverse);
+  font-weight: var(--font-semibold);
+}
+
+.nav-link.router-link-active::before {
+  content: "";
+  position: absolute;
+  left: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 20px;
+  background-color: var(--primary-500);
+  border-radius: 0 2px 2px 0;
 }
 
 .profile-section {
+  padding: var(--space-4);
+  border-top: 1px solid var(--neutral-200);
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 7px;
-  padding: 15px;
+  gap: var(--space-3);
   cursor: pointer;
-  margin-top: auto;
+  transition: all 0.2s ease;
+}
+
+.profile-section:hover {
+  background-color: var(--bg-tertiary);
 }
 
 .profile-img {
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
+  border: 2px solid var(--neutral-200);
+  object-fit: cover;
 }
 
 .profile-name {
-  font-size: 16px;
-  color: #fff;
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--text-primary);
 }
 
-/* ChatGPT */
+/* Collapsed State */
 .nav-text,
 .profile-name {
   opacity: 1;
   white-space: nowrap;
   overflow: hidden;
-  transition: opacity 0.5s ease, max-width 0.5s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   max-width: 200px;
 }
 
 .sidebar.collapsed {
-  width: 60px;
+  width: 64px;
 }
 
 .sidebar.collapsed .nav-text,
@@ -95,14 +148,39 @@
 
 .sidebar.collapsed .nav-link {
   justify-content: center;
+  padding: var(--space-3);
+}
+
+.sidebar.collapsed .nav-link::before {
+  display: none;
 }
 
 .sidebar.collapsed .profile-section {
   justify-content: center;
+  padding: var(--space-3);
 }
 
-.sidebar.collapsed .sidebar-nav,
-.sidebar.collapsed .profile-section {
-  pointer-events: none;
-  opacity: 0.6;
+.sidebar.collapsed .profile-img {
+  width: 24px;
+  height: 24px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 200px;
+  }
+
+  .sidebar.collapsed {
+    width: 56px;
+  }
+
+  .nav-link {
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--text-xs);
+  }
+
+  .nav-link i {
+    font-size: var(--text-sm);
+  }
 }

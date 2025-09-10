@@ -11,11 +11,11 @@
       formControlName="username"
     />
     @if(usernameInvalid) {
-    <div class="error-message">
-      <p *ngIf="signupForm.controls.username.hasError('minlength')">
+    <div>
+      <p *ngIf="signupForm.controls.username.hasError('minlength')" class="error-message">
         Username must be at least 4 characters long.
       </p>
-      <p *ngIf="signupForm.controls.username.hasError('required')">
+      <p *ngIf="signupForm.controls.username.hasError('required')" class="error-message">
         Username is required.
       </p>
     </div>
@@ -30,14 +30,14 @@
       formControlName="email"
     />
     @if(emailInvalid) {
-    <div class="error-message">
-      <p *ngIf="signupForm.controls.email.hasError('emailTaken')">
+    <div>
+      <p *ngIf="signupForm.controls.email.hasError('emailTaken')" class="error-message">
         Email already exists. Please enter a different email.
       </p>
-      <p *ngIf="signupForm.controls.email.hasError('email')">
+      <p *ngIf="signupForm.controls.email.hasError('email')" class="error-message">
         Please enter a valid Email Address.
       </p>
-      <p *ngIf="signupForm.controls.email.hasError('required')">
+      <p *ngIf="signupForm.controls.email.hasError('required')" class="error-message">
         Email Address is required.
       </p>
     </div>
@@ -53,14 +53,14 @@
         formControlName="password"
       />
       @if(passwordInvalid) {
-      <div class="error-message">
-        <p *ngIf="signupForm.controls.password.hasError('minlength')">
+      <div >
+        <p *ngIf="signupForm.controls.password.hasError('minlength')" class="error-message">
           Password must be at least 4 character long.
         </p>
-        <p *ngIf="signupForm.controls.password.hasError('pattern')">
+        <p *ngIf="signupForm.controls.password.hasError('pattern')" class="error-message">
           Please include a number and a special character.
         </p>
-        <p *ngIf="signupForm.controls.password.hasError('required')">
+        <p *ngIf="signupForm.controls.password.hasError('required')" class="error-message">
           Password is required.
         </p>
       </div>
@@ -113,7 +113,7 @@
 
   <button class="signup-button" type="submit">Sign Up</button>
 
-  <p style="color: #fcfcfc47">
-    Already have an cccount? <a routerLink="sign-in">Sign in</a>
+  <p class="redirect-message">
+    Already have an Account? <a routerLink="sign-in">Sign in</a>
   </p>
 </form>

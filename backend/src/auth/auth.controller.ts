@@ -4,7 +4,6 @@ import { AuthService } from './auth.service';
 
 import { SignupDto, SigninDto } from 'src/dtos/auth.dto';
 import { ResetPasswordDto } from 'src/dtos/reset-password.dto';
-// import { VerifyDto } from 'src/dtos/verify.dto';
 
 @Controller('auth')
 export class AuthController {

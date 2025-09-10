@@ -1,5 +1,3 @@
-// src/app/models/test.model.ts
-
 export interface TestConfig {
   _id: string;
   testName: string;

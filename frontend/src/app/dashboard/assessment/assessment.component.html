@@ -2,96 +2,97 @@
   <fieldset>
     <legend>Configure Your Test</legend>
 
-    <label for="testName">Test Name</label>
-    <input
-      type="text"
-      id="testName"
-      placeholder="Enter test name"
-      name="testname"
-      formControlName="testName"
-    />
-    @if(testnameInvalid) {
-    <p class="error-message">Test Name is required (minimum 3 characters)</p>
-    }
+    <!-- Basic Info Section - Using Grid -->
+    <div class="basic-info">
+        <label for="testName">Test Name</label>
+        <input
+          type="text"
+          id="testName"
+          placeholder="Enter test name"
+          name="testname"
+          formControlName="testName"
+        />
+        @if(testnameInvalid) {
+        <p class="error-message">Test Name is required (minimum 3 characters)</p>
+        }
 
-    <label for="email">Email</label>
-    <input
-      type="email"
-      id="email"
-      placeholder="Enter your email"
-      formControlName="email"
-    />
-    <p
-      *ngIf="emailInvalid && assessmentForm.controls.email.hasError('required')"
-      class="error-message"
-    >
-      Email is required
-    </p>
-    <p
-      *ngIf="emailInvalid && assessmentForm.controls.email.hasError('email')"
-      class="error-message"
-    >
-      Enter a valid Email
-    </p>
-
-    <!-- Number of Questions -->
-    <label for="numOfQuestions">Number of Questions</label>
-    <input
-      type="number"
-      id="numOfQuestions"
-      placeholder="Enter number of questions (minimum 5)"
-      formControlName="numOfQuestions"
-    />
-    <p
-      *ngIf="
-        numberQuestionsInvalid &&
-        assessmentForm.controls.numOfQuestions.hasError('required')
-      "
-      class="error-message"
-    >
-      Number of Questions is required
-    </p>
-    <p
-      *ngIf="
-        numberQuestionsInvalid &&
-        assessmentForm.controls.numOfQuestions.hasError('minQuestions')
-      "
-      class="error-message"
-    >
-      Number of Questions must be equal to or greater than 5
-    </p>
-
-    <label>Select Categories</label>
-    <div formArrayName="categories" class="categories-container">
-      <div
-        *ngFor="let category of categories; let i = index"
-        class="category-option"
-      >
-        <input type="checkbox" [formControlName]="i" id="{{ category }}" />
-        <label for="{{ category }}">{{ category }}</label>
-        <span class="category-description">{{
-          getCategoryDescription(category)
-        }}</span>
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          placeholder="Enter your email"
+          formControlName="email"
+        />
+        <p
+          *ngIf="emailInvalid && assessmentForm.controls.email.hasError('required')"
+          class="error-message"
+        >
+          Email is required
+        </p>
+        <p
+          *ngIf="emailInvalid && assessmentForm.controls.email.hasError('email')"
+          class="error-message"
+        >
+          Enter a valid Email
+        </p>
       </div>
-    </div>
-    <p
-      class="error-message"
-      *ngIf="
-        categoriesFormArray.hasError('atLeastOneRequired') &&
-        categoriesFormArray.touched
-      "
-    >
-      Select at least one category
-    </p>
 
+    <!-- Number of Questions - Full Width -->
+      <label for="numOfQuestions">Number of Questions</label>
+      <input
+        type="number"
+        id="numOfQuestions"
+        placeholder="Enter number of questions (minimum 5)"
+        formControlName="numOfQuestions"
+      />
+      <p
+        *ngIf="
+          numberQuestionsInvalid &&
+          assessmentForm.controls.numOfQuestions.hasError('required')
+        "
+        class="error-message"
+      >
+        Number of Questions is required
+      </p>
+      <p
+        *ngIf="
+          numberQuestionsInvalid &&
+          assessmentForm.controls.numOfQuestions.hasError('minQuestions')
+        "
+        class="error-message"
+      >
+        Number of Questions must be equal to or greater than 5
+      </p>
+
+    <!-- Categories Section - Full Width -->
+      <label>Select Categories</label>
+      <div formArrayName="categories" class="categories-container">
+        <div
+          *ngFor="let category of categories; let i = index"
+          class="category-option"
+        >
+          <input type="checkbox" [formControlName]="i" id="{{ category }}" />
+          <label for="{{ category }}">{{ category }}</label>
+        </div>
+      </div>
+      <p
+        class="error-message"
+        *ngIf="
+          categoriesFormArray.hasError('atLeastOneRequired') &&
+          categoriesFormArray.touched
+        "
+      >
+        Select at least one category
+      </p>
+    <!-- Test Info Section -->
     <div class="test-info">
       <div class="info-item">
         <span class="info-label">Test Duration:</span>
-        <span class="info-value">60 minutes</span>
+        <span class="info-value">10 minutes</span>
       </div>
       <div class="info-item">
         <span class="info-label">Passing Score:</span>
-        <span class="info-value">60%</span>
+        <span class="info-value">50%</span>
       </div>
       <div class="info-item">
         <span class="info-label">Question Types:</span>
@@ -99,9 +100,9 @@
       </div>
     </div>
 
-    <button type="submit" [disabled]="isSubmitting">
+    <button type="submit" [disabled]="isSubmitting" style="width: auto;">
       {{
-        isSubmitting ? "Creating Test..." : "Save & Continue to Instructions"
+        isSubmitting ? "Creating Test..." : "Save & Continue"
       }}
     </button>
   </fieldset>

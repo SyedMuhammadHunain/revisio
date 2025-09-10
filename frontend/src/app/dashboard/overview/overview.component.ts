@@ -5,10 +5,11 @@ import { UserStatistics } from '../../models/test.model';
 import { CommonModule } from '@angular/common';
 import { LocalStorageService } from '../../services/local-storage.service';
 import { Subject, takeUntil } from 'rxjs';
+import { LoaderComponent } from '../../shared/loader/loader.component';
 
 @Component({
   selector: 'app-overview',
-  imports: [NgxChartsModule, CommonModule],
+  imports: [NgxChartsModule, CommonModule, LoaderComponent, LoaderComponent],
   templateUrl: './overview.component.html',
   styleUrl: './overview.component.css',
 })
@@ -26,7 +27,6 @@ export class OverviewComponent implements OnInit, OnDestroy {
   isLoading = true;
   hasError = false;
   errorMessage = '';
-  isNewUser = false;
 
   // Data availability flags
   get hasRecentScores(): boolean {
@@ -87,9 +87,6 @@ export class OverviewComponent implements OnInit, OnDestroy {
   }
 
   private prepareChartData(statistics: UserStatistics): void {
-    // Check if user is new (no tests taken)
-    this.isNewUser = statistics.totalAttempted === 0;
-
     // Prepare number card data
     this.numberCardData = [
       {

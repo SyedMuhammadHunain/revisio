@@ -1,8 +1,7 @@
 <div class="overview-container">
   <!-- Loading State -->
   <div *ngIf="isLoading" class="loading-state">
-    <div class="loading-spinner"></div>
-    <p>Loading your dashboard...</p>
+    <app-loader [isLoadingIconVisible]="isLoading"></app-loader>
   </div>
 
   <!-- Error State -->
@@ -21,8 +20,6 @@
         [results]="numberCardData"
         [animations]="true"
         cardColor="#ececec"
-        textColor="black"
-        bandColor="#7b7b7b"
       >
       </ngx-charts-number-card>
     </div>
@@ -32,7 +29,7 @@
         <h3>Performance Trend</h3>
         <div *ngIf="hasRecentScores; else noRecentScores">
           <ngx-charts-line-chart
-            [view]="[550, 300]"
+            [view]="[1000, 500]"
             [results]="lineChartData"
             [gradient]="false"
             [xAxis]="true"
@@ -57,7 +54,7 @@
         <h3>Category Averages</h3>
         <div *ngIf="hasCategoryData; else noCategoryData">
           <ngx-charts-bar-vertical
-            [view]="[550, 300]"
+            [view]="[1000, 500]"
             [results]="barChartData"
             [gradient]="false"
             [xAxis]="true"
@@ -76,18 +73,6 @@
           </div>
         </ng-template>
       </div>
-    </div>
-
-    <!-- Welcome Message for New Users -->
-    <div *ngIf="isNewUser" class="welcome-message">
-      <h3>Welcome to REVISIO! 🎓</h3>
-      <p>
-        Ready to test your programming knowledge? Start with your first
-        assessment!
-      </p>
-      <button class="start-test-btn" routerLink="/dashboard/assessment">
-        Create Your First Test
-      </button>
     </div>
   </div>
 </div>

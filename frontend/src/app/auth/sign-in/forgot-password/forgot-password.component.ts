@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, Output, EventEmitter } from '@angular/core';
 
 import {
   FormGroup,
@@ -30,6 +30,8 @@ export class ForgotPasswordComponent {
   private router = inject(Router);
   private activatedRoute = inject(ActivatedRoute);
 
+  @Output() loading = new EventEmitter<boolean>();
+
   forgotPasswordForm = new FormGroup({
     email: new FormControl('', {
       validators: [Validators.required, Validators.email],
@@ -46,6 +48,7 @@ export class ForgotPasswordComponent {
 
   onSubmitForgotPasswordForm() {
     if (this.forgotPasswordForm.valid) {
+      this.loading.emit(true);
       const email = this.forgotPasswordForm.value.email as string;
 
       const subscription = this.authService.forgotPassword(email).subscribe({
@@ -55,8 +58,14 @@ export class ForgotPasswordComponent {
             relativeTo: this.activatedRoute,
           });
         },
-        error: (error) => console.error('Forgot password failed: ', error),
-        complete: () => console.log('Completed Forgot Password Flow.'),
+        error: (error) => {
+          this.loading.emit(false);
+          console.error('Forgot password failed: ', error);
+        },
+        complete: () => {
+          this.loading.emit(false);
+          console.log('Completed Forgot Password Flow.');
+        },
       });
     } else {
       this.messageService.setMessage(

@@ -9,12 +9,15 @@ import {
   HttpCode,
   HttpStatus,
 } from '@nestjs/common';
+
 import { TestConfigService } from './test-config.service';
-import { JwtAuthGuard } from '../guard/jwt-auth.guard';
+
 import {
   CreateTestConfigDto,
   StartTestDto,
 } from '../dtos/test-configuration.dto';
+
+import { JwtAuthGuard } from '../guard/jwt-auth.guard';
 
 @Controller('test-config')
 @UseGuards(JwtAuthGuard)

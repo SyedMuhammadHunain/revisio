@@ -1,82 +1,79 @@
 @if(!isChildRouteActive) {
-  <form [formGroup]="signinForm" (ngSubmit)="onSubmitSigninForm()">
-    <fieldset>
-      <legend>Sign In to your Account</legend>
-  
-      <label for="email">Email</label>
-      <input
-        type="text"
-        id="email"
-        placeholder="Your email"
-        name="email"
-        formControlName="email"
-      />
-      @if(emailInvalid) {
-      <div class="error-message">
-        <p *ngIf="signinForm.controls.email.hasError('email')">
-          Please enter a valid email address
-        </p>
-        <p *ngIf="signinForm.controls.email.hasError('required')">
-          Email Address is required.
-        </p>
-      </div>
-      }
-  
-      <div style="padding-top: 15px">
-        <label for="password">Password</label>
-        <a routerLink="forgot-password" style="font-size: 0.8rem; margin-left: 5rem; padding-left: 3.6rem"
-          >Forgot Password?</a
-        >
-      </div>
-      <input
-        type="password"
-        id="password"
-        placeholder="Your password"
-        name="password"
-        formControlName="password"
-      />
-      @if(passwordInvalid) {
-      <div class="error-message">
-        <p *ngIf="signinForm.controls.password.hasError('minlength')">
-          Password minimum length is 4
-        </p>
-        <p *ngIf="signinForm.controls.password.hasError('required')">
-          Password is required.
-        </p>
-      </div>
-      }
-  
-      <div style="padding-top: 15px">
-        <label for="code">Code</label>
-        <a routerLink="resend-otp" style="font-size: 0.8rem; margin-left: 5.6rem; padding-left: 6.4rem;"
-          >Resend Code?</a
-        >
-      </div>
-      <input
-        type="text"
-        id="code"
-        placeholder="Enter code"
-        formControlName="code"
-      />
-      @if(codeInvalid) {
-      <div class="error-message">
-        <p *ngIf="signinForm.controls.code.hasError('minlength')">
-          Code must be of 6 length
-        </p>
-        <p *ngIf="signinForm.controls.code.hasError('pattern')">
-          Code must only contains upper case letters and digits
-        </p>
-        <p *ngIf="signinForm.controls.code.hasError('required')">
-          Code is required
-        </p>
-      </div>
-      }
-    </fieldset>
-  
-    <button class="signin-button" type="submit">Sign In</button>
-  
-    <p style="color: #fcfcfc47">Don't have an account? <a routerLink="/">Sign up</a></p>
-  </form>
+<form [formGroup]="signinForm" (ngSubmit)="onSubmitSigninForm()">
+  <fieldset>
+    <legend>Sign In to your Account</legend>
+
+    <label for="email">Email</label>
+    <input
+      type="text"
+      id="email"
+      placeholder="Your email"
+      name="email"
+      formControlName="email"
+    />
+    @if(emailInvalid) {
+    <div class="error-message">
+      <p *ngIf="signinForm.controls.email.hasError('email')">
+        Please enter a valid email address
+      </p>
+      <p *ngIf="signinForm.controls.email.hasError('required')">
+        Email Address is required.
+      </p>
+    </div>
+    }
+
+    <div class="password-label">
+      <label for="password">Password</label>
+      <a routerLink="forgot-password">Forgot Password?</a>
+    </div>
+    <input
+      type="password"
+      id="password"
+      placeholder="Your password"
+      name="password"
+      formControlName="password"
+    />
+    @if(passwordInvalid) {
+    <div class="error-message">
+      <p *ngIf="signinForm.controls.password.hasError('minlength')">
+        Password minimum length is 4
+      </p>
+      <p *ngIf="signinForm.controls.password.hasError('required')">
+        Password is required.
+      </p>
+    </div>
+    }
+
+    <div class="otp-label">
+      <label for="code">Code</label>
+      <a routerLink="resend-otp">Resend Code?</a>
+    </div>
+    <input
+      type="text"
+      id="code"
+      placeholder="Enter code"
+      formControlName="code"
+    />
+    @if(codeInvalid) {
+    <div class="error-message">
+      <p *ngIf="signinForm.controls.code.hasError('minlength')">
+        Code must be of 6 length
+      </p>
+      <p *ngIf="signinForm.controls.code.hasError('pattern')">
+        Code must only contains upper case letters and digits
+      </p>
+      <p *ngIf="signinForm.controls.code.hasError('required')">
+        Code is required
+      </p>
+    </div>
+    }
+  </fieldset>
+
+  <button class="signin-button" type="submit">Sign In</button>
+
+  <p>Don't have an account? <a routerLink="/">Sign up</a></p>
+</form>
 }
 
-<router-outlet></router-outlet>
+<app-loader [isLoadingIconVisible]="loading"></app-loader>
+<router-outlet (activate)="onChildActivate($event)"></router-outlet>

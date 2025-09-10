@@ -1,6 +1,5 @@
-// resend-otp.component.ts
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, Output, EventEmitter } from '@angular/core';
 
 import {
   FormGroup,
@@ -25,6 +24,8 @@ export class ResendOtpComponent {
   private messageService = inject(MessageService);
   private router = inject(Router);
 
+  @Output() loading = new EventEmitter<boolean>();
+
   resendOtpForm = new FormGroup({
     email: new FormControl('', {
       validators: [Validators.required, Validators.email],
@@ -41,16 +42,23 @@ export class ResendOtpComponent {
 
   onSubmitResendOtpForm() {
     if (this.resendOtpForm.valid) {
+      this.loading.emit(true);
+
       const email = this.resendOtpForm.value.email as string;
 
       const subscription = this.authService.resendOtp(email).subscribe({
         next: (response) => {
           console.log(response);
-          // Optionally navigate back to sign-in after successful resend
-          // this.router.navigate(['/sign-in']);
+          this.router.navigate(['/sign-in']);
         },
-        error: (error) => console.error('Resend OTP failed: ', error),
-        complete: () => console.log('Completed Resend OTP Flow.'),
+        error: (error) => {
+          this.loading.emit(false);
+          console.error('Resend OTP failed: ', error);
+        },
+        complete: () => {
+          this.loading.emit(false);
+          console.log('Completed Resend OTP Flow.');
+        },
       });
     } else {
       this.messageService.setMessage(

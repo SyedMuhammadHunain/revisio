@@ -68,8 +68,8 @@ export class TestConfigService {
       email,
       numOfQuestions,
       categories,
-      duration: 3600, // 1 hour
-      passingScore: 60, // 60%
+      duration: 600, // 10 minutes
+      passingScore: 50, // 50%
       status: 'Pending',
     });
 

@@ -26,7 +26,7 @@
 }
 
 .status-title.pass {
-  color: #4caf50;
+  color: #0ea5e9;
 }
 
 .status-title.fail {
@@ -62,7 +62,7 @@
 }
 
 .score-circle.pass {
-  border-color: #4caf50;
+  border-color: var(--primary-500);
   background: rgba(76, 175, 80, 0.1);
 }
 
@@ -97,7 +97,7 @@
 .stat-value {
   font-size: 2rem;
   font-weight: bold;
-  color: #4caf50;
+  color: var(--primary-500);
   margin-bottom: 0.5rem;
 }
 
@@ -141,11 +141,11 @@
 }
 
 .category-score.good {
-  color: #4caf50;
+  color: var(--primary-500);
 }
 
 .category-score.poor {
-  color: #f44336;
+  color: var(--danger-500);
 }
 
 .progress-bar {
@@ -164,11 +164,11 @@
 }
 
 .progress-fill.good {
-  background: #4caf50;
+  background: var(--primary-500);
 }
 
 .progress-fill.poor {
-  background: #f44336;
+  background: var(--danger-500);
 }
 
 .category-details {
@@ -184,13 +184,13 @@
 
 .warning-box {
   background: rgba(255, 87, 34, 0.1);
-  border: 1px solid #ff5722;
+  border-left: 3px solid #ff5722;
   border-radius: 8px;
   padding: 1.5rem;
 }
 
 .warning-box h4 {
-  color: #ff5722;
+  color: var(--warning-500);
   margin: 0 0 1rem 0;
 }
 
@@ -219,7 +219,7 @@
 }
 
 .action-btn.primary {
-  background: #4caf50;
+  background: var(--primary-500);
   color: white;
 }
 
@@ -230,7 +230,6 @@
 }
 
 .action-btn:hover {
-  transform: translateY(-2px);
   opacity: 0.9;
 }
 
@@ -238,7 +237,7 @@
   background: #2a2a2a;
   padding: 1.5rem;
   border-radius: 8px;
-  border-top: 3px solid #4caf50;
+  border-top: 3px solid var(--primary-500);
 }
 
 .info-row {
