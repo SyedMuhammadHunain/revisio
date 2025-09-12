@@ -5,8 +5,8 @@
       [class.pass]="testResult.status === 'Pass'"
       [class.fail]="testResult.status === 'Fail'"
     >
-      <span *ngIf="testResult.status === 'Pass'">✅</span>
-      <span *ngIf="testResult.status === 'Fail'">❌</span>
+      <span *ngIf="testResult.status === 'Pass'"><i class="fa-solid fa-check"></i></span>
+      <span *ngIf="testResult.status === 'Fail'"><i class="fa-solid fa-xmark"></i></span>
     </div>
     <h1
       class="status-title"

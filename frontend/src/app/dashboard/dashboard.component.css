@@ -1,10 +1,9 @@
-.dashboard-container {
+/* .dashboard-container {
   display: flex;
   justify-content: center;
   align-items: center;
   min-width: 900px;
   min-height: 100vh;
-  background-color: var(--bg-primary); 
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -30,8 +29,18 @@ app-side-bar {
   margin-left: 0;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   background-color: var(--bg-primary);
-  min-height: calc(100vh - 80px); /* Account for header */
-  /* Add these properties to allow child components to control their own size */
+  min-height: calc(100vh - 80px); 
   width: 100%;
-  overflow: hidden; /* Prevent horizontal scroll if needed */
+  overflow: hidden; }  */
+
+.dashboard-container.collapsed .dashboard-content {
+  margin-left: 60px;
+}
+
+.dashboard-content {
+  margin-left: 170px;
+  transition: margin-left 0.3s ease;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
 }

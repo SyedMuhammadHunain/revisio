@@ -45,7 +45,7 @@
 }
 
 .popup-header h3 {
-  color: var(--text-inverse);
+    color: #ccc;
   margin: 0;
   font-size: 1.3rem;
 }
@@ -68,7 +68,7 @@
 
 .popup-content {
   padding: 2rem;
-   color: var(--text-inverse);
+    color: #ccc;
 }
 
 .analytics-grid {
@@ -86,7 +86,7 @@
 }
 
 .chart-section h4 {
-  color: var(--text-inverse);
+    color: #ccc;
   margin: 0 0 1rem 0;
   font-size: 1.1rem;
 }
@@ -96,7 +96,7 @@
 }
 
 .stats-section h4 {
-  color: var(--text-inverse);
+    color: #ccc;
   margin-bottom: 1rem;
   text-align: center;
 }
@@ -124,11 +124,11 @@
 .stat-value {
   font-size: 1.5rem;
   font-weight: bold;
-  color: white;
+    color: #ccc;
 }
 
 .stat-value.primary {
-   color: var(--text-inverse);
+   color: #ccc;
 }
 
 .stat-value.success {
@@ -136,7 +136,7 @@
 }
 
 .category-details-section h4 {
-   color: var(--text-inverse);
+     color: #ccc;
   margin-bottom: 1rem;
   text-align: center;
 }
@@ -158,9 +158,8 @@
 }
 
 .table-header {
-   color: var(--text-inverse);
+     color: #ccc;
   font-weight: bold;
- color: var(--text-inverse);
 }
 
 .table-row {
@@ -229,12 +228,12 @@
 
 /* Chart styling overrides */
 ::ng-deep .ngx-charts text {
-  fill: white !important;
+    color: #ccc !important;
   font-size: 12px;
 }
 
 ::ng-deep .ngx-charts .legend-labels {
-  color: white !important;
+   color: #ccc !important;
 }
 
 ::ng-deep .ngx-charts .legend-title {

@@ -226,13 +226,6 @@ input:focus {
   font-weight: var(--font-medium);
 }
 
-/* Utility Classes */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 var(--space-4);
-}
-
 .grid {
   display: grid;
   gap: var(--space-6);
@@ -247,3 +240,4 @@ input:focus {
 .grid-cols-3 {
   grid-template-columns: repeat(3, 1fr);
 }
+

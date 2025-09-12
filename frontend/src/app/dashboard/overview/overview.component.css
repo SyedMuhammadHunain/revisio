@@ -1,29 +1,40 @@
-/* ===== OVERVIEW.COMPONENT.CSS ===== */
 .overview-container {
   display: flex;
   flex-direction: column;
   gap: var(--space-8);
-  width: 100%; /* Take full available width from parent */
-  max-width: 100%; /* Never exceed parent width */
   min-height: 400px;
   box-sizing: border-box;
 }
 
 .overview-boxes {
   width: 100%;
-  overflow: hidden; /* Prevent chart overflow */
+  overflow: hidden;
 }
 
 /* Make ngx-charts responsive */
 .overview-boxes ngx-charts-number-card {
   width: 100% !important;
   max-width: 100% !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+/* 🌙 Dark theme support (only axes + legend text, not number cards) */
+::ng-deep [data-theme="dark"] .ngx-charts .axis text,
+::ng-deep [data-theme="dark"] .ngx-charts .legend-label {
+  fill: #ccc !important;
+  color: #ccc !important;
 }
 
-/* Override fixed chart dimensions */
-::ng-deep .overview-boxes .ngx-charts {
-  width: 100% !important;
-  max-width: 100% !important;
+/* Dark mode gridlines and axes */
+::ng-deep [data-theme="dark"] .ngx-charts .gridline-path {
+  stroke: rgba(255, 255, 255, 0.2) !important;
+}
+
+::ng-deep [data-theme="dark"] .ngx-charts .axis path,
+::ng-deep [data-theme="dark"] .ngx-charts .axis line {
+  stroke: rgba(255, 255, 255, 0.4) !important;
 }
 
 .charts-grid {
@@ -42,19 +53,6 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  overflow: hidden; /* Prevent chart overflow */
+  overflow: hidden;
   box-sizing: border-box;
-}
-
-/* Make charts responsive */
-.chart-box ngx-charts-line-chart,
-.chart-box ngx-charts-bar-vertical {
-  width: 100% !important;
-  max-width: 100% !important;
-}
-
-/* Override chart fixed dimensions */
-::ng-deep .chart-box .ngx-charts {
-  width: 100% !important;
-  max-width: 100% !important;
 }
