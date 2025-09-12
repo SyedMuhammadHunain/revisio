@@ -7,7 +7,8 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
   template: `
     <button
-      class="theme-toggle"s
+      class="theme-toggle"
+      s
       (click)="toggleTheme()"
       [attr.aria-label]="
         isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'
@@ -45,9 +46,10 @@ import { CommonModule } from '@angular/common';
     `
       .theme-toggle {
         position: relative;
-        width: 43px;
-        height: 43px;
+        width: 37px;
+        height: 37px;
         border-radius: 50%;
+        margin-left: 7px;
         border: 0.3px solid var(--neutral-300);
         background: var(--surface);
         cursor: pointer;
@@ -59,8 +61,17 @@ import { CommonModule } from '@angular/common';
 
       .theme-toggle-icon {
         position: relative;
-        width: 18px;
-        height: 18px;
+        width: 15px;
+        height: 15px;
+      }
+
+      .theme-toggle:hover {
+        background-color: var(--bg-tertiary);
+      }
+
+      .theme-toggle:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px var(--primary-200);
       }
 
       .sun-icon,

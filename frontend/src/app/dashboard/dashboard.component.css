@@ -1,7 +1,10 @@
 .dashboard-container {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 900px;
   min-height: 100vh;
-  background-color: var(--bg-primary);
+  background-color: var(--bg-primary); 
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -11,7 +14,7 @@ app-side-bar {
 }
 
 .dashboard-container:not(.collapsed) app-side-bar {
-  width: 240px;
+  width: 300px;
 }
 
 .dashboard-container.collapsed app-side-bar {
@@ -28,20 +31,7 @@ app-side-bar {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   background-color: var(--bg-primary);
   min-height: calc(100vh - 80px); /* Account for header */
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .dashboard-container:not(.collapsed) app-side-bar {
-    width: 200px;
-  }
-
-  .dashboard-container.collapsed app-side-bar {
-    width: 56px;
-  }
-
-  .dashboard-content {
-    padding: var(--space-4);
-    min-height: calc(100vh - 60px);
-  }
+  /* Add these properties to allow child components to control their own size */
+  width: 100%;
+  overflow: hidden; /* Prevent horizontal scroll if needed */
 }

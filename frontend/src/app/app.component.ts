@@ -3,7 +3,6 @@ import { RouterOutlet } from '@angular/router';
 
 import { CommonModule } from '@angular/common';
 
-import { HeaderComponent } from './shared/header/header.component';
 import { MessageComponent } from './shared/message/message.component';
 import { SignInComponent } from './auth/sign-in/sign-in.component';
 import { LoaderComponent } from './shared/loader/loader.component';
@@ -13,7 +12,6 @@ import { SignUpComponent } from './auth/sign-up/sign-up.component';
   selector: 'app-root',
   imports: [
     RouterOutlet,
-    HeaderComponent,
     MessageComponent,
     RouterOutlet,
     CommonModule,
@@ -27,12 +25,6 @@ export class AppComponent {
   header = true;
 
   onChildActivate(component: any) {
-    if (component instanceof SignInComponent) {
-      component.header.subscribe(() => {
-        this.header = false;
-      });
-    }
-
     if (component instanceof SignUpComponent) {
       component.loading.subscribe((loadingState: boolean) => {
         this.loading = loadingState;

@@ -15,6 +15,7 @@ import { UnAuthorizedComponent } from './shared/un-authorized/un-authorized.comp
 import { OverviewComponent } from './dashboard/overview/overview.component';
 import { TestEnvironmentComponent } from './dashboard/test-taking/test-environment/test-environment.component';
 import { TestInstructionsRouteComponent } from './dashboard/test-taking/test-instructions-route/test-instructions-route.component';
+import { ChatbotComponent } from './dashboard/chatbot/chatbot.component';
 
 export const routes: Routes = [
   {
@@ -72,9 +73,13 @@ export const routes: Routes = [
         component: TestResultComponent,
         title: 'Test Results - Revisio',
       },
+      {
+        path: 'chatbot',
+        component: ChatbotComponent,
+        title: 'Chatbot - Revisio',
+      }
     ],
   },
-  // Test-taking routes (separate from dashboard for security)
   {
     path: 'test-instructions/:testConfigId',
     component: TestInstructionsRouteComponent,

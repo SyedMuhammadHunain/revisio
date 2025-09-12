@@ -2,8 +2,9 @@
 
 form {
   max-width: 800px;
-  width: 120%;
+  width: 130%;
   margin: 0 auto;
+  z-index: 9999;
 }
 
 .categories-container {

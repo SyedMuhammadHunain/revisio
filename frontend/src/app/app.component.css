@@ -4,34 +4,11 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  padding-top: 80px; /* Account for fixed header */
   background: var(--bg-primary);
 }
 
-/* Dashboard layout adjustments */
 .dashboard-layout {
-  padding-left: 240px; /* Account for sidebar width */
-  padding-top: 80px; /* Account for header */
   min-height: 100vh;
   background-color: var(--bg-primary);
 }
 
-.dashboard-layout.collapsed {
-  padding-left: 64px; /* Account for collapsed sidebar */
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .register-section {
-    padding-top: 60px;
-  }
-
-  .dashboard-layout {
-    padding-left: 200px;
-    padding-top: 60px;
-  }
-
-  .dashboard-layout.collapsed {
-    padding-left: 56px;
-  }
-}

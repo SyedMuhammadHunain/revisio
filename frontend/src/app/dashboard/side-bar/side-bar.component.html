@@ -1,6 +1,6 @@
 <div class="sidebar" [class.collapsed]="isCollapsed">
   <div class="sidebar-top">
-    <i class="fa-regular fa-equals toggle-icon" (click)="toggleSidebar()"></i>
+    <i class="material-icons" (click)="toggleSidebar()">menu</i>
   </div>
 
   <nav class="sidebar-nav">
@@ -25,6 +25,28 @@
       </li>
     </ul>
   </nav>
+
+  <div class="sidebar-middle">
+    <ul>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/dashboard/chatbot">
+          <i class="fas fa-robot"></i>
+          <span class="nav-text">Chatbot</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="sidebar-bottom">
+    <ul>
+      <li>
+        <app-theme-toggle></app-theme-toggle>
+      </li>
+      <li class="nav-link">
+        <app-sign-out />
+      </li>
+    </ul>
+  </div>
 
   <div class="profile-section">
     <img class="profile-img" src="favicon.ico" alt="Profile" />
