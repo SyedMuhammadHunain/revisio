@@ -9,7 +9,6 @@ export class LocalStorageService {
   saveAccessToken(accessToken: string): void {
     try {
       localStorage.setItem(this.ACCESS_TOKEN_KEY, accessToken);
-      console.log('Token saved successfully');
     } catch (error) {
       console.error('Failed to save access token:', error);
     }
@@ -39,7 +38,6 @@ export class LocalStorageService {
   clearAccessToken(): void {
     try {
       localStorage.removeItem(this.ACCESS_TOKEN_KEY);
-      console.log('Token cleared successfully');
     } catch (error) {
       console.error('Failed to clear access token:', error);
     }
@@ -56,7 +54,6 @@ export class LocalStorageService {
       const currentTime = Math.floor(Date.now() / 1000);
 
       if (payload.exp && payload.exp < currentTime) {
-        console.log('Token expired');
         this.clearAccessToken();
         return false;
       }

@@ -21,7 +21,6 @@ export const authGuard: CanActivateFn = (
   const token = localStorage.getAccessToken();
 
   if (!token) {
-    console.log('Auth Guard: No token found');
     messageService.setMessage('Please sign in to access this page.', 'error');
     router.navigate(['/sign-in']);
     return false;
@@ -32,8 +31,7 @@ export const authGuard: CanActivateFn = (
     const currentTime = Math.floor(Date.now() / 1000);
 
     if (payload.exp && payload.exp < currentTime) {
-      console.log('Auth Guard: Token expired');
-      localStorage.clearAccessToken(); // Clear expired token
+      localStorage.clearAccessToken(); 
       messageService.setMessage(
         'Your session has expired. Please sign in again.',
         'error'
@@ -42,7 +40,6 @@ export const authGuard: CanActivateFn = (
       return false;
     }
 
-    console.log('Auth Guard: Token valid, user authenticated');
     return true;
   } catch (error) {
     console.error('Auth Guard: Invalid token format', error);

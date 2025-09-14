@@ -141,8 +141,6 @@ export class AssessmentComponent {
 
     this.testService.createTestConfig(testConfigData).subscribe({
       next: (response) => {
-        console.log('Test configuration created:', response);
-        // Navigate to test instructions
         this.router.navigate(['/test-instructions', response.testConfigId]);
       },
       error: (error) => {

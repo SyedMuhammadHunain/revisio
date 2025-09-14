@@ -101,8 +101,6 @@ export class TestEnvironmentComponent implements OnInit, OnDestroy {
     this.warningCount++;
     this.showWarning = true;
 
-    console.log(`Cheating detected: ${reason}. Warning #${this.warningCount}`);
-
     if (this.warningCount >= 2) {
       // Auto-submit after showing warning
       setTimeout(() => {

@@ -53,7 +53,6 @@ export class ForgotPasswordComponent {
 
       const subscription = this.authService.forgotPassword(email).subscribe({
         next: (response) => {
-          console.log(response);
           this.router.navigate(['reset-password'], {
             relativeTo: this.activatedRoute,
           });
@@ -64,7 +63,6 @@ export class ForgotPasswordComponent {
         },
         complete: () => {
           this.loading.emit(false);
-          console.log('Completed Forgot Password Flow.');
         },
       });
     } else {

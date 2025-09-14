@@ -37,7 +37,6 @@ export class TestResultsController {
   @Get('statistics')
   async getUserStatistics(@Request() req: any) {
     const userId = req.user.sub;
-    console.log('Fetching statistics for user:', userId);
     return this.testResultsService.getUserStatistics(userId);
   }
 

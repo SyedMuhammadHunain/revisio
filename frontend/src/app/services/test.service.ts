@@ -234,7 +234,6 @@ export class TestService {
   }
 
   private handleAuthError(): void {
-    console.log('Handling authentication error');
     this.localStorageService.clearAccessToken();
     this.messageService.setMessage('Please sign in to continue', 'error');
     this.router.navigate(['/sign-in']);
@@ -246,7 +245,6 @@ export class TestService {
     let errorMessage = 'An unknown error occurred';
 
     if (error.status === 401) {
-      console.log('Unauthorized access - redirecting to sign in');
       this.handleAuthError();
       return throwError(() => new Error('Unauthorized'));
     }

@@ -48,7 +48,6 @@ export class ResendOtpComponent {
 
       const subscription = this.authService.resendOtp(email).subscribe({
         next: (response) => {
-          console.log(response);
           this.router.navigate(['/sign-in']);
         },
         error: (error) => {
