@@ -58,8 +58,15 @@
 }
 
 .warning-actions button {
-  background: var(--warning-500);
+  background: var(--danger-700);
   color: white;
+  border: 1px solid var(--error);
+}
+
+.warning-actions button:hover {
+  background: var(--error);
+  color: white;
+  transition: 0.4s;
 }
 
 .cancel-btn {

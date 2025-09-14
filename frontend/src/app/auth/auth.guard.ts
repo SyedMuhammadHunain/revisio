@@ -27,7 +27,6 @@ export const authGuard: CanActivateFn = (
     return false;
   }
 
-  // Check if token is expired
   try {
     const payload = JSON.parse(atob(token.split('.')[1]));
     const currentTime = Math.floor(Date.now() / 1000);

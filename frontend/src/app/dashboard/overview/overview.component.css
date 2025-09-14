@@ -13,6 +13,10 @@
 
 /* Make ngx-charts responsive */
 .overview-boxes ngx-charts-number-card {
+  border: 1px solid var(--neutral-200);
+  margin-bottom: 15px;
+  background-color: var(--surface);
+  border-radius: 20px;
   width: 100% !important;
   max-width: 100% !important;
   display: flex;
@@ -47,7 +51,7 @@
 .chart-box {
   background-color: var(--surface);
   border: 1px solid var(--neutral-200);
-  border-radius: var(--radius-lg);
+  border-radius: 20px;
   padding: var(--space-4);
   min-height: 400px;
   display: flex;

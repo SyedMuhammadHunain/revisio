@@ -1,119 +1,145 @@
-<form [formGroup]="signupForm" (ngSubmit)="onSubmitSignupForm()">
-  <fieldset>
-    <legend>Create your Account</legend>
+<div class="auth-form-container">
+  <form [formGroup]="signupForm" (ngSubmit)="onSubmitSignupForm()">
+    <fieldset>
+      <legend>Create your Account</legend>
 
-    <label for="username">Username</label>
-    <input
-      type="text"
-      id="username"
-      placeholder="Your username"
-      name="username"
-      formControlName="username"
-    />
-    @if(usernameInvalid) {
-    <div>
-      <p *ngIf="signupForm.controls.username.hasError('minlength')" class="error-message">
-        Username must be at least 4 characters long.
-      </p>
-      <p *ngIf="signupForm.controls.username.hasError('required')" class="error-message">
-        Username is required.
-      </p>
-    </div>
-    }
-
-    <label for="email">Email</label>
-    <input
-      type="text"
-      id="email"
-      placeholder="Your email"
-      name="email"
-      formControlName="email"
-    />
-    @if(emailInvalid) {
-    <div>
-      <p *ngIf="signupForm.controls.email.hasError('emailTaken')" class="error-message">
-        Email already exists. Please enter a different email.
-      </p>
-      <p *ngIf="signupForm.controls.email.hasError('email')" class="error-message">
-        Please enter a valid Email Address.
-      </p>
-      <p *ngIf="signupForm.controls.email.hasError('required')" class="error-message">
-        Email Address is required.
-      </p>
-    </div>
-    }
-
-    <div class="password-container">
-      <label for="password">Password</label>
+      <label for="username">Username</label>
       <input
-        type="password"
-        id="password"
-        placeholder="Your password"
-        name="password"
-        formControlName="password"
+        type="text"
+        id="username"
+        placeholder="Your username"
+        name="username"
+        formControlName="username"
       />
-      @if(passwordInvalid) {
-      <div >
-        <p *ngIf="signupForm.controls.password.hasError('minlength')" class="error-message">
-          Password must be at least 4 character long.
+      @if(usernameInvalid) {
+      <div>
+        <p
+          *ngIf="signupForm.controls.username.hasError('minlength')"
+          class="error-message"
+        >
+          Username must be at least 4 characters long.
         </p>
-        <p *ngIf="signupForm.controls.password.hasError('pattern')" class="error-message">
-          Please include a number and a special character.
-        </p>
-        <p *ngIf="signupForm.controls.password.hasError('required')" class="error-message">
-          Password is required.
+        <p
+          *ngIf="signupForm.controls.username.hasError('required')"
+          class="error-message"
+        >
+          Username is required.
         </p>
       </div>
       }
 
-      <label for="confirm-password">Confirm Password</label>
+      <label for="email">Email</label>
       <input
-        type="password"
-        id="confirm-password"
-        placeholder="Confirm your password"
-        name="confirm-password"
-        formControlName="confirmPassword"
+        type="text"
+        id="email"
+        placeholder="Your email"
+        name="email"
+        formControlName="email"
       />
-      @if(confirmPasswordInvalid) {
-      <p
-        *ngIf="signupForm.controls.confirmPassword.hasError('minlength')"
-        class="error-message"
-      >
-        Password must be at least 4 character long.
-      </p>
-      <p
-        *ngIf="signupForm.controls.confirmPassword.hasError('pattern')"
-        class="error-message"
-      >
-        Please include a number and a special character.
-      </p>
-      <p
-        *ngIf="signupForm.controls.confirmPassword.hasError('required')"
-        class="error-message"
-      >
-        Please confirm your password.
-      </p>
-      <p
-        *ngIf="signupForm.hasError('passwordsDoesNotMatch')"
-        class="error-message"
-      >
-        Password does not match.
-      </p>
+      @if(emailInvalid) {
+      <div>
+        <p
+          *ngIf="signupForm.controls.email.hasError('emailTaken')"
+          class="error-message"
+        >
+          Email already exists. Please enter a different email.
+        </p>
+        <p
+          *ngIf="signupForm.controls.email.hasError('email')"
+          class="error-message"
+        >
+          Please enter a valid Email Address.
+        </p>
+        <p
+          *ngIf="signupForm.controls.email.hasError('required')"
+          class="error-message"
+        >
+          Email Address is required.
+        </p>
+      </div>
       }
-    </div>
-  </fieldset>
 
-  <!-- <ng-hcaptcha formControlName="hcaptcha"></ng-hcaptcha>
-  @if(hcaptchaInvalid) {
-  <p class="error-message">Please complete the hCaptcha</p>
-  <p *ngIf="signupForm.controls.hcaptcha.hasError('required')">
-    Please complete the hCaptcha.
-  </p>
-  } -->
+      <div class="password-container">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          placeholder="Your password"
+          name="password"
+          formControlName="password"
+        />
+        @if(passwordInvalid) {
+        <div>
+          <p
+            *ngIf="signupForm.controls.password.hasError('minlength')"
+            class="error-message"
+          >
+            Password must be at least 4 character long.
+          </p>
+          <p
+            *ngIf="signupForm.controls.password.hasError('pattern')"
+            class="error-message"
+          >
+            Please include a number and a special character.
+          </p>
+          <p
+            *ngIf="signupForm.controls.password.hasError('required')"
+            class="error-message"
+          >
+            Password is required.
+          </p>
+        </div>
+        }
 
-  <button class="signup-button" type="submit">Sign Up</button>
+        <label for="confirm-password">Confirm Password</label>
+        <input
+          type="password"
+          id="confirm-password"
+          placeholder="Confirm your password"
+          name="confirm-password"
+          formControlName="confirmPassword"
+        />
+        @if(confirmPasswordInvalid) {
+        <p
+          *ngIf="signupForm.controls.confirmPassword.hasError('minlength')"
+          class="error-message"
+        >
+          Password must be at least 4 character long.
+        </p>
+        <p
+          *ngIf="signupForm.controls.confirmPassword.hasError('pattern')"
+          class="error-message"
+        >
+          Please include a number and a special character.
+        </p>
+        <p
+          *ngIf="signupForm.controls.confirmPassword.hasError('required')"
+          class="error-message"
+        >
+          Please confirm your password.
+        </p>
+        <p
+          *ngIf="signupForm.hasError('passwordsDoesNotMatch')"
+          class="error-message"
+        >
+          Password does not match.
+        </p>
+        }
+      </div>
+    </fieldset>
 
-  <p class="redirect-message">
-    Already have an Account? <a routerLink="sign-in">Sign in</a>
-  </p>
-</form>
+    <!-- <ng-hcaptcha formControlName="hcaptcha"></ng-hcaptcha>
+    @if(hcaptchaInvalid) {
+    <p class="error-message">Please complete the hCaptcha</p>
+    <p *ngIf="signupForm.controls.hcaptcha.hasError('required')">
+      Please complete the hCaptcha.
+    </p>
+    } -->
+
+    <button class="signup-button" type="submit">Sign Up</button>
+
+    <p class="redirect-message">
+      Already have an Account? <a routerLink="sign-in">Sign in</a>
+    </p>
+  </form>
+</div>

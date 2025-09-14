@@ -1,11 +1,4 @@
 .register-section {
-  min-height: 100vh;
   position: relative;
   background: var(--bg-primary);
 }
-
-/* .dashboard-layout {
-  min-height: 100vh;
-  background-color: var(--bg-primary);
-} */
-

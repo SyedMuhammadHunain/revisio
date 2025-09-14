@@ -31,14 +31,6 @@
           <td>
             <div class="test-name-cell">
               <span class="test-name">{{ result.testName }}</span>
-              <div class="test-categories">
-                <span
-                  *ngFor="let category of getUniqueCategories(result)"
-                  class="category-tag"
-                >
-                  {{ category }}
-                </span>
-              </div>
             </div>
           </td>
           <td>{{ formatDate(result.endTime) }}</td>
@@ -46,9 +38,6 @@
           <td>
             <div class="score-cell">
               <span class="score-percentage">{{ result.percentage }}%</span>
-              <span class="score-fraction"
-                >{{ result.correctAnswers }}/{{ result.totalQuestions }}</span
-              >
             </div>
           </td>
           <td>
@@ -58,13 +47,6 @@
               [class.fail]="result.status === 'Fail'"
             >
               {{ result.status }}
-            </span>
-            <span
-              *ngIf="result.cheatingDetected"
-              class="warning-indicator"
-              title="Academic integrity violations detected"
-            >
-              ⚠️
             </span>
           </td>
           <td>

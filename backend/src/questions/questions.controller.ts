@@ -1,5 +1,6 @@
-import { Controller, Post } from '@nestjs/common';
+import { Controller, Post, Body } from '@nestjs/common';
 import { QuestionsService } from './questions.service';
+import { CreateQuestionDto } from 'src/dtos/questions.dto';
 
 @Controller('questions')
 export class QuestionsController {
@@ -7,8 +8,8 @@ export class QuestionsController {
 
   // This endpoint is for development/admin use to populate sample questions
   @Post('seed')
-  async createSampleQuestions() {
-    await this.questionsService.createSampleQuestions();
+  async createSampleQuestions(@Body() createQuestionDto: CreateQuestionDto) {
+    await this.questionsService.createSampleQuestions(createQuestionDto);
     return { message: 'Sample questions created successfully' };
   }
 }

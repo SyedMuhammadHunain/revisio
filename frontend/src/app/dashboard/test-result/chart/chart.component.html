@@ -9,42 +9,20 @@
     </div>
 
     <div class="popup-content">
-      <div class="analytics-grid">
         <!-- Pie Chart for Category Performance -->
         <div class="chart-section">
           <h4>Performance by Category</h4>
           <ngx-charts-pie-chart
-            [view]="[400, 300]"
+            [view]="[600, 300]"
             [results]="pieChartData()"
             [tooltipDisabled]="false"
             [doughnut]="true"
             [labels]="true"
-            [legend]="true"
             [legendTitle]="'Categories'"
             [arcWidth]="0.25"
           >
           </ngx-charts-pie-chart>
         </div>
-
-        <!-- Bar Chart for Category Breakdown -->
-        <div class="chart-section">
-          <h4>Category Scores</h4>
-          <ngx-charts-bar-vertical
-            [view]="[400, 300]"
-            [results]="barChartData()"
-            [gradient]="false"
-            [xAxis]="true"
-            [yAxis]="true"
-            [legend]="false"
-            [showXAxisLabel]="true"
-            [showYAxisLabel]="true"
-            xAxisLabel="Categories"
-            yAxisLabel="Score %"
-            [yScaleMax]="100"
-          >
-          </ngx-charts-bar-vertical>
-        </div>
-      </div>
 
       <!-- Detailed Statistics -->
       <div class="stats-section">
@@ -113,21 +91,6 @@
               {{ category.obtainedPoints }}/{{ category.totalPoints }}
             </div>
           </div>
-        </div>
-      </div>
-
-      <!-- Academic Integrity Notice if applicable -->
-      <div *ngIf="testResult()?.cheatingDetected" class="integrity-notice">
-        <div class="warning-box">
-          <h5>⚠️ Academic Integrity Notice</h5>
-          <p>
-            This test had {{ testResult()?.warningsGiven }} academic integrity
-            violation(s) detected.
-          </p>
-          <p>
-            Violations include switching tabs, losing window focus, or other
-            suspicious activities.
-          </p>
         </div>
       </div>
     </div>

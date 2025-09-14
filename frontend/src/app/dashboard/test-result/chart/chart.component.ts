@@ -26,16 +26,6 @@ export class ChartComponent {
     }));
   });
 
-  barChartData = computed(() => {
-    const result = this.testResult();
-    if (!result) return [];
-
-    return result.categoryScores.map((category) => ({
-      name: category.category,
-      value: Math.round(category.percentage * 100) / 100,
-    }));
-  });
-
   onClosePopup() {
     this.closeChart.emit();
   }

@@ -1,9 +1,10 @@
-<form [formGroup]="assessmentForm" (ngSubmit)="onSubmitAssessmentForm()">
-  <fieldset>
-    <legend>Configure Your Test</legend>
+<div class="auth-form-container">
+  <form [formGroup]="assessmentForm" (ngSubmit)="onSubmitAssessmentForm()">
+    <fieldset>
+      <legend>Configure Your Test</legend>
 
-    <!-- Basic Info Section - Using Grid -->
-    <div class="basic-info">
+      <!-- Basic Info Section - Using Grid -->
+      <div class="basic-info">
         <label for="testName">Test Name</label>
         <input
           type="text"
@@ -13,7 +14,9 @@
           formControlName="testName"
         />
         @if(testnameInvalid) {
-        <p class="error-message">Test Name is required (minimum 3 characters)</p>
+        <p class="error-message">
+          Test Name is required (minimum 3 characters)
+        </p>
         }
 
         <label for="email">Email</label>
@@ -24,20 +27,24 @@
           formControlName="email"
         />
         <p
-          *ngIf="emailInvalid && assessmentForm.controls.email.hasError('required')"
+          *ngIf="
+            emailInvalid && assessmentForm.controls.email.hasError('required')
+          "
           class="error-message"
         >
           Email is required
         </p>
         <p
-          *ngIf="emailInvalid && assessmentForm.controls.email.hasError('email')"
+          *ngIf="
+            emailInvalid && assessmentForm.controls.email.hasError('email')
+          "
           class="error-message"
         >
           Enter a valid Email
         </p>
       </div>
 
-    <!-- Number of Questions - Full Width -->
+      <!-- Number of Questions - Full Width -->
       <label for="numOfQuestions">Number of Questions</label>
       <input
         type="number"
@@ -64,7 +71,7 @@
         Number of Questions must be equal to or greater than 5
       </p>
 
-    <!-- Categories Section - Full Width -->
+      <!-- Categories Section - Full Width -->
       <label>Select Categories</label>
       <div formArrayName="categories" class="categories-container">
         <div
@@ -84,26 +91,25 @@
       >
         Select at least one category
       </p>
-    <!-- Test Info Section -->
-    <div class="test-info">
-      <div class="info-item">
-        <span class="info-label">Test Duration:</span>
-        <span class="info-value">10 minutes</span>
+      <!-- Test Info Section -->
+      <div class="test-info">
+        <div class="info-item">
+          <span class="info-label">Test Duration:</span>
+          <span class="info-value">10 minutes</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Passing Score:</span>
+          <span class="info-value">50%</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Question Types:</span>
+          <span class="info-value">Multiple Choice</span>
+        </div>
       </div>
-      <div class="info-item">
-        <span class="info-label">Passing Score:</span>
-        <span class="info-value">50%</span>
-      </div>
-      <div class="info-item">
-        <span class="info-label">Question Types:</span>
-        <span class="info-value">Multiple Choice</span>
-      </div>
-    </div>
 
-    <button type="submit" [disabled]="isSubmitting" style="width: auto;">
-      {{
-        isSubmitting ? "Creating Test..." : "Save & Continue"
-      }}
-    </button>
-  </fieldset>
-</form>
+      <button type="submit" [disabled]="isSubmitting" style="width: auto">
+        {{ isSubmitting ? "Creating Test..." : "Save & Continue" }}
+      </button>
+    </fieldset>
+  </form>
+</div>

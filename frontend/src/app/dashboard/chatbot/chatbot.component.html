@@ -11,7 +11,9 @@
         <div class="message user" *ngIf="message.isUser">
           <div class="message-content">
             {{ message.content }}
-            <div class="message-time">{{ message.time }}</div>
+            <div class="message-time">
+              {{ message.time | date : "shortTime" }}
+            </div>
           </div>
           <div class="message-avatar">
             <i class="fas fa-user"></i>
@@ -25,11 +27,13 @@
           </div>
           <div class="message-content">
             {{ message.content }}
-            <div class="message-time">{{ message.time }}</div>
+            <div class="message-time">
+              {{ message.time | date : "shortTime" }}
+            </div>
           </div>
         </div>
       </ng-container>
-      
+
       <!-- Bot typing indicator (can be shown/hidden dynamically) -->
       <div class="message bot" id="typingIndicator" *ngIf="isBotTyping()">
         <div class="message-avatar">
@@ -43,7 +47,6 @@
           </div>
         </div>
       </div>
-
     </div>
 
     <div class="input-container">

@@ -1,10 +1,14 @@
+// chatbot.component.ts
 import { CommonModule } from '@angular/common';
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Chatbot, ChatbotResponse, Role } from '../../models/chatbot.model';
+import { ChatbotService } from '../../services/chatbot.service';
+import { environment } from '../../../environments/environment.development';
 
 interface Messages {
   content: string;
-  time: string;
+  time: Date;
   isUser: boolean;
 }
 
@@ -18,50 +22,50 @@ export class ChatbotComponent {
   userMessage: string = '';
   messages: Messages[] = [];
   isBotTyping = signal<boolean>(false);
-
-  botResponses: string[] = [
-    "I'm here to help! What can I do for you?",
-    'Can you please provide more details?',
-    'Let me check that for you.',
-    "That's interesting! Tell me more.",
-    'How can I assist you further?',
-    "I'm happy to help with your coding problem.",
-    'Could you clarify your question?',
-    "Let's solve this together!",
-    'Feel free to ask me anything.',
-    'Is there something specific you need help with?',
-  ];
+  private MODEL_API_KEY = environment.MODEL_API_KEY;
+  private chatbotService = inject(ChatbotService);
 
   onSendIcon() {
     if (this.userMessage.trim()) {
-      // Add user message
+      const currentMessage = this.userMessage.trim();
+
+      // Add user message to UI
       this.messages.push({
-        content: this.userMessage,
-        time: this.getCurrentTime(),
+        content: currentMessage,
+        time: new Date(),
         isUser: true,
       });
 
-      // Clear input
-      this.userMessage = '';
+      const payload: Chatbot = {
+        conversationHistory: this.messages.map((msg) => ({
+          role: msg.isUser ? Role.user : Role.bot,
+          content: msg.content,
+        })),
+        modelAPIKey: this.MODEL_API_KEY,
+        userNewMessage: this.userMessage,
+      };
+
       this.isBotTyping.set(true);
 
-      // API
-      
-
-      // Add bot response after delay
-      setTimeout(() => {
-        this.messages.push({
-          content: 'Thank you for your message! How else can I help you?',
-          time: this.getCurrentTime(),
-          isUser: false,
-        });
-        this.isBotTyping.set(false);
-      }, 1500);
+      this.chatbotService.sendMessage(payload).subscribe({
+        next: (response: ChatbotResponse) => {
+          this.messages.push({
+            content: response.reply,
+            time: new Date(),
+            isUser: false,
+          });
+          this.isBotTyping.set(false);
+        },
+        error: () => {
+          this.messages.push({
+            content: 'Sorry, something went wrong. Please try again.',
+            time: new Date(),
+            isUser: false,
+          });
+          this.isBotTyping.set(false);
+        },
+      });
+      this.userMessage = '';
     }
-  }
-
-  getCurrentTime(): string {
-    const now = new Date();
-    return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   }
 }

@@ -3,9 +3,12 @@
   margin: 0 auto;
   padding: 2rem;
   background: #1e1e1e;
-  border-radius: 8px;
+  border-radius: 50px;
   color: white;
   margin: 2rem auto;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 .instructions-header {
@@ -38,8 +41,8 @@
 .instruction-section {
   margin-bottom: 1.5rem;
   padding: 1rem;
-  background: #262626;
-  border-radius: 6px;
+  background: #2626266a;
+  border-radius: 20px;
   border-left: 3px solid var(--primary-500);
 }
 
@@ -69,7 +72,7 @@
   display: inline-block;
   width: 20px;
   height: 20px;
-  border-radius: 3px;
+  border-radius: 20px;
   margin-right: 0.5rem;
   vertical-align: middle;
 }
@@ -87,8 +90,8 @@
 .agreement-section {
   margin: 2rem 0;
   padding: 1rem;
-  background: #2a2a2a;
-  border-radius: 6px;
+  background: #2626266a;
+  border-radius: 20px;
   border: 1px solid #444;
 }
 
@@ -128,18 +131,18 @@
 
 .start-test-btn {
   background: var(--primary-500);
-  color: white;
+  color: var(--text-primary);
   border: none;
   padding: 0.75rem 2rem;
   font-size: 1.1rem;
-  border-radius: 6px;
+  border-radius: 20px;
   cursor: pointer;
   transition: background 0.3s;
   margin-bottom: 0.75rem;
 }
 
 .start-test-btn:hover:not(:disabled) {
-   background: var(--primary-600);
+  background: var(--primary-600);
 }
 
 .start-test-btn:disabled {

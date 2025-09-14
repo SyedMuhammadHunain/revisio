@@ -76,33 +76,34 @@
         </span>
       </div>
     </div>
+    <div class="auth-form-container">
+      <form [formGroup]="answerForm">
+        <div class="question-content">
+          <h3 class="question-text">{{ currentQuestion.questionText }}</h3>
 
-    <form [formGroup]="answerForm">
-      <div class="question-content">
-        <h3 class="question-text">{{ currentQuestion.questionText }}</h3>
-
-        <div class="options-container">
-          <div
-            *ngFor="let option of currentQuestion.options; let i = index"
-            class="option-item"
-            [class.selected]="selectedAnswer === i"
-            (click)="selectAnswer(i)"
-          >
-            <input
-              type="radio"
-              [id]="'option-' + i"
-              [value]="i"
-              formControlName="selectedAnswer"
-              (change)="selectAnswer(i)"
-            />
-            <label [for]="'option-' + i" class="option-label">
-              <span class="option-letter">{{ getOptionLetter(i) }}</span>
-              <span class="option-text">{{ option }}</span>
-            </label>
+          <div class="options-container">
+            <div
+              *ngFor="let option of currentQuestion.options; let i = index"
+              class="option-item"
+              [class.selected]="selectedAnswer === i"
+              (click)="selectAnswer(i)"
+            >
+              <input
+                type="radio"
+                [id]="'option-' + i"
+                [value]="i"
+                formControlName="selectedAnswer"
+                (change)="selectAnswer(i)"
+              />
+              <label [for]="'option-' + i" class="option-label">
+                <span class="option-letter">{{ getOptionLetter(i) }}</span>
+                <span class="option-text">{{ option }}</span>
+              </label>
+            </div>
           </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
 
   <!-- Test Controls -->
