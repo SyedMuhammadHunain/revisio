@@ -2,17 +2,19 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AbstractControl } from '@angular/forms';
 import { catchError, of, map } from 'rxjs';
+import { environment } from '../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root',
 })
 export class EmailValidatorService {
+  private API_URL = environment.API_URL;
   private httpClient = inject(HttpClient);
 
   // Async Validator
   checkUniqueEmail(control: AbstractControl) {
     return this.httpClient
-      .post<{ exists: boolean }>('http://localhost:3000/email/check', {
+      .post<{ exists: boolean }>(`${this.API_URL}/email/check`, {
         email: control.value,
       })
       .pipe(

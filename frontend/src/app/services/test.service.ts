@@ -16,12 +16,13 @@ import {
 } from '../models/test.model';
 import { LocalStorageService } from './local-storage.service';
 import { MessageService } from './message.service';
+import { environment } from '../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TestService {
-  private readonly baseUrl = 'http://localhost:3000';
+  private readonly baseUrl = environment.API_URL;
   private httpClient = inject(HttpClient);
   private localStorageService = inject(LocalStorageService);
   private messageService = inject(MessageService);

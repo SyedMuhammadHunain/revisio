@@ -8,11 +8,13 @@ import { MessageService } from './message.service';
 import { LocalStorageService } from './local-storage.service';
 
 import { catchError, map, throwError } from 'rxjs';
+import { environment } from '../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  private API_URL = environment.API_URL;
   private httpClient = inject(HttpClient);
   private localStorageService = inject(LocalStorageService);
   private messageService = inject(MessageService);
@@ -20,7 +22,7 @@ export class AuthService {
   signup(signupData: SignupData) {
     return this.httpClient
       .post<{ message: string }>(
-        'http://localhost:3000/auth/signup',
+        `${this.API_URL}/auth/signup`,
         signupData
       )
       .pipe(
@@ -38,7 +40,7 @@ export class AuthService {
   signIn(signinData: SigninData) {
     return this.httpClient
       .post<{ accessToken: string; message: string }>(
-        'http://localhost:3000/auth/signin',
+        `${this.API_URL}/auth/signin`,
         signinData
       )
       .pipe(
@@ -56,7 +58,7 @@ export class AuthService {
 
   resendOtp(email: string) {
     return this.httpClient
-      .post<{ message: string }>('http://localhost:3000/auth/resend-otp', {
+      .post<{ message: string }>(`${this.API_URL}/auth/resend-otp`, {
         email,
       })
       .pipe(
@@ -73,7 +75,7 @@ export class AuthService {
 
   forgotPassword(email: string) {
     return this.httpClient
-      .post<{ message: string }>('http://localhost:3000/auth/forgot-password', {
+      .post<{ message: string }>(`${this.API_URL}/auth/forgot-password`, {
         email,
       })
       .pipe(
@@ -95,7 +97,7 @@ export class AuthService {
   }) {
     return this.httpClient
       .post<{ message: string }>(
-        'http://localhost:3000/auth/reset-password',
+        `${this.API_URL}/auth/reset-password`,
         resetData
       )
       .pipe(
