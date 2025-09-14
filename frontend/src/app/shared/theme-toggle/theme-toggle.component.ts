@@ -63,6 +63,7 @@ import { CommonModule } from '@angular/common';
         position: relative;
         width: 15px;
         height: 15px;
+        margin: 0 auto;
       }
 
       .theme-toggle:hover {
