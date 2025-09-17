@@ -18,34 +18,34 @@ This is a full-stack app in which students can revise their Object Oriented Prog
 
 ```
 
-├── frontend/                # Angular application
+├── frontend/                                            # Angular application
 │   ├── src/app/
-│   │   ├── auth/            # Authentication components
-│   │   ├── dashboard/       # Main dashboard with sidebar
-│   │   │   ├── overview/    # Statistics and charts
-│   │   │   ├── assessment/  # Test creation     
-│   │   │   ├── chatbot/     # Basic chatbot integration
-│   │   │   ├── test-result/ # Results and analytics
+│   │   ├── auth/                                        # Authentication components
+│   │   ├── dashboard/                                   # Main dashboard with sidebar
+│   │   │   ├── overview/                                # Statistics and charts
+│   │   │   ├── assessment/                              # Test creation     
+│   │   │   ├── chatbot/                                 # Basic chatbot integration
+│   │   │   ├── test-result/                             # Results and analytics
 │   │   │   │   ├── chart/   
-│   │   │   └── test-taking/ # Test environment
+│   │   │   └── test-taking/                             # Test environment
 │   │   │       ├── test-completion/
 │   │   │       ├── test-environment/
 │   │   │       ├── test-instructions/
 │   │   │       ├── test-instructions-route/
-│   │   ├── services/        # API services
-│   │   ├── models/          # TypeScript interfaces
-│   │   └── shared/          # Reusable components
-│   └── environments/        # Environment configuration
+│   │   ├── services/                                    # API services
+│   │   ├── models/                                      # TypeScript interfaces
+│   │   └── shared/                                      # Reusable components
+│   └── environments/                                    # Environment configuration
 │
-└── backend/                # NestJS application
+└── backend/                                             # NestJS application
     ├── src/
-        ├── auth/           # Authentication module
-        ├── questions/      # Question management
-        ├── test-config/    # Test configuration
-        ├── test-results/   # Results processing
-        ├── email/          # Email services
-        ├── schemas/        # MongoDB schemas
-        └── dtos/           # Data transfer objects
+        ├── auth/                                        # Authentication module
+        ├── questions/                                   # Question management
+        ├── test-config/                                 # Test configuration
+        ├── test-results/                                # Results processing
+        ├── email/                                       # Email services
+        ├── schemas/                                     # MongoDB schemas
+        └── dtos/                                        # Data transfer objects
 
 ```
 
@@ -59,7 +59,8 @@ This is a full-stack app in which students can revise their Object Oriented Prog
 
 ### Assessment Management
 - Create tests with specific categories (DSA, OOP, PF)
-- Random question selection from question bank
+- Random question selection from the question bank
+- Questions are stored in the Database and can be added
 
 ### Test Taking Environment
 - Countdown timer
