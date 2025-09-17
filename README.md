@@ -140,30 +140,6 @@ npm start
 
 ### Email
 - `POST /email/check` - Check email availability
-
-## Demo Video
-
-Demo video will be available on the LinkedIn post and the project section.
-
-## Notes
-
-- The chatbot is basic and limited to Programming Fundamentals questions
-- It uses an external API from corpusai-api.vercel.app of a friend's RAG-based chatbot system
-- Cheating detection is basic and can be improved
-- Question bank needs to be populated manually using the seed endpoint
-- Email service requires proper SMTP configuration for OTP delivery
-
-## Learning Outcomes
-
-This project demonstrates:
-- Full-stack development with Angular and NestJS
-- JWT authentication and security practices
-- Real-time features and state management
-- Data visualization with charts
-- External API integration
-- MongoDB database design
-- Form validation and error handling
-
 ---
 
 **Thank you for taking the time to explore this project!** 
