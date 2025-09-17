@@ -1,6 +1,6 @@
-# Revisio - Online Assessment Platform
+# Revisio App
 
-This is a fullstack app in which students can revise their OOP, DSA and PF concepts by giving tests, track their each and overall tests performance analytics and can interact with a Chatbot built on RAG system.
+This is a full-stack app in which students can revise their Object Oriented Programming (OOP), Data Structures & Algorithm (DSA), and Programming Fundamentals (PF) concepts by giving tests, track their each and overall test performance analytics, and can interact with a Chatbot built on the RAG system.
 
 
 ## Tech Stack
@@ -75,7 +75,7 @@ This is a fullstack app in which students can revise their OOP, DSA and PF conce
 
 ### Chatbot Integration
 - Basic chatbot for Programming Fundamentals questions
-- Uses external API from from corpusai-api.vercel.app of friend's RAG-based chatbot system
+- Uses external API from corpusai-api.vercel.app of friend's RAG-based chatbot system
 - Simple conversation interface with typing indicators
 
 ## Installation & Run Instructions
@@ -125,12 +125,12 @@ npm start
 ### Test Configuration
 - `POST /test-config/create` - Create new test
 - `POST /test-config/start` - Start test session
-- `GET /test-config/user-configs` - Get user's tests
+- `GET /test-config/user-configs` - Get the user's tests
 - `GET /test-config/:id` - Get specific test config
 
 ### Test Results
 - `POST /test-results/submit` - Submit test answers
-- `GET /test-results/user-results` - Get user's results
+- `GET /test-results/user-results` - Get the user's results
 - `GET /test-results/statistics` - Get user statistics
 - `GET /test-results/:id` - Get specific result
 
@@ -142,12 +142,12 @@ npm start
 
 ## Demo Video
 
-Demo video will be available on LinkedIn post and project section.
+Demo video will be available on the LinkedIn post and the project section.
 
 ## Notes
 
 - The chatbot is basic and limited to Programming Fundamentals questions
-- It uses an external API from corpusai-api.vercel.app of friend's RAG-based chatbot system
+- It uses an external API from corpusai-api.vercel.app of a friend's RAG-based chatbot system
 - Cheating detection is basic and can be improved
 - Question bank needs to be populated manually using the seed endpoint
 - Email service requires proper SMTP configuration for OTP delivery
