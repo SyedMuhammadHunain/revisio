@@ -13,32 +13,50 @@ import { AppService } from './app.service';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({ envFilePath: '.env', isGlobal: true }),
+    ConfigModule.forRoot({
+      envFilePath: '.env',
+      isGlobal: true,
+      expandVariables: true, // Add this
+    }),
 
     MongooseModule.forRootAsync({
       inject: [ConfigService],
+      useFactory: async (configService: ConfigService) => {
+        const uri = configService.get<string>('MONGODB_URL');
+        console.log('MongoDB URI configured');
+
+        return {
+          uri,
+          retryWrites: true,
+          w: 'majority',
+        };
+      },
+    }),
+
+    // Fix MailerModule to use ConfigService
+    MailerModule.forRootAsync({
+      inject: [ConfigService],
       useFactory: (configService: ConfigService) => ({
-        uri: configService.get<string>('MONGODB_URL'),
+        transport: {
+          host: configService.get<string>('EMAIL_HOST'),
+          auth: {
+            user: configService.get<string>('EMAIL_USERNAME'),
+            pass: configService.get<string>('EMAIL_PASSWORD'),
+          },
+        },
+        defaults: {
+          from: configService.get<string>('EMAIL_FROM'),
+        },
       }),
     }),
+
     EmailModule,
     AuthModule,
     QuestionsModule,
     TestConfigModule,
     TestResultsModule,
-
-    MailerModule.forRoot({
-      transport: {
-        host: process.env.EMAIL_HOST,
-        auth: {
-          user: process.env.EMAIL_USERNAME,
-          pass: process.env.EMAIL_PASSWORD,
-        },
-      },
-    }),
   ],
   controllers: [AppController],
   providers: [AppService],
-  exports: [],
 })
 export class AppModule {}
