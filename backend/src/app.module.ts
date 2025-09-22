@@ -15,7 +15,7 @@ import { AppService } from './app.service';
   imports: [
     ConfigModule.forRoot({ envFilePath: '.env', isGlobal: true }),
 
-    MongooseModule.forRoot('mongodb://localhost:27017/concept-revise'),
+    MongooseModule.forRoot(process.env.MONGODB_URL!),
     EmailModule,
     AuthModule,
     QuestionsModule,
