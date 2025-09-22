@@ -8,7 +8,7 @@ import { MessageService } from './message.service';
 import { LocalStorageService } from './local-storage.service';
 
 import { catchError, map, throwError } from 'rxjs';
-import { environment } from '../../environments/environment';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -21,10 +21,7 @@ export class AuthService {
 
   signup(signupData: SignupData) {
     return this.httpClient
-      .post<{ message: string }>(
-        `${this.API_URL}/auth/signup`,
-        signupData
-      )
+      .post<{ message: string }>(`${this.API_URL}/auth/signup`, signupData)
       .pipe(
         map((response) => {
           this.messageService.setMessage(response.message, 'success');

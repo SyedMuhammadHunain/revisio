@@ -16,7 +16,7 @@ import {
 } from '../models/test.model';
 import { LocalStorageService } from './local-storage.service';
 import { MessageService } from './message.service';
-import { environment } from '../../environments/environment';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root',
