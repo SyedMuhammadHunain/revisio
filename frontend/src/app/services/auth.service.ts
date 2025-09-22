@@ -8,7 +8,7 @@ import { MessageService } from './message.service';
 import { LocalStorageService } from './local-storage.service';
 
 import { catchError, map, throwError } from 'rxjs';
-import { environment } from '../../environments/environment.development';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',

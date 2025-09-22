@@ -4,7 +4,7 @@ import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Chatbot, ChatbotResponse, Role } from '../../models/chatbot.model';
 import { ChatbotService } from '../../services/chatbot.service';
-import { environment } from '../../../environments/environment.development';
+import { environment } from '../../../environments/environment';
 
 interface Messages {
   content: string;
