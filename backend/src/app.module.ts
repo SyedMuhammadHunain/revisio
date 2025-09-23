@@ -16,7 +16,7 @@ import { AppService } from './app.service';
     ConfigModule.forRoot({
       envFilePath: '.env',
       isGlobal: true,
-      expandVariables: true, // Add this
+      expandVariables: true,
     }),
 
     MongooseModule.forRootAsync({
@@ -33,22 +33,53 @@ import { AppService } from './app.service';
       },
     }),
 
-    // Fix MailerModule to use ConfigService
+    // Fixed MailerModule configuration
     MailerModule.forRootAsync({
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => ({
         transport: {
-          host: configService.get<string>('EMAIL_HOST'),
+          service: 'gmail', // Use Gmail service
           auth: {
             user: configService.get<string>('EMAIL_USERNAME'),
             pass: configService.get<string>('EMAIL_PASSWORD'),
           },
+          // Additional Gmail-specific settings
+          pool: true,
+          maxConnections: 1,
+          rateDelta: 20000,
+          rateLimit: 5,
         },
         defaults: {
           from: configService.get<string>('EMAIL_FROM'),
         },
       }),
     }),
+
+    // Alternative configuration if Gmail service doesn't work
+    // MailerModule.forRootAsync({
+    //   inject: [ConfigService],
+    //   useFactory: (configService: ConfigService) => ({
+    //     transport: {
+    //       host: configService.get<string>('EMAIL_HOST'),
+    //       port: parseInt(configService.get<string>('EMAIL_PORT', '587')),
+    //       secure: configService.get<string>('EMAIL_SECURE') === 'true', // false for 587, true for 465
+    //       auth: {
+    //         user: configService.get<string>('EMAIL_USERNAME'),
+    //         pass: configService.get<string>('EMAIL_PASSWORD'),
+    //       },
+    //       tls: {
+    //         rejectUnauthorized: false,
+    //       },
+    //       // Timeout settings
+    //       connectionTimeout: 60000, // 60 seconds
+    //       greetingTimeout: 30000,   // 30 seconds
+    //       socketTimeout: 60000,     // 60 seconds
+    //     },
+    //     defaults: {
+    //       from: configService.get<string>('EMAIL_FROM'),
+    //     },
+    //   }),
+    // }),
 
     EmailModule,
     AuthModule,
