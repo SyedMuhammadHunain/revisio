@@ -41,7 +41,9 @@ testem.log
 .DS_Store
 Thumbs.db
 
-# Environment files (keep secure)
-/src/environments/*.ts
+# COMMENTED OUT - We need these files for deployment
+# /src/environments/*.ts
+
+# Only ignore sensitive local environment files
 .env.local
 .env.*.local
