@@ -66,7 +66,7 @@ export class AuthService {
     try {
       await this.emailService.sendCodeToEmail(email, code);
     } catch (error) {
-      throw new InternalServerErrorException('Failed to send email: ', error);
+      console.error('Email sending failed:', error);
     }
 
     return {

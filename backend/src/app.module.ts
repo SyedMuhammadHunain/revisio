@@ -36,18 +36,30 @@ import { AppService } from './app.service';
     // Fix MailerModule to use ConfigService
     MailerModule.forRootAsync({
       inject: [ConfigService],
-      useFactory: (configService: ConfigService) => ({
-        transport: {
-          host: configService.get<string>('EMAIL_HOST'),
-          auth: {
-            user: configService.get<string>('EMAIL_USERNAME'),
-            pass: configService.get<string>('EMAIL_PASSWORD'),
+      useFactory: async (configService: ConfigService) => {
+        const host = configService.get<string>('EMAIL_HOST');
+        const user = configService.get<string>('EMAIL_USERNAME');
+        const pass = configService.get<string>('EMAIL_PASSWORD');
+        const from = configService.get<string>('EMAIL_FROM');
+        const port = Number(configService.get<string>('EMAIL_PORT')) || 587;
+
+        console.log('📧 Mailer Config:', { host, user, port, from });
+
+        return {
+          transport: {
+            host,
+            port,
+            secure: port === 465, // true for 465, false for 587
+            auth: {
+              user,
+              pass,
+            },
           },
-        },
-        defaults: {
-          from: configService.get<string>('EMAIL_FROM'),
-        },
-      }),
+          defaults: {
+            from,
+          },
+        };
+      },
     }),
 
     EmailModule,
