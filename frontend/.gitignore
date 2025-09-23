@@ -41,5 +41,7 @@ testem.log
 .DS_Store
 Thumbs.db
 
-# Ignore all environment files
+# Environment files (keep secure)
 /src/environments/*.ts
+.env.local
+.env.*.local
