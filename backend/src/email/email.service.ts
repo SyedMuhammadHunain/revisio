@@ -3,16 +3,22 @@ import { Injectable } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 
-import { MailerService } from '@nestjs-modules/mailer';
-
 import { User, UserDocument } from 'src/schemas/user.schema';
+import { ConfigService } from '@nestjs/config';
+import { Resend } from 'resend';
 
 @Injectable()
 export class EmailService {
+  private resend: Resend;
+  private from: string;
+
   constructor(
     @InjectModel(User.name) private readonly userModel: Model<UserDocument>,
-    private readonly mailerService: MailerService,
-  ) {}
+    private readonly configService: ConfigService,
+  ) {
+    this.resend = new Resend(this.configService.get<string>('RESEND_API_KEY'));
+    this.from = this.configService.get<string>('EMAIL_FROM') ?? 'onboarding@resend.dev';
+  }
 
   async checkUniqueEmail(email: string): Promise<boolean> {
     const user = await this.userModel.findOne({ email });
@@ -38,9 +44,9 @@ export class EmailService {
     </html>
     `;
 
-    await this.mailerService.sendMail({
+    await this.resend.emails.send({
+      from: this.from,
       to: email,
-      from: process.env.EMAIL_FROM,
       subject: 'Your OTP Code',
       html: htmlTemplate,
     });
