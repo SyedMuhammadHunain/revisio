@@ -1,16 +1,16 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { EmailModule } from 'src/email/email.module';
+import { EmailModule } from '../email/email.module';
 import { JwtModule } from '@nestjs/jwt';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { PasswordHashService } from './password-hash.service';
-import { CodeGenerateService } from 'src/email/code-generate.service';
+import { CodeGenerateService } from '../email/code-generate.service';
 
-import { User, UserSchema } from 'src/schemas/user.schema';
-import { Auth, AuthSchema } from 'src/schemas/auth.schema';
+import { User, UserSchema } from '../schemas/user.schema';
+import { Auth, AuthSchema } from '../schemas/auth.schema';
 
 @Module({
   imports: [

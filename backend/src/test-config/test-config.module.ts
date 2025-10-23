@@ -6,16 +6,16 @@ import { JwtModule } from '@nestjs/jwt';
 import {
   TestConfig,
   TestConfigSchema,
-} from 'src/schemas/test-configuration.schema';
-import { Question, QuestionSchema } from 'src/schemas/question.schema';
+} from '../schemas/test-configuration.schema';
+import { Question, QuestionSchema } from '../schemas/question.schema';
 
 import { TestConfigService } from './test-config.service';
 
 import { TestConfigController } from '../test-config/test-config.controller';
 
-import { QuestionsModule } from 'src/questions/questions.module';
+import { QuestionsModule } from '../questions/questions.module';
 
-import { JwtAuthGuard } from 'src/guard/jwt-auth.guard';
+import { JwtAuthGuard } from '../guard/jwt-auth.guard';
 
 @Module({
   imports: [

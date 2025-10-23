@@ -3,17 +3,17 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 
-import { TestResult, TestResultSchema } from 'src/schemas/test-result.schema';
-import { QuestionSchema, Question } from 'src/schemas/question.schema';
+import { TestResult, TestResultSchema } from '../schemas/test-result.schema';
+import { QuestionSchema, Question } from '../schemas/question.schema';
 import {
   TestConfigSchema,
   TestConfig,
-} from 'src/schemas/test-configuration.schema';
+} from '../schemas/test-configuration.schema';
 
 import { TestResultsService } from './test-results.service';
 import { TestResultsController } from './test-results.controller';
 
-import { JwtAuthGuard } from 'src/guard/jwt-auth.guard';
+import { JwtAuthGuard } from '../guard/jwt-auth.guard';
 
 @Module({
   imports: [

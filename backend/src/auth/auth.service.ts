@@ -6,17 +6,17 @@ import {
 } from '@nestjs/common';
 
 import { PasswordHashService } from './password-hash.service';
-import { EmailService } from 'src/email/email.service';
-import { CodeGenerateService } from 'src/email/code-generate.service';
+import { EmailService } from '../email/email.service';
+import { CodeGenerateService } from '../email/code-generate.service';
 
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 
-import { User, UserDocument } from 'src/schemas/user.schema';
-import { Auth, AuthDocument } from 'src/schemas/auth.schema';
+import { User, UserDocument } from '../schemas/user.schema';
+import { Auth, AuthDocument } from '../schemas/auth.schema';
 
-import { SigninDto, SignupDto } from 'src/dtos/auth.dto';
-import { ResetPasswordDto } from 'src/dtos/reset-password.dto';
+import { SigninDto, SignupDto } from '../dtos/auth.dto';
+import { ResetPasswordDto } from '../dtos/reset-password.dto';
 
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';

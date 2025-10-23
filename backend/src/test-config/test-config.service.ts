@@ -12,7 +12,7 @@ import {
 } from '../schemas/test-configuration.schema';
 import { QuestionDocument } from '../schemas/question.schema';
 
-import { CreateTestConfigDto } from 'src/dtos/test-configuration.dto';
+import { CreateTestConfigDto } from '../dtos/test-configuration.dto';
 import { QuestionsService } from '../questions/questions.service';
 
 // Interface for questions without correct answers (for frontend security)
