@@ -371,7 +371,7 @@ npm start
     <br>
     <br>
     <a href="https://github.com/yourusername/revisio-app/stargazers">
-      <img src="https://img.shields.io/github/stars/yourusername/revisio-app?style=social&label=Star%20this%20Repo" alt="GitHub Stars" />
+      <img src="https://img.shields.io/github/stars/SyedMuhammadHunain/revisio-app?style=social&label=Star%20this%20Repo" alt="GitHub Stars" />
     </a>
   </p>
 
