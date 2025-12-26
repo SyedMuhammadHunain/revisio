@@ -1,18 +1,64 @@
-# Revisio App
+<div align="center">
 
-This is a full-stack app in which students can revise their Object Oriented Programming (OOP), Data Structures & Algorithm (DSA), and Programming Fundamentals (PF) concepts by giving tests, track their each and overall test performance analytics, and can interact with a Chatbot built on the RAG system.
+  <img src="[./github-header-banner.png](https://drive.google.com/file/d/1R49Ae4otjwZi1AXawok2fR-bqn8AxxYP/view?usp=sharing)" alt="Revisio Banner" width="100%" />
 
+  <br/>
+  <br/>
 
-## Tech Stack
+ <a href="https://git.io/typing-svg">
+    <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=28&pause=1000&color=3B82F6&center=true&vCenter=true&width=600&lines=Master+OOP,+DSA+%26+PF;Powered+by+Angular+19+%26+NestJS;AI+RAG+Chatbot+Integration;Smart+Anti-Cheat+Proctoring;Developed+by+Hunain" alt="Typing SVG" />
+</a>
 
-**Frontend:**
-- Angular 19
+  <br/>
 
-**Backend:**
-- NestJS 11
+  <p>
+    <img src="https://img.shields.io/github/repo-size/SyedMuhammadHunain/revisio?style=for-the-badge&color=2563EB" alt="Repo Size" />
+    <img src="https://img.shields.io/github/last-commit/SyedMuhammadHunain/revisio?style=for-the-badge&color=2563EB" alt="Last Commit" />
+    <img src="https://img.shields.io/badge/Status-Active_Development-success?style=for-the-badge" alt="Status" />
+  </p>
 
-**Database**
-- MongoDB with Mongoose
+</div>
+
+---
+
+<div align="center"> 
+
+## 🛠️ The Tech Stack
+
+</div>
+
+<div align="center">
+	<code><img width="50" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/angular.png" alt="Angular" title="Angular"/></code>
+	<code><img width="50" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/nest_js.png" alt="Nest.js" title="Nest.js"/></code>
+	<code><img width="50" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/mongodb.png" alt="mongoDB" title="mongoDB"/></code>
+	<code><img width="50" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/typescript.png" alt="TypeScript" title="TypeScript"/></code>
+	<code><img width="50" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/html.png" alt="HTML" title="HTML"/></code>
+	<code><img width="50" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/css.png" alt="CSS" title="CSS"/></code>
+	<code><img width="50" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/postman.png" alt="Postman" title="Postman"/></code>
+	<code><img width="50" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/git.png" alt="Git" title="Git"/></code>
+	<code><img width="50" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/github.png" alt="GitHub" title="GitHub"/></code>
+	<code><img width="50" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/rest.png" alt="REST" title="REST"/></code>
+	<code><img width="50" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/http.png" alt="HTTP" title="HTTP"/></code>
+	<code><img width="50" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/visual_studio_code.png" alt="Visual Studio Code" title="Visual Studio Code"/></code>
+</div>
+
+<br/>
+
+## ⚡ Introduction
+
+**Revisio** is a cutting-edge educational assessment platform designed to help Computer Science students master core concepts. It is built using the latest **Angular 19** and **NestJS 11**, ensuring blazingly fast performance and a modern architecture.
+
+> *"More than just a quiz app—it's an intelligent study companion."*
+
+<br/>
+
+## 🖥️ Live Application Demo
+
+<div align="center">
+  <img src="https://placehold.co/800x450/1e1e1e/FFF?text=Insert+MacBook+Demo+Here" alt="Revisio Demo" width="100%" style="border-radius: 10px; box-shadow: 0px 10px 30px rgba(0,0,0,0.5);"/>
+</div>
+
+<br/>
 
 ## Folder Structure
 
