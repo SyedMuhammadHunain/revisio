@@ -55,7 +55,11 @@
 ## 🖥️ Live Application Demo
 
 <div align="center">
-  <img src="https://placehold.co/800x450/1e1e1e/FFF?text=Insert+MacBook+Demo+Here" alt="Revisio Demo" width="100%" style="border-radius: 10px; box-shadow: 0px 10px 30px rgba(0,0,0,0.5);"/>
+	
+
+https://github.com/user-attachments/assets/46b5d782-17fb-47db-8cc8-2f9d30da7c36
+
+
 </div>
 
 <br/>
