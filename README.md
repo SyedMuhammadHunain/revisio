@@ -353,8 +353,35 @@ npm start
 </details>
 ---
 
-**Thank you for taking the time to explore this project!** 
+<div align="center">
 
-This was a learning journey in full-stack development, and I'm grateful for the opportunity to share it. Feel free to reach out if you have any questions or suggestions for improvement.
+  <h3>
+    <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="28">
+    Thank you for exploring Revisio!
+  </h3>
 
-*Happy coding! 🚀*
+  <p>
+    This project was a significant milestone in my <b>Full-Stack Development</b> journey.
+    <br>
+    I am grateful for the opportunity to share this learning experience with you.
+  </p>
+
+  <p>
+    <i>If you found this project interesting, please consider giving it a star!</i>
+    <br>
+    <br>
+    <a href="https://github.com/yourusername/revisio-app/stargazers">
+      <img src="https://img.shields.io/github/stars/yourusername/revisio-app?style=social&label=Star%20this%20Repo" alt="GitHub Stars" />
+    </a>
+  </p>
+
+  <br>
+
+  <h3>
+    <i>Happy Coding!</i> &nbsp;
+    <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Rocket.png" alt="Rocket" width="35" height="35" />
+  </h3>
+
+</div>
+
+<br>
