@@ -370,7 +370,7 @@ npm start
     <i>If you found this project interesting, please consider giving it a star!</i>
     <br>
     <br>
-    <a href="https://github.com/yourusername/revisio-app/stargazers">
+    <a href="https://github.com/SyedMuhammadHunain/revisio-app/stargazers">
       <img src="https://img.shields.io/github/stars/SyedMuhammadHunain/revisio-app?style=social&label=Star%20this%20Repo" alt="GitHub Stars" />
     </a>
   </p>
