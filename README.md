@@ -95,36 +95,169 @@ https://github.com/user-attachments/assets/46b5d782-17fb-47db-8cc8-2f9d30da7c36
     └── 📜 main.ts                     #    Entry Point
 
 ```
+## 🌟 Key Features
 
-## Key Features
+<table width="100%">
+  <tr>
+    <td width="50%" valign="top">
+      <h3 align="center">🔐 Advanced Authentication</h3>
+      <p align="center">
+        <i>Secure access with military-grade standards.</i>
+      </p>
+      <ul>
+        <li><b>JWT Session:</b> Stateless, secure token management.</li>
+        <li><b>2-Factor Auth (2FA):</b> OTP verification via Email.</li>
+        <li><b>Recovery:</b> Secure password reset flows.</li>
+      </ul>
+      <br/>
+      <div align="center">
+        <img src="https://img.shields.io/badge/Security-High-green?style=flat-square&logo=security" />
+      </div>
+    </td>
+    <td width="50%" valign="top">
+      <h3 align="center">🛡️ Smart Proctoring</h3>
+      <p align="center">
+        <i>Automated anti-cheat environment.</i>
+      </p>
+      <ul>
+        <li><b>Focus Detection:</b> Detects tab switching & window blur.</li>
+        <li><b>Auto-Submit:</b> Triggers on timer expiry or violation.</li>
+        <li><b>Strict Timer:</b> Server-synced countdown.</li>
+      </ul>
+      <br/>
+      <div align="center">
+        <img src="https://img.shields.io/badge/Anti--Cheat-Active-red?style=flat-square&logo=adguard" />
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <h3 align="center">🤖 RAG AI Assistant</h3>
+      <p align="center">
+        <i>Powered by CorpusAI for contextual help.</i>
+      </p>
+      <ul>
+        <li><b>Context Aware:</b> RAG system for PF concepts.</li>
+        <li><b>Smart UI:</b> Typing indicators & chat history.</li>
+        <li><b>Integration:</b> Seamless REST API connection.</li>
+      </ul>
+      <br/>
+      <div align="center">
+        <img src="https://img.shields.io/badge/AI-Enabled-blue?style=flat-square&logo=openai" />
+      </div>
+    </td>
+    <td width="50%" valign="top">
+      <h3 align="center">📊 Deep Analytics</h3>
+      <p align="center">
+        <i>Visualizing progress with ngx-charts.</i>
+      </p>
+      <ul>
+        <li><b>Performance:</b> Category-wise (OOP, DSA, PF) breakdown.</li>
+        <li><b>History:</b> Track pass/fail rates over time.</li>
+        <li><b>Visuals:</b> Interactive bar and pie charts.</li>
+      </ul>
+      <br/>
+      <div align="center">
+        <img src="https://img.shields.io/badge/Charts-Interactive-orange?style=flat-square&logo=googleanalytics" />
+      </div>
+    </td>
+  </tr>
+</table>
 
-### Authentication System
-- User registration with email verification
-- Two-factor authentication using OTP
-- JWT token-based session management
-- Password reset functionality
+<br/>
 
-### Assessment Management
-- Create tests with specific categories (DSA, OOP, PF)
-- Random question selection from the question bank
-- Questions are stored in the Database and can be added
+<details>
+<summary><b>🔻 Click here to view the Technical Workflow (How it works)</b></summary>
+<br>
 
-### Test Taking Environment
-- Countdown timer
-- Question navigation with progress tracking
-- Basic cheating detection (tab switching, window focus)
-- Auto-submission on time expiry or cheating detection
+| **Component** | **Technical Implementation** |
+| :--- | :--- |
+| **Question Bank** | Stored in MongoDB with randomized selection algorithms based on complexity. |
+| **RAG System** | Fetches embeddings from CorpusAI to answer student queries without hallucinations. |
+| **State Mgmt** | RxJS BehaviorSubjects used for real-time timer synchronization across components. |
 
-### Analytics Dashboard
-- Performance charts using ngx-charts
-- Category-wise score breakdown
-- Test history and statistics
-- Pass/fail rate tracking
+</details>## 🌟 Key Features
 
-### Chatbot Integration
-- Basic chatbot for Programming Fundamentals questions
-- Uses external API from corpusai-api.vercel.app of friend's RAG-based chatbot system
-- Simple conversation interface with typing indicators
+<table width="100%">
+  <tr>
+    <td width="50%" valign="top">
+      <h3 align="center">🔐 Advanced Authentication</h3>
+      <p align="center">
+        <i>Secure access with military-grade standards.</i>
+      </p>
+      <ul>
+        <li><b>JWT Session:</b> Stateless, secure token management.</li>
+        <li><b>2-Factor Auth (2FA):</b> OTP verification via Email.</li>
+        <li><b>Recovery:</b> Secure password reset flows.</li>
+      </ul>
+      <br/>
+      <div align="center">
+        <img src="https://img.shields.io/badge/Security-High-green?style=flat-square&logo=security" />
+      </div>
+    </td>
+    <td width="50%" valign="top">
+      <h3 align="center">🛡️ Smart Proctoring</h3>
+      <p align="center">
+        <i>Automated anti-cheat environment.</i>
+      </p>
+      <ul>
+        <li><b>Focus Detection:</b> Detects tab switching & window blur.</li>
+        <li><b>Auto-Submit:</b> Triggers on timer expiry or violation.</li>
+        <li><b>Strict Timer:</b> Server-synced countdown.</li>
+      </ul>
+      <br/>
+      <div align="center">
+        <img src="https://img.shields.io/badge/Anti--Cheat-Active-red?style=flat-square&logo=adguard" />
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <h3 align="center">🤖 RAG AI Assistant</h3>
+      <p align="center">
+        <i>Powered by CorpusAI for contextual help.</i>
+      </p>
+      <ul>
+        <li><b>Context Aware:</b> RAG system for PF concepts.</li>
+        <li><b>Smart UI:</b> Typing indicators & chat history.</li>
+        <li><b>Integration:</b> Seamless REST API connection.</li>
+      </ul>
+      <br/>
+      <div align="center">
+        <img src="https://img.shields.io/badge/AI-Enabled-blue?style=flat-square&logo=openai" />
+      </div>
+    </td>
+    <td width="50%" valign="top">
+      <h3 align="center">📊 Deep Analytics</h3>
+      <p align="center">
+        <i>Visualizing progress with ngx-charts.</i>
+      </p>
+      <ul>
+        <li><b>Performance:</b> Category-wise (OOP, DSA, PF) breakdown.</li>
+        <li><b>History:</b> Track pass/fail rates over time.</li>
+        <li><b>Visuals:</b> Interactive bar and pie charts.</li>
+      </ul>
+      <br/>
+      <div align="center">
+        <img src="https://img.shields.io/badge/Charts-Interactive-orange?style=flat-square&logo=googleanalytics" />
+      </div>
+    </td>
+  </tr>
+</table>
+
+<br/>
+
+<details>
+<summary><b>🔻 Click here to view the Technical Workflow (How it works)</b></summary>
+<br>
+
+| **Component** | **Technical Implementation** |
+| :--- | :--- |
+| **Question Bank** | Stored in MongoDB with randomized selection algorithms based on complexity. |
+| **RAG System** | Fetches embeddings from CorpusAI to answer student queries without hallucinations. |
+| **State Mgmt** | RxJS BehaviorSubjects used for real-time timer synchronization across components. |
+
+</details>
 
 ## Installation & Run Instructions
 
