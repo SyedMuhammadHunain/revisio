@@ -293,33 +293,64 @@ npm start
 # Database name: concept-revise
 # Collections will be created automatically
 ```
+## 🔌 API Reference & Endpoints
 
-## API Endpoints
+<div align="center">
+  <i>Click on the sections below to expand request details.</i>
+  <br/>
+  <br/>
+</div>
 
-### Authentication
-- `POST /auth/signup` - User registration
-- `POST /auth/signin` - Login with OTP
-- `POST /auth/resend-otp` - Resend verification code
-- `POST /auth/forgot-password` - Request password reset
-- `POST /auth/reset-password` - Reset password with code
+<details>
+<summary><b>🔐 Authentication Module</b> (Signup, Login, OTP)</summary>
+<br/>
 
-### Test Configuration
-- `POST /test-config/create` - Create new test
-- `POST /test-config/start` - Start test session
-- `GET /test-config/user-configs` - Get the user's tests
-- `GET /test-config/:id` - Get specific test config
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| <img src="https://img.shields.io/badge/POST-059669?style=for-the-badge&logoColor=white" height="20"/> | `/auth/signup` | Register a new user account |
+| <img src="https://img.shields.io/badge/POST-059669?style=for-the-badge&logoColor=white" height="20"/> | `/auth/signin` | Login using email & OTP |
+| <img src="https://img.shields.io/badge/POST-059669?style=for-the-badge&logoColor=white" height="20"/> | `/auth/resend-otp` | Resend 2FA verification code |
+| <img src="https://img.shields.io/badge/POST-059669?style=for-the-badge&logoColor=white" height="20"/> | `/auth/forgot-password` | Initiate password recovery flow |
+| <img src="https://img.shields.io/badge/POST-059669?style=for-the-badge&logoColor=white" height="20"/> | `/auth/reset-password` | Reset password using valid token |
 
-### Test Results
-- `POST /test-results/submit` - Submit test answers
-- `GET /test-results/user-results` - Get the user's results
-- `GET /test-results/statistics` - Get user statistics
-- `GET /test-results/:id` - Get specific result
+</details>
 
-### Questions
-- `POST /questions/seed` - Add sample questions (admin)
+<details>
+<summary><b>⚙️ Test Configuration</b> (Create & Manage Tests)</summary>
+<br/>
 
-### Email
-- `POST /email/check` - Check email availability
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| <img src="https://img.shields.io/badge/POST-059669?style=for-the-badge&logoColor=white" height="20"/> | `/test-config/create` | Initialize a new test session |
+| <img src="https://img.shields.io/badge/POST-059669?style=for-the-badge&logoColor=white" height="20"/> | `/test-config/start` | Begin the countdown timer |
+| <img src="https://img.shields.io/badge/GET-2563EB?style=for-the-badge&logoColor=white" height="20"/> | `/test-config/user-configs` | Fetch all tests for current user |
+| <img src="https://img.shields.io/badge/GET-2563EB?style=for-the-badge&logoColor=white" height="20"/> | `/test-config/:id` | Get specific test metadata |
+
+</details>
+
+<details>
+<summary><b>📊 Results & Analytics</b> (Scoring & Statistics)</summary>
+<br/>
+
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| <img src="https://img.shields.io/badge/POST-059669?style=for-the-badge&logoColor=white" height="20"/> | `/test-results/submit` | Submit answers for grading |
+| <img src="https://img.shields.io/badge/GET-2563EB?style=for-the-badge&logoColor=white" height="20"/> | `/test-results/user-results` | Get history of all attempts |
+| <img src="https://img.shields.io/badge/GET-2563EB?style=for-the-badge&logoColor=white" height="20"/> | `/test-results/statistics` | Fetch chart data for dashboard |
+| <img src="https://img.shields.io/badge/GET-2563EB?style=for-the-badge&logoColor=white" height="20"/> | `/test-results/:id` | Get detailed report card |
+
+</details>
+
+<details>
+<summary><b>🛠️ Utilities</b> (Questions & Email)</summary>
+<br/>
+
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| <img src="https://img.shields.io/badge/POST-059669?style=for-the-badge&logoColor=white" height="20"/> | `/questions/seed` | <b>[Admin]</b> Seed DB with sample questions |
+| <img src="https://img.shields.io/badge/POST-059669?style=for-the-badge&logoColor=white" height="20"/> | `/email/check` | Verify email availability |
+
+</details>
 ---
 
 **Thank you for taking the time to explore this project!** 
