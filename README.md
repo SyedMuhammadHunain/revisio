@@ -68,34 +68,31 @@ https://github.com/user-attachments/assets/46b5d782-17fb-47db-8cc8-2f9d30da7c36
 
 ```
 
-├── frontend/                                            # Angular application
-│   ├── src/app/
-│   │   ├── auth/                                        # Authentication components
-│   │   ├── dashboard/                                   # Main dashboard with sidebar
-│   │   │   ├── overview/                                # Statistics and charts
-│   │   │   ├── assessment/                              # Test creation     
-│   │   │   ├── chatbot/                                 # Basic chatbot integration
-│   │   │   ├── test-result/                             # Results and analytics
-│   │   │   │   ├── chart/   
-│   │   │   └── test-taking/                             # Test environment
-│   │   │       ├── test-completion/
-│   │   │       ├── test-environment/
-│   │   │       ├── test-instructions/
-│   │   │       ├── test-instructions-route/
-│   │   ├── services/                                    # API services
-│   │   ├── models/                                      # TypeScript interfaces
-│   │   └── shared/                                      # Reusable components
-│   └── environments/                                    # Environment configuration
+.
+├── 📂 frontend                        # Angular 19 Client
+│   ├── 📂 src/app
+│   │   ├── 📂 auth                    # 🔐 Login, Signup, OTP & 2FA
+│   │   ├── 📂 dashboard               # 📊 Main User Layout
+│   │   │   ├── 📂 overview            #    ├── Stats & Progress Charts
+│   │   │   ├── 📂 assessment          #    ├── Test Creation Logic
+│   │   │   ├── 📂 chatbot             #    ├── 🤖 RAG AI Assistant
+│   │   │   ├── 📂 test-taking         #    ├── 🛡️ Anti-Cheat & Proctoring
+│   │   │   └── 📂 test-result         #    └── Performance Analytics
+│   │   ├── 📂 services                # 🔌 API Communication Services
+│   │   ├── 📂 models                  # 📦 TypeScript Interfaces
+│   │   └── 📂 shared                  # 🧱 Reusable Components (PrimeNG)
+│   └── 📂 environments                # ⚙️ API Keys & Config
 │
-└── backend/                                             # NestJS application
-    ├── src/
-        ├── auth/                                        # Authentication module
-        ├── questions/                                   # Question management
-        ├── test-config/                                 # Test configuration
-        ├── test-results/                                # Results processing
-        ├── email/                                       # Email services
-        ├── schemas/                                     # MongoDB schemas
-        └── dtos/                                        # Data transfer objects
+└── 📂 backend                         # NestJS 11 Server
+    ├── 📂 src
+    │   ├── 📂 auth                    # 🔐 JWT Strategies & Guards
+    │   ├── 📂 questions               # ❓ Question Bank Management
+    │   ├── 📂 test-config             # ⚙️ Assessment Rules & Settings
+    │   ├── 📂 test-results            # 📈 Scoring & Calculation Engine
+    │   ├── 📂 email                   # 📧 Nodemailer Service
+    │   ├── 📂 schemas                 # 🗄️ MongoDB/Mongoose Models
+    │   └── 📂 dtos                    # 📨 Data Transfer Objects
+    └── 📜 main.ts                     #    Entry Point
 
 ```
 
